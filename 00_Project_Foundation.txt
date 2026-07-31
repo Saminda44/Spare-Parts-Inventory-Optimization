@@ -1,0 +1,3298 @@
+# Enterprise AI Platform for Intelligent B2B Spare Parts Procurement
+
+Version: 1.0
+
+Author: Saminda Madhusanka
+
+---
+
+# 1. Purpose
+
+This document defines the engineering foundation for the Enterprise Spare Parts Intelligence Platform.
+
+The platform is designed for Yamaha spare parts procurement in a B2B environment.
+
+The objective is to transform raw business data and Yamaha Parts Catalogues into intelligent procurement decisions using Artificial Intelligence, Machine Learning, Operations Research, Optimization and Explainable AI.
+
+This document defines every engineering standard that every later module must follow.
+
+No intelligence module should violate the rules defined here.
+
+---
+
+# 2. Project Vision
+
+Current Situation
+
+↓
+
+Historical Sales
+
+Current Stock
+
+Orders
+
+Vehicle Sales
+
+PDF Catalogues
+
+↓
+
+People manually decide purchases
+
+↓
+
+High Inventory
+
+Stockouts
+
+Dead Stock
+
+Poor Forecast
+
+--------------------------------------------------------
+
+Future
+
+↓
+
+Automatic Catalogue Understanding
+
+↓
+
+Vehicle Intelligence
+
+↓
+
+UIO Intelligence
+
+↓
+
+Product Intelligence
+
+↓
+
+Dealer Intelligence
+
+↓
+
+Demand Intelligence
+
+↓
+
+Inventory Intelligence
+
+↓
+
+Procurement Intelligence
+
+↓
+
+Decision Support
+
+↓
+
+Purchase Recommendation
+
+---
+
+# 3. Research Goal
+
+Develop an End-to-End AI Decision Support Framework capable of
+
+• Understanding Yamaha Parts Catalogues
+
+• Building an automatic SKU Master
+
+• Predicting motorcycle population
+
+• Forecasting Units in Operation
+
+• Learning spare part behaviour
+
+• Forecasting procurement demand
+
+• Optimizing inventory
+
+• Optimizing procurement
+
+• Explaining recommendations
+
+• Continuously learning from new business data
+
+---
+
+# 4. Business Objectives
+
+The system shall
+
+✓ Reduce Stockouts
+
+✓ Reduce Overstock
+
+✓ Improve Service Level
+
+✓ Improve Forecast Accuracy
+
+✓ Reduce Inventory Cost
+
+✓ Improve Procurement Decisions
+
+✓ Optimize Container Utilization
+
+✓ Optimize Purchase Budget
+
+✓ Reduce Manual Work
+
+✓ Produce Explainable Recommendations
+
+---
+
+# 5. Research Contributions
+
+The expected contributions include
+
+1. Automated Yamaha Catalogue Intelligence
+
+2. Dynamic SKU Master Generation
+
+3. Hybrid Vehicle Forecasting
+
+4. Dynamic UIO Forecasting
+
+5. Multi-source Demand Fusion
+
+6. Intelligent Dealer Behaviour Engine
+
+7. Adaptive Inventory Policy
+
+8. Procurement Optimization Engine
+
+9. Explainable Procurement AI
+
+10. Agentic Decision Support System
+
+---
+
+# 6. Engineering Principles
+
+The entire project follows
+
+• Clean Architecture
+
+• Domain Driven Design
+
+• SOLID Principles
+
+• Repository Pattern
+
+• Dependency Injection
+
+• Configuration Driven Design
+
+• Modular Development
+
+• Event Driven Processing (where appropriate)
+
+• Strong Typing
+
+• Unit Testing
+
+• Integration Testing
+
+• Continuous Learning
+
+---
+
+# 7. Architecture Philosophy
+
+Every intelligence layer is independent.
+
+Each layer
+
+Inputs
+
+↓
+
+Validation
+
+↓
+
+Transformation
+
+↓
+
+AI Engine
+
+↓
+
+Business Rules
+
+↓
+
+Optimization
+
+↓
+
+Output
+
+↓
+
+Next Layer
+
+No layer should directly manipulate another layer's internal logic.
+
+Communication must occur through defined interfaces.
+
+---
+
+# 8. High-Level Architecture
+
+                Dashboard
+                     │
+Decision Support Service
+                     │
+Procurement Intelligence
+                     │
+Inventory Intelligence
+                     │
+Demand Intelligence
+                     │
+Dealer Intelligence
+                     │
+Product Intelligence
+                     │
+UIO Intelligence
+                     │
+Vehicle Intelligence
+                     │
+Catalogue Intelligence
+                     │
+Data Foundation
+                     │
+Knowledge Layer
+                     │
+Database
+
+---
+
+# 9. Core Platform Services
+
+The platform contains independent services.
+
+01 Catalogue Service
+
+02 Vehicle Service
+
+03 UIO Service
+
+04 Product Service
+
+05 Dealer Service
+
+06 Forecast Service
+
+07 Inventory Service
+
+08 Procurement Service
+
+09 Optimization Service
+
+10 Simulation Service
+
+11 Explainability Service
+
+12 Decision Support Service
+
+13 Monitoring Service
+
+14 Knowledge Service
+
+Each service owns its own business logic.
+
+---
+
+# 10. Technology Stack
+
+Programming Language
+
+Python 3.12+
+
+Backend
+
+FastAPI
+
+Database
+
+PostgreSQL
+
+Cache
+
+Redis
+
+Object Storage
+
+MinIO (optional)
+
+Machine Learning
+
+scikit-learn
+
+LightGBM
+
+XGBoost
+
+CatBoost
+
+Prophet
+
+Statsmodels
+
+PyTorch
+
+Optimization
+
+Pyomo
+
+OR-Tools
+
+SciPy
+
+Simulation
+
+SimPy
+
+NumPy
+
+Data Processing
+
+Pandas
+
+Polars (optional for performance)
+
+Visualization
+
+Plotly
+
+Power BI
+
+Experiment Tracking
+
+MLflow
+
+Configuration
+
+Pydantic Settings
+
+Logging
+
+Loguru
+
+Testing
+
+pytest
+
+Deployment
+
+Docker
+
+Docker Compose
+
+GitHub Actions
+
+---
+
+# 11. Repository Structure
+
+enterprise-spareparts-ai/
+
+├── configs/
+├── data/
+├── docs/
+├── notebooks/
+├── src/
+├── tests/
+├── scripts/
+├── deployment/
+├── models/
+├── logs/
+├── reports/
+├── dashboards/
+├── experiments/
+├── mlruns/
+└── README.md
+
+No notebooks should contain business logic.
+
+Business logic belongs only in src/.
+
+---
+
+# 12. Source Structure
+
+src/
+
+catalogue/
+
+vehicle/
+
+uio/
+
+product/
+
+dealer/
+
+forecast/
+
+inventory/
+
+procurement/
+
+optimization/
+
+simulation/
+
+decision/
+
+knowledge/
+
+shared/
+
+api/
+
+Each package is completely independent.
+
+
+# 13. Development Philosophy
+
+This project is NOT a collection of Jupyter notebooks.
+
+It is an Enterprise AI Platform.
+
+Every component must be
+
+• Modular
+
+• Testable
+
+• Reusable
+
+• Explainable
+
+• Replaceable
+
+• Independently Deployable
+
+The objective is that every intelligence module can eventually become its own microservice.
+
+---
+
+# 14. Layered Architecture
+
+The platform follows strict layered architecture.
+
+Presentation Layer
+
+↓
+
+API Layer
+
+↓
+
+Application Layer
+
+↓
+
+Domain Layer
+
+↓
+
+AI Engine Layer
+
+↓
+
+Infrastructure Layer
+
+↓
+
+Database Layer
+
+No layer should skip another layer.
+
+Example
+
+Dashboard
+
+↓
+
+Decision Service
+
+↓
+
+Inventory Service
+
+↓
+
+Database
+
+NOT
+
+Dashboard
+
+↓
+
+Database
+
+---
+
+# 15. Domain Driven Design
+
+The platform consists of bounded contexts.
+
+Each context owns its own business rules.
+
+Catalogue Context
+
+Vehicle Context
+
+UIO Context
+
+Product Context
+
+Dealer Context
+
+Demand Context
+
+Inventory Context
+
+Procurement Context
+
+Decision Context
+
+Knowledge Context
+
+Each context has
+
+Entities
+
+Value Objects
+
+Repositories
+
+Services
+
+Validators
+
+Exceptions
+
+Events
+
+Configurations
+
+Tests
+
+---
+
+# 16. Project Naming Standards
+
+Folder Names
+
+snake_case
+
+Example
+
+inventory_intelligence
+
+Class Names
+
+PascalCase
+
+Example
+
+InventoryForecastService
+
+Functions
+
+snake_case
+
+Example
+
+calculate_safety_stock()
+
+Variables
+
+snake_case
+
+Example
+
+forecast_quantity
+
+Constants
+
+UPPER_CASE
+
+Example
+
+DEFAULT_SERVICE_LEVEL
+
+Database Tables
+
+snake_case
+
+Example
+
+inventory_transactions
+
+Primary Keys
+
+id
+
+Foreign Keys
+
+table_id
+
+Timestamp Fields
+
+created_at
+
+updated_at
+
+deleted_at
+
+---
+
+# 17. Python Package Structure
+
+Every module must follow exactly the same layout.
+
+module/
+
+├── api/
+├── config/
+├── constants/
+├── controllers/
+├── dto/
+├── engines/
+├── events/
+├── exceptions/
+├── interfaces/
+├── models/
+├── repositories/
+├── schemas/
+├── services/
+├── utils/
+├── validators/
+├── tests/
+
+No business logic should exist in
+
+controllers
+
+api
+
+or validators.
+
+Business logic belongs only inside services and engines.
+
+---
+
+# 18. Clean Architecture
+
+Every feature follows
+
+Controller
+
+↓
+
+Application Service
+
+↓
+
+Domain Service
+
+↓
+
+Repository
+
+↓
+
+Database
+
+Example
+
+POST /forecast
+
+↓
+
+ForecastController
+
+↓
+
+ForecastApplicationService
+
+↓
+
+DemandForecastEngine
+
+↓
+
+ForecastRepository
+
+↓
+
+PostgreSQL
+
+This separation makes testing easier.
+
+---
+
+# 19. Dependency Injection
+
+Never instantiate services directly.
+
+Wrong
+
+forecast = ForecastEngine()
+
+Correct
+
+forecast = container.resolve(ForecastEngine)
+
+Benefits
+
+Easy testing
+
+Loose coupling
+
+Future microservices
+
+Mocking
+
+---
+
+# 20. Repository Pattern
+
+Never access SQL directly from services.
+
+Wrong
+
+SELECT *
+
+inside ForecastService
+
+Correct
+
+ForecastRepository
+
+↓
+
+ForecastService
+
+Repositories own all database communication.
+
+---
+
+# 21. Configuration Management
+
+Never hard-code values.
+
+Bad
+
+LEAD_TIME = 90
+
+Good
+
+config.inventory.default_lead_time
+
+Configuration sources
+
+.env
+
+config.yaml
+
+database
+
+environment variables
+
+priority should be
+
+Environment
+
+↓
+
+Database
+
+↓
+
+YAML
+
+↓
+
+Defaults
+
+---
+
+# 22. Logging Strategy
+
+Every module logs
+
+Input
+
+Output
+
+Execution Time
+
+Errors
+
+Warnings
+
+Model Version
+
+Prediction ID
+
+User
+
+Timestamp
+
+Example
+
+INFO
+
+Demand Forecast Started
+
+INFO
+
+Vehicle Forecast Completed
+
+ERROR
+
+Catalogue Parsing Failed
+
+WARNING
+
+Color Mapping Ambiguous
+
+Use structured JSON logging.
+
+---
+
+# 23. Exception Strategy
+
+Never return raw Python exceptions.
+
+Create custom exceptions.
+
+Example
+
+CatalogueExtractionException
+
+ColorDetectionException
+
+ForecastFailedException
+
+OptimizationException
+
+InventoryException
+
+DatabaseException
+
+APIException
+
+Every exception contains
+
+Message
+
+Module
+
+Severity
+
+Recovery Action
+
+Timestamp
+
+
+# 24. Enterprise Data Architecture
+
+The entire platform follows a Medallion Architecture.
+
+                    External Sources
+                           │
+                           ▼
+                    RAW (Bronze Layer)
+                           │
+                    Validation Layer
+                           │
+                           ▼
+                  Cleaned Data (Silver)
+                           │
+                Feature Engineering Layer
+                           │
+                           ▼
+                  Business Data (Gold)
+                           │
+                 AI Feature Store Layer
+                           │
+                           ▼
+                  Intelligence Services
+                           │
+                           ▼
+                 Decision Support System
+
+Every dataset must move through each layer.
+
+No intelligence module may directly consume raw data.
+
+---
+
+# 25. Data Sources
+
+The platform integrates multiple independent sources.
+
+## Internal Business Data
+
+• Motorcycle Sales
+
+• Spare Part Sales
+
+• Spare Part Orders
+
+• Current Inventory
+
+• Purchase Orders
+
+• Goods Receipts
+
+• Supplier Master
+
+• Dealer Master
+
+• Warehouse Master
+
+---
+
+## External Data
+
+• Yamaha Parts Catalogues (PDF)
+
+• Exchange Rate
+
+• Holiday Calendar
+
+• Inflation (optional)
+
+• Weather (future extension)
+
+---
+
+## Generated Data
+
+• SKU Master
+
+• Vehicle Master
+
+• Compatible Model Database
+
+• UIO Database
+
+• Feature Store
+
+• Forecast Database
+
+• Safety Stock Database
+
+• Procurement Recommendation Database
+
+---
+
+# 26. Folder Structure for Data
+
+data/
+
+├── raw/
+
+│      motorcycle_sales/
+
+│      sparepart_sales/
+
+│      sparepart_orders/
+
+│      inventory/
+
+│      catalogue/
+
+│      uio/
+
+│
+
+├── bronze/
+
+├── silver/
+
+├── gold/
+
+├── feature_store/
+
+├── processed/
+
+├── validation/
+
+├── metadata/
+
+└── archive/
+
+Rules
+
+Never edit RAW files.
+
+RAW data is immutable.
+
+Every transformation creates a new version.
+
+---
+
+# 27. Data Pipeline
+
+Every dataset follows
+
+Extract
+
+↓
+
+Validate
+
+↓
+
+Standardize
+
+↓
+
+Clean
+
+↓
+
+Transform
+
+↓
+
+Aggregate
+
+↓
+
+Engineer Features
+
+↓
+
+Validate Again
+
+↓
+
+Store
+
+↓
+
+Use
+
+Every step produces logs.
+
+---
+
+# 28. Master Data Management
+
+The platform maintains independent master tables.
+
+Vehicle Master
+
+Dealer Master
+
+SKU Master
+
+Supplier Master
+
+Warehouse Master
+
+Country Master
+
+Province Master
+
+Color Master
+
+Category Master
+
+ABC Classification Master
+
+XYZ Classification Master
+
+FSN Classification Master
+
+Lead Time Master
+
+No duplicate master data allowed.
+
+---
+
+# 29. Data Validation Framework
+
+Every dataset passes validation.
+
+Validation Categories
+
+Schema Validation
+
+↓
+
+Type Validation
+
+↓
+
+Null Validation
+
+↓
+
+Duplicate Validation
+
+↓
+
+Range Validation
+
+↓
+
+Business Rule Validation
+
+↓
+
+Relationship Validation
+
+↓
+
+Statistical Validation
+
+If any validation fails
+
+↓
+
+Reject Record
+
+↓
+
+Log Error
+
+↓
+
+Manual Review Queue
+
+---
+
+# 30. Business Rule Validation
+
+Examples
+
+Negative Sales
+
+Reject
+
+Future Posting Date
+
+Reject
+
+Missing Part Number
+
+Reject
+
+Unknown Dealer
+
+Reject
+
+Unknown Vehicle
+
+Reject
+
+Invalid Color Code
+
+Reject
+
+Negative Inventory
+
+Reject
+
+Unknown Compatible Model
+
+Reject
+
+Business rules are centralized.
+
+No duplicated validation logic.
+
+---
+
+# 31. Data Versioning
+
+Every dataset has version.
+
+Example
+
+Motorcycle Sales
+
+v1.0
+
+↓
+
+v1.1
+
+↓
+
+v2.0
+
+Same for
+
+Forecast
+
+SKU Master
+
+Inventory
+
+Catalogue Extraction
+
+Feature Store
+
+Never overwrite historical datasets.
+
+---
+
+# 32. Metadata Repository
+
+Every dataset stores metadata.
+
+Dataset Name
+
+Version
+
+Created Time
+
+Rows
+
+Columns
+
+Missing Values
+
+Source
+
+Owner
+
+Validation Status
+
+Hash
+
+Pipeline Version
+
+This ensures reproducibility.
+
+---
+
+# 33. Feature Store
+
+The Feature Store is the heart of AI.
+
+Instead of
+
+Every model creating features
+
+↓
+
+One central repository stores them.
+
+Examples
+
+Vehicle Age
+
+Vehicle Growth
+
+Compatible UIO
+
+Dealer Frequency
+
+Dealer Growth
+
+Replacement Rate
+
+ABC Class
+
+XYZ Class
+
+FSN Class
+
+Criticality
+
+Forecast Error
+
+Reaction Time
+
+Pre-buy Index
+
+Lead Time
+
+Supplier Reliability
+
+Container Priority
+
+Everything becomes reusable.
+
+---
+
+# 34. Feature Categories
+
+Vehicle Features
+
+UIO Features
+
+Dealer Features
+
+Inventory Features
+
+Supplier Features
+
+Forecast Features
+
+Catalogue Features
+
+Financial Features
+
+Time Features
+
+Risk Features
+
+Product Features
+
+Behavior Features
+
+---
+
+# 35. Feature Lifecycle
+
+Raw Data
+
+↓
+
+Feature Engineering
+
+↓
+
+Validation
+
+↓
+
+Feature Store
+
+↓
+
+Training
+
+↓
+
+Prediction
+
+↓
+
+Monitoring
+
+↓
+
+Retraining
+
+Every feature has
+
+Owner
+
+Description
+
+Formula
+
+Version
+
+Dependencies
+
+---
+
+# 36. Knowledge Layer
+
+The Knowledge Layer stores relationships.
+
+Vehicle
+
+↓
+
+Compatible Models
+
+↓
+
+SKU
+
+↓
+
+Color
+
+↓
+
+Supplier
+
+↓
+
+Dealer
+
+↓
+
+Warehouse
+
+↓
+
+Inventory
+
+Instead of recalculating
+
+relationships,
+
+all modules query the
+
+Knowledge Layer.
+
+
+# 37. Artificial Intelligence Architecture
+
+Artificial Intelligence is not a single model.
+
+The platform consists of multiple independent AI engines working together.
+
+Each AI engine owns a specific business responsibility.
+
+The platform includes
+
+• Catalogue Intelligence
+
+• Vehicle Intelligence
+
+• UIO Intelligence
+
+• Product Intelligence
+
+• Dealer Intelligence
+
+• Demand Intelligence
+
+• Forecast Intelligence
+
+• Inventory Intelligence
+
+• Procurement Intelligence
+
+• Risk Intelligence
+
+• Decision Support Intelligence
+
+Each engine can have multiple ML models.
+
+No model should directly communicate with another model.
+
+Communication occurs through the Feature Store and Knowledge Layer.
+
+---
+
+# 38. Machine Learning Lifecycle
+
+Every model follows exactly the same lifecycle.
+
+Business Problem
+
+↓
+
+Dataset Preparation
+
+↓
+
+Feature Engineering
+
+↓
+
+Training Dataset
+
+↓
+
+Validation Dataset
+
+↓
+
+Model Training
+
+↓
+
+Hyperparameter Optimization
+
+↓
+
+Cross Validation
+
+↓
+
+Performance Evaluation
+
+↓
+
+Explainability
+
+↓
+
+Model Registration
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Retraining
+
+Every intelligence module follows this pipeline.
+
+---
+
+# 39. AI Project Structure
+
+src/
+
+forecasting/
+
+│
+
+├── datasets/
+
+├── preprocessing/
+
+├── feature_engineering/
+
+├── feature_selection/
+
+├── training/
+
+├── tuning/
+
+├── validation/
+
+├── evaluation/
+
+├── explainability/
+
+├── inference/
+
+├── monitoring/
+
+├── registry/
+
+├── pipelines/
+
+└── utils/
+
+This structure is reused across every intelligence service.
+
+---
+
+# 40. Feature Engineering Standard
+
+Features must be
+
+Reusable
+
+Independent
+
+Versioned
+
+Documented
+
+Validated
+
+Every feature has
+
+Feature Name
+
+Description
+
+Data Type
+
+Formula
+
+Owner
+
+Dependencies
+
+Version
+
+Example
+
+compatible_uio
+
+Description
+
+Current compatible vehicle population
+
+Formula
+
+Sum(active compatible vehicles)
+
+Owner
+
+UIO Intelligence
+
+Version
+
+1.0
+
+---
+
+# 41. Feature Categories
+
+Vehicle Features
+
+Monthly Vehicle Sales
+
+Vehicle Age
+
+Vehicle Growth Rate
+
+Vehicle Lifecycle Stage
+
+Target Achievement
+
+Forecast Confidence
+
+------------------------------------------------
+
+UIO Features
+
+Current UIO
+
+Compatible UIO
+
+Age Distribution
+
+Retirement Rate
+
+Growth Rate
+
+------------------------------------------------
+
+Catalogue Features
+
+Compatible Models
+
+Compatible Colors
+
+Shared Parts
+
+Color Variants
+
+Part Category
+
+Vehicle Family
+
+Generation
+
+------------------------------------------------
+
+Dealer Features
+
+Dealer Growth
+
+Dealer Frequency
+
+Reaction Time
+
+Pre-buy Index
+
+Average Order Size
+
+Dealer Variability
+
+Province
+
+Sales Representative
+
+------------------------------------------------
+
+Demand Features
+
+Historical Sales
+
+Historical Orders
+
+Rolling Average
+
+Rolling Median
+
+Seasonality
+
+Trend
+
+Holiday Effect
+
+Forecast Error
+
+------------------------------------------------
+
+Inventory Features
+
+Current Stock
+
+Pipeline Stock
+
+Open Purchase Orders
+
+Days of Supply
+
+Stockout Risk
+
+Inventory Turnover
+
+Inventory Value
+
+------------------------------------------------
+
+Supplier Features
+
+Lead Time
+
+Lead Time Variability
+
+Supplier Reliability
+
+MOQ
+
+Container Utilization
+
+Currency
+
+------------------------------------------------
+
+Risk Features
+
+Demand Risk
+
+Supplier Risk
+
+Inventory Risk
+
+Forecast Risk
+
+Obsolescence Risk
+
+Criticality
+
+---
+
+# 42. Feature Registry
+
+Every feature must be registered.
+
+Example
+
+Feature
+
+compatible_uio
+
+Source
+
+UIO Database
+
+Owner
+
+UIO Intelligence
+
+Update Frequency
+
+Monthly
+
+Validation Rule
+
+>=0
+
+Consumers
+
+Demand Intelligence
+
+Inventory Intelligence
+
+Procurement Intelligence
+
+No hidden features are allowed.
+
+---
+
+# 43. Training Pipeline
+
+Raw Data
+
+↓
+
+Validation
+
+↓
+
+Cleaning
+
+↓
+
+Feature Engineering
+
+↓
+
+Feature Selection
+
+↓
+
+Training Dataset
+
+↓
+
+Model Training
+
+↓
+
+Hyperparameter Optimization
+
+↓
+
+Cross Validation
+
+↓
+
+Evaluation
+
+↓
+
+Model Registry
+
+↓
+
+Deployment
+
+Training should always be reproducible.
+
+---
+
+# 44. Prediction Pipeline
+
+New Data
+
+↓
+
+Validation
+
+↓
+
+Feature Engineering
+
+↓
+
+Feature Store
+
+↓
+
+Load Model
+
+↓
+
+Prediction
+
+↓
+
+Confidence Calculation
+
+↓
+
+Explainability
+
+↓
+
+Save Prediction
+
+↓
+
+Decision Layer
+
+Training and prediction pipelines must be independent.
+
+---
+
+# 45. Model Registry
+
+Every trained model is registered.
+
+Model Name
+
+Version
+
+Training Date
+
+Algorithm
+
+Training Dataset
+
+Validation Score
+
+Feature List
+
+Hyperparameters
+
+Owner
+
+Status
+
+Models are never overwritten.
+
+Only new versions are created.
+
+---
+
+# 46. Champion-Challenger Strategy
+
+Never deploy a new model immediately.
+
+Champion
+
+Current production model
+
+↓
+
+Compare
+
+↓
+
+Challenger
+
+Candidate model
+
+↓
+
+If Challenger is better
+
+↓
+
+Promote
+
+↓
+
+New Champion
+
+Otherwise
+
+Discard
+
+---
+
+# 47. Hyperparameter Optimization
+
+Every ML model must support tuning.
+
+Allowed methods
+
+Grid Search
+
+Random Search
+
+Bayesian Optimization
+
+Optuna
+
+Hyperopt
+
+Store every experiment.
+
+---
+
+# 48. Experiment Tracking
+
+Every experiment stores
+
+Experiment ID
+
+Model
+
+Dataset
+
+Feature Set
+
+Hyperparameters
+
+Training Time
+
+Validation Metrics
+
+Test Metrics
+
+Artifacts
+
+Random Seed
+
+Git Commit
+
+MLflow Run ID
+
+This guarantees reproducibility.
+
+---
+
+# 49. Evaluation Metrics
+
+Regression
+
+MAE
+
+RMSE
+
+MAPE
+
+SMAPE
+
+WAPE
+
+R²
+
+MASE
+
+Forecast Bias
+
+------------------------------------------------
+
+Classification
+
+Accuracy
+
+Precision
+
+Recall
+
+F1
+
+ROC-AUC
+
+------------------------------------------------
+
+Optimization
+
+Service Level
+
+Inventory Cost
+
+Stockout Cost
+
+Container Utilization
+
+Budget Utilization
+
+Fill Rate
+
+Total Procurement Cost
+
+Business metrics are equally important as ML metrics.
+
+---
+
+# 50. Explainable AI Standard
+
+Every prediction must include
+
+Prediction
+
+Confidence
+
+Top Contributing Features
+
+Reason
+
+Feature Importance
+
+Recommendation
+
+No black-box predictions are allowed in production.
+
+---
+
+# 51. Confidence Score
+
+Every prediction includes
+
+Prediction
+
+Confidence
+
+Low
+
+Medium
+
+High
+
+Example
+
+Demand Forecast
+
+820
+
+Confidence
+
+94%
+
+Safety Stock
+
+215
+
+Confidence
+
+88%
+
+Procurement Quantity
+
+1,250
+
+Confidence
+
+91%
+
+Managers must understand prediction reliability.
+
+---
+
+# 52. Continuous Learning
+
+After every business cycle
+
+Actual Results
+
+↓
+
+Compare with Forecast
+
+↓
+
+Calculate Error
+
+↓
+
+Update Performance Database
+
+↓
+
+Retrain if Required
+
+↓
+
+Deploy New Champion
+
+The system continuously improves.
+
+
+# 53. Enterprise Testing Strategy
+
+Every intelligence service must be fully testable.
+
+Testing Pyramid
+
+                    Manual Testing
+                           ▲
+                  Integration Tests
+                           ▲
+                     Component Tests
+                           ▲
+                      Unit Tests
+
+Testing must begin during development.
+
+Never postpone testing until the end.
+
+---
+
+# 54. Unit Testing Standard
+
+Every class must have unit tests.
+
+Coverage target
+
+Minimum
+
+90%
+
+Critical modules
+
+95%
+
+Example
+
+ForecastEngine
+
+✓ Train Model
+
+✓ Predict
+
+✓ Feature Engineering
+
+✓ Error Handling
+
+✓ Missing Values
+
+✓ Empty Dataset
+
+---
+
+# 55. Integration Testing
+
+Every module must be tested with neighbouring modules.
+
+Example
+
+Vehicle Intelligence
+
+↓
+
+UIO Intelligence
+
+↓
+
+Demand Intelligence
+
+↓
+
+Inventory Intelligence
+
+↓
+
+Procurement Intelligence
+
+Verify
+
+• Data compatibility
+
+• API contracts
+
+• Database consistency
+
+• Processing time
+
+---
+
+# 56. End-to-End Testing
+
+The complete workflow should execute successfully.
+
+Input
+
+Motorcycle Sales
+
+Spare Part Sales
+
+Orders
+
+Inventory
+
+Catalogues
+
+↓
+
+Pipeline Execution
+
+↓
+
+Purchase Recommendation
+
+Expected outputs must be validated automatically.
+
+---
+
+# 57. Data Quality Framework
+
+Every dataset receives a quality score.
+
+Quality Dimensions
+
+Completeness
+
+Accuracy
+
+Consistency
+
+Validity
+
+Uniqueness
+
+Timeliness
+
+Integrity
+
+Example
+
+Inventory
+
+Completeness
+
+98%
+
+Consistency
+
+99%
+
+Accuracy
+
+96%
+
+Overall Quality
+
+97.8%
+
+---
+
+# 58. Data Quality Rules
+
+Mandatory checks
+
+✓ Duplicate Part Numbers
+
+✓ Invalid Dealer Codes
+
+✓ Unknown Vehicle Models
+
+✓ Missing Compatible Models
+
+✓ Missing Colours
+
+✓ Negative Inventory
+
+✓ Invalid Dates
+
+✓ Future Sales
+
+✓ Duplicate Purchase Orders
+
+✓ Invalid Quantities
+
+Every failed record enters a validation queue.
+
+---
+
+# 59. Performance Standards
+
+Catalogue Extraction
+
+< 5 minutes per catalogue
+
+Vehicle Forecast
+
+< 2 minutes
+
+UIO Forecast
+
+< 3 minutes
+
+Demand Forecast
+
+< 5 minutes
+
+Inventory Optimization
+
+< 3 minutes
+
+Procurement Optimization
+
+< 10 minutes
+
+Dashboard Response
+
+< 3 seconds
+
+These targets should be monitored continuously.
+
+---
+
+# 60. Configuration Profiles
+
+Development
+
+Local testing
+
+↓
+
+Testing
+
+Synthetic datasets
+
+↓
+
+UAT
+
+Business validation
+
+↓
+
+Production
+
+Live business environment
+
+Every environment has independent
+
+Database
+
+Configuration
+
+Secrets
+
+Logs
+
+Model Registry
+
+Feature Store
+
+---
+
+# 61. Docker Architecture
+
+Every intelligence module can be containerized.
+
+Example
+
+catalogue-service
+
+vehicle-service
+
+uio-service
+
+dealer-service
+
+forecast-service
+
+inventory-service
+
+procurement-service
+
+optimization-service
+
+decision-service
+
+postgres
+
+redis
+
+mlflow
+
+Each service should run independently.
+
+---
+
+# 62. Continuous Integration
+
+Every code change executes
+
+Formatting
+
+↓
+
+Static Analysis
+
+↓
+
+Unit Tests
+
+↓
+
+Integration Tests
+
+↓
+
+Build
+
+↓
+
+Deploy to Development
+
+Example tools
+
+GitHub Actions
+
+or
+
+GitLab CI
+
+---
+
+# 63. Version Control Strategy
+
+Main
+
+↓
+
+Develop
+
+↓
+
+Feature Branches
+
+Naming
+
+feature/catalogue-parser
+
+feature/uio-engine
+
+feature/demand-fusion
+
+bugfix/forecast-error
+
+release/v1.0
+
+Never develop directly on Main.
+
+---
+
+# 64. Documentation Standard
+
+Every module must include
+
+README
+
+Architecture Diagram
+
+Workflow Diagram
+
+Configuration Guide
+
+API Documentation
+
+Example Dataset
+
+Test Instructions
+
+Deployment Guide
+
+No undocumented module is considered complete.
+
+---
+
+# 65. Security Principles
+
+Never store
+
+Passwords
+
+API Keys
+
+Database Credentials
+
+inside source code.
+
+Use
+
+Environment Variables
+
+Secret Managers
+
+Encrypted Configuration
+
+Apply Role-Based Access Control (RBAC)
+
+Admin
+
+Analyst
+
+Procurement Manager
+
+Research User
+
+Read-Only User
+
+---
+
+# 66. Monitoring & Observability
+
+Every service publishes
+
+Health Status
+
+CPU Usage
+
+Memory Usage
+
+Execution Time
+
+Prediction Time
+
+Database Latency
+
+API Latency
+
+Queue Length
+
+Model Version
+
+Prediction Count
+
+Forecast Accuracy
+
+Monitoring dashboards should support proactive issue detection.
+
+---
+
+# 67. Backup & Recovery
+
+Back up
+
+Databases
+
+Feature Store
+
+Model Registry
+
+Configuration
+
+Logs
+
+Knowledge Layer
+
+Recovery procedures should be documented and tested regularly.
+
+---
+
+# 68. Architecture Decision Records (ADR)
+
+Every major engineering decision must be documented.
+
+Example
+
+ADR-001
+
+Why use Medallion Architecture?
+
+ADR-002
+
+Why use PostgreSQL?
+
+ADR-003
+
+Why separate Vehicle Intelligence and UIO Intelligence?
+
+ADR-004
+
+Why Dynamic Safety Stock?
+
+ADR-005
+
+Why Demand Fusion?
+
+ADR-006
+
+Why MLflow?
+
+ADR-007
+
+Why Knowledge Layer?
+
+ADR-008
+
+Why Agentic Architecture?
+
+ADR-009
+
+Why Multi-objective Procurement Optimization?
+
+Each ADR includes
+
+Context
+
+Decision
+
+Alternatives
+
+Consequences
+
+Status
+
+Author
+
+Date
+
+---
+
+# 69. Coding Definition of Done
+
+A feature is complete only if
+
+✓ Business logic implemented
+
+✓ Unit tests passed
+
+✓ Integration tests passed
+
+✓ Documentation written
+
+✓ Logging added
+
+✓ Exceptions handled
+
+✓ Configuration externalized
+
+✓ Code reviewed
+
+✓ Performance validated
+
+✓ Research documentation updated
+
+---
+
+# 70. Research Definition of Done
+
+Every research contribution must include
+
+Problem Statement
+
+Literature Reference
+
+Methodology
+
+Mathematical Formulation
+
+Implementation
+
+Experimental Design
+
+Evaluation
+
+Comparison with Baselines
+
+Business Impact
+
+Limitations
+
+Future Work
+
+---
+
+# 71. Platform Success Metrics
+
+Technical
+
+Forecast Accuracy
+
+Training Time
+
+Prediction Latency
+
+Pipeline Reliability
+
+Data Quality
+
+Business
+
+Service Level
+
+Inventory Turnover
+
+Stockout Reduction
+
+Overstock Reduction
+
+Budget Utilization
+
+Forecast Improvement
+
+Procurement Cost Reduction
+
+Research
+
+Novelty
+
+Reproducibility
+
+Scalability
+
+Explainability
+
+Industrial Applicability
+
+---
+
+# 72. Summary
+
+This document establishes the engineering standards for the Enterprise Spare Parts Intelligence Platform.
+
+All subsequent intelligence services, AI pipelines, optimization engines, and decision-support components must conform to these standards.
+
+The project is designed to evolve from a research prototype into a production-ready enterprise decision support system while maintaining reproducibility, modularity, explainability, and scalability.
+
+
+# 00A_Business_Context.md
+
+# Enterprise AI Platform for Intelligent B2B Spare Parts Procurement
+
+Business Context Specification
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+This document defines the complete business context of the B2B spare parts procurement platform.
+
+It explains
+
+• how the business operates
+
+• why procurement decisions are difficult
+
+• what data exists
+
+• what assumptions are made
+
+• what constraints exist
+
+• what success means
+
+This document is independent of software implementation.
+
+It serves as the business knowledge reference for every later technical module.
+
+---
+
+# 2. Business Overview
+
+The organization is the authorized Yamaha distributor.
+
+The company imports genuine Yamaha motorcycles and spare parts.
+
+The spare parts business operates under a Business-to-Business (B2B) model.
+
+Customers are
+
+• Dealers
+
+• Service Centers
+
+• Company Branches
+
+The company does not directly forecast end-customer demand.
+
+Instead, procurement decisions depend on dealer purchasing behaviour.
+
+---
+
+# 3. Current Business Process
+
+Supplier (Yamaha)
+
+↓
+
+Import Order
+
+↓
+
+International Shipping
+
+↓
+
+Customs Clearance
+
+↓
+
+Warehouse
+
+↓
+
+Dealer Orders
+
+↓
+
+Dealer Inventory
+
+↓
+
+Motorcycle Owners
+
+↓
+
+Spare Part Consumption
+
+The business observes dealer purchases rather than actual part failures.
+
+---
+
+# 4. Current Problems
+
+The current procurement process faces several challenges.
+
+• No systematic forecasting
+
+• Manual ordering decisions
+
+• Stockouts
+
+• Overstock
+
+• Dead stock
+
+• Long import lead times
+
+• No visibility into hidden demand
+
+• Different behaviour across dealers
+
+• Difficulty estimating future demand
+
+• No intelligent reorder policy
+
+• Catalogue information stored only in PDF format
+
+---
+
+# 5. Business Goal
+
+Create an intelligent procurement system capable of recommending
+
+• What to purchase
+
+• When to purchase
+
+• How much to purchase
+
+• Why the recommendation is made
+
+The recommendations should minimize inventory cost while maintaining the desired service level.
+
+---
+
+# 6. Business Characteristics
+
+Business Type
+
+Business-to-Business (B2B)
+
+Industry
+
+Motorcycle Spare Parts
+
+Supplier
+
+Yamaha
+
+Products
+
+Genuine Spare Parts
+
+Customers
+
+Dealers
+
+Service Centers
+
+Branches
+
+Warehouse
+
+Central Distribution Warehouse
+
+Procurement
+
+International Imports
+
+---
+
+# 7. Procurement Cycle
+
+Business Cycle
+
+Monthly Procurement
+
+↓
+
+Supplier Confirmation
+
+↓
+
+Manufacturing
+
+↓
+
+Shipping
+
+↓
+
+Customs
+
+↓
+
+Warehouse Receipt
+
+↓
+
+Dealer Distribution
+
+The complete lead time is approximately three months.
+
+This lead time may vary.
+
+---
+
+# 8. Decision Frequency
+
+Procurement decisions occur periodically.
+
+Recommended planning cycle
+
+Monthly
+
+Forecast horizon
+
+24 Months
+
+Procurement horizon
+
+Lead Time + Safety Horizon
+
+---
+
+# 9. Business Constraints
+
+Budget
+
+Limited
+
+Warehouse Capacity
+
+Limited
+
+Container Capacity
+
+Limited
+
+Supplier MOQ
+
+Applicable
+
+Lead Time
+
+Variable
+
+Currency
+
+Variable
+
+Some parts are slow-moving.
+
+Some parts are critical.
+
+---
+
+# 10. Key Performance Indicators
+
+Inventory Turnover
+
+Fill Rate
+
+Service Level
+
+Forecast Accuracy
+
+Procurement Cost
+
+Dead Stock
+
+Stockout Frequency
+
+Dealer Satisfaction
+
+Container Utilization
+
+Budget Utilization
+
+These KPIs are used throughout the platform.
+
+---
+
+# 11. Business Data Sources
+
+Motorcycle Sales
+
+UIO
+
+Spare Part Sales
+
+Spare Part Orders
+
+Inventory
+
+Purchase Orders
+
+Goods Receipts
+
+Supplier Master
+
+Dealer Master
+
+Warehouse Master
+
+PDF Parts Catalogues
+
+Every source has different quality and update frequency.
+
+---
+
+# 12. Core Business Entities
+
+Vehicle
+
+SKU
+
+Dealer
+
+Supplier
+
+Warehouse
+
+Purchase Order
+
+Sales Order
+
+Inventory
+
+UIO
+
+Compatible Model
+
+Colour Variant
+
+Forecast
+
+Safety Stock
+
+Reorder Level
+
+Reorder Quantity
+
+Recommendation
+
+---
+
+# 13. Business Assumptions
+
+• Historical dealer purchases approximate market demand.
+
+• UIO represents the installed vehicle population.
+
+• Compatible UIO influences spare part demand.
+
+• Dealers exhibit repeatable purchasing behaviour.
+
+• Vehicle age influences replacement demand.
+
+• Lead time uncertainty affects safety stock.
+
+• Catalogue compatibility is assumed correct unless verified otherwise.
+
+---
+
+# 14. Business Risks
+
+Supplier delays
+
+Unexpected demand spikes
+
+Forecast errors
+
+Dealer pre-buying
+
+Model discontinuation
+
+Inventory obsolescence
+
+Currency fluctuations
+
+Data quality issues
+
+Catalogue extraction errors
+
+Every risk will later be modelled quantitatively.
+
+---
+
+# 15. Business Success Criteria
+
+The platform is considered successful if it
+
+• Reduces stockouts
+
+• Reduces excess inventory
+
+• Improves forecast accuracy
+
+• Improves procurement decisions
+
+• Increases service level
+
+• Reduces manual effort
+
+• Provides explainable recommendations
+
+• Supports continuous learning
+
+---
+
+# 16. Glossary
+
+UIO
+
+Units in Operation
+
+Compatible UIO
+
+Number of operating motorcycles compatible with a specific spare part
+
+SKU
+
+Stock Keeping Unit
+
+ROL
+
+Reorder Level
+
+ROQ
+
+Reorder Quantity
+
+MOQ
+
+Minimum Order Quantity
+
+ABC
+
+Value Classification
+
+XYZ
+
+Demand Variability Classification
+
+FSN
+
+Fast Slow Non-moving Classification
+
+Lead Time
+
+Time between placing an order and receiving stock
+
+Demand Fusion
+
+Combining multiple demand signals into a unified demand estimate
+
+Knowledge Layer
+
+Central repository of business relationships used by all intelligence modules
+
+---
+
+# 17. Summary
+
+This document defines the business domain for the Enterprise Spare Parts Intelligence Platform.
+
+All technical documents must align with the business assumptions, constraints, and objectives defined here.

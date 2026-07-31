@@ -1,0 +1,5868 @@
+# 03_01_Vehicle_Master_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.01
+
+Vehicle Master Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Vehicle Master Intelligence creates the Enterprise Vehicle Master.
+
+It consolidates all motorcycle information from multiple sources into one
+canonical enterprise dataset.
+
+Every motorcycle sold by the company receives one unique Enterprise Vehicle ID.
+
+The module becomes the Single Source of Truth (SSOT) for all vehicle-related
+intelligence.
+
+---
+
+# 2. Business Problem
+
+Vehicle information exists in multiple systems.
+
+Examples
+
+• SAP Sales
+
+• MCSI Reports
+
+• Production Planning
+
+• Catalogue Models
+
+• Marketing Lists
+
+• Dealer Systems
+
+The same motorcycle may appear with different names.
+
+Example
+
+FZN150
+
+FZ FI
+
+FZ FI V2
+
+FZ V2
+
+All refer to one enterprise vehicle.
+
+Without normalization
+
+Sales Forecast
+
+UIO Forecast
+
+Compatibility Analysis
+
+Demand Forecasting
+
+become inconsistent.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Create Enterprise Vehicle IDs
+
+✓ Normalize model names
+
+✓ Create Vehicle Families
+
+✓ Detect Vehicle Generations
+
+✓ Detect Variants
+
+✓ Track lifecycle
+
+✓ Maintain history
+
+✓ Synchronize Knowledge Graph
+
+---
+
+# 4. Inputs
+
+Catalogue Intelligence
+
+Sales Reports
+
+MCSI
+
+Vehicle Sales Data
+
+Vehicle Master Lists
+
+Marketing Data
+
+Knowledge Graph
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Enterprise Vehicle Master
+
+Vehicle Families
+
+Vehicle Generations
+
+Vehicle Variants
+
+Vehicle Lifecycle
+
+Vehicle History
+
+Knowledge Graph Updates
+
+Validation Report
+
+---
+
+# 6. Workflow
+
+Raw Vehicle Lists
+
+↓
+
+Model Cleaning
+
+↓
+
+Alias Resolution
+
+↓
+
+Family Detection
+
+↓
+
+Generation Detection
+
+↓
+
+Variant Detection
+
+↓
+
+Lifecycle Detection
+
+↓
+
+Enterprise Vehicle Creation
+
+↓
+
+Validation
+
+↓
+
+Knowledge Graph
+
+↓
+
+Publish
+
+---
+
+# 7. Vehicle Object
+
+Enterprise Vehicle ID
+
+Manufacturer
+
+Brand
+
+Family
+
+Generation
+
+Variant
+
+Engine Capacity
+
+Fuel System
+
+Transmission
+
+Category
+
+Market
+
+Status
+
+Confidence
+
+Created Date
+
+Updated Date
+
+---
+
+# 8. Vehicle Family
+
+Examples
+
+FZ
+
+R15
+
+MT
+
+Ray
+
+Saluto
+
+SZ
+
+YBR
+
+XTZ
+
+Each family contains multiple generations.
+
+---
+
+# 9. Generation Detection
+
+Example
+
+R15
+
+↓
+
+V1
+
+↓
+
+V2
+
+↓
+
+V3
+
+↓
+
+V4
+
+↓
+
+V5
+
+Each generation stores
+
+Start Year
+
+End Year
+
+Engineering Revision
+
+Status
+
+---
+
+# 10. Variant Detection
+
+Examples
+
+ABS
+
+FI
+
+Disc
+
+Drum
+
+Street Rally
+
+Monster Edition
+
+MotoGP Edition
+
+Deluxe
+
+Limited Edition
+
+Store each as a separate variant.
+
+---
+
+# 11. Alias Resolution
+
+Map
+
+FZN150
+
+↓
+
+FZ FI
+
+↓
+
+FZ Version 2
+
+↓
+
+Enterprise Vehicle
+
+Store all aliases.
+
+---
+
+# 12. Vehicle Categories
+
+Motorcycle
+
+Scooter
+
+ATV
+
+Off-road
+
+Sport
+
+Street
+
+Cruiser
+
+Utility
+
+Unknown
+
+---
+
+# 13. Engine Attributes
+
+Engine Capacity
+
+Cooling Type
+
+Fuel Type
+
+Cylinder Count
+
+Power
+
+Torque
+
+Emission Standard
+
+---
+
+# 14. Production Attributes
+
+Production Start
+
+Production End
+
+Discontinued Date
+
+Current Status
+
+Market
+
+Manufacturing Plant
+
+---
+
+# 15. Lifecycle
+
+Upcoming
+
+Active
+
+Mature
+
+Declining
+
+Inactive
+
+Discontinued
+
+Historical
+
+---
+
+# 16. Business Rules
+
+Unique Enterprise Vehicle ID
+
+No duplicate aliases
+
+One family per vehicle
+
+One generation per vehicle
+
+Lifecycle valid
+
+Status valid
+
+---
+
+# 17. AI Agents
+
+Chief Vehicle Agent
+
+↓
+
+Alias Agent
+
+↓
+
+Family Agent
+
+↓
+
+Generation Agent
+
+↓
+
+Variant Agent
+
+↓
+
+Lifecycle Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Knowledge Agent
+
+---
+
+# 18. Database Tables
+
+vehicle_master
+
+vehicle_family
+
+vehicle_generation
+
+vehicle_variant
+
+vehicle_alias
+
+vehicle_lifecycle
+
+vehicle_history
+
+vehicle_validation
+
+vehicle_confidence
+
+---
+
+# 19. APIs
+
+GET /vehicle
+
+GET /vehicle/{id}
+
+GET /vehicle/family
+
+GET /vehicle/generation
+
+GET /vehicle/history
+
+---
+
+# 20. Event Messages
+
+VehicleCreated
+
+VehicleUpdated
+
+VehicleValidated
+
+VehiclePublished
+
+VehicleMerged
+
+---
+
+# 21. Validation
+
+Verify
+
+Unique Enterprise ID
+
+Known Family
+
+Known Generation
+
+Known Variant
+
+No Duplicate Aliases
+
+Knowledge Graph Updated
+
+---
+
+# 22. Error Handling
+
+Duplicate Vehicle
+
+Unknown Family
+
+Unknown Generation
+
+Unknown Variant
+
+Alias Conflict
+
+Recovery Strategy Defined
+
+---
+
+# 23. Logging
+
+Processing Time
+
+Vehicles Created
+
+Aliases Resolved
+
+Validation Failures
+
+Confidence
+
+---
+
+# 24. Monitoring
+
+Vehicle Count
+
+Family Count
+
+Generation Count
+
+Alias Count
+
+Validation Accuracy
+
+Average Confidence
+
+---
+
+# 25. Unit Tests
+
+Alias Resolution
+
+Family Detection
+
+Generation Detection
+
+Variant Detection
+
+Lifecycle Detection
+
+Knowledge Graph Update
+
+---
+
+# 26. Continuous Learning
+
+Store
+
+Manual Vehicle Corrections
+
+↓
+
+Alias Updates
+
+↓
+
+Generation Updates
+
+↓
+
+Variant Updates
+
+↓
+
+Improved Vehicle Intelligence
+
+---
+
+# 27. Deliverables
+
+Enterprise Vehicle Master
+
+Vehicle Ontology
+
+Vehicle Knowledge Graph
+
+Vehicle Registry
+
+Ready for Sales Intelligence
+
+---
+
+# 03_02_Vehicle_Sales_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.02
+
+Vehicle Sales Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Vehicle Sales Intelligence transforms raw motorcycle sales transactions into
+enterprise-grade historical sales intelligence.
+
+Unlike traditional reporting systems,
+this module understands
+
+• vehicle hierarchy
+
+• dealer behaviour
+
+• regional demand
+
+• seasonality
+
+• campaigns
+
+• promotions
+
+• sales anomalies
+
+• market growth
+
+The output becomes the foundation for Sales Forecast Intelligence and UIO
+Intelligence.
+
+---
+
+# 2. Business Problem
+
+Vehicle sales data originates from multiple operational systems.
+
+Examples
+
+• SAP
+
+• MCSI
+
+• Dealer uploads
+
+• Sales targets
+
+• Finance systems
+
+Problems include
+
+Duplicate records
+
+Incorrect model names
+
+Missing dealer information
+
+Cancelled invoices
+
+Returns
+
+Promotional spikes
+
+Missing months
+
+Without cleaning,
+
+forecasts become unreliable.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Build enterprise historical sales
+
+✓ Detect sales anomalies
+
+✓ Normalize vehicle models
+
+✓ Aggregate sales
+
+✓ Detect promotions
+
+✓ Generate historical features
+
+✓ Prepare forecasting dataset
+
+---
+
+# 4. Inputs
+
+Enterprise Vehicle Master
+
+SAP Sales
+
+MCSI
+
+Dealer Sales
+
+Monthly Sales Reports
+
+Campaign Calendar
+
+Holiday Calendar
+
+Business Rules
+
+Knowledge Graph
+
+---
+
+# 5. Outputs
+
+Historical Sales Dataset
+
+Monthly Vehicle Sales
+
+Dealer Sales
+
+Regional Sales
+
+Sales Features
+
+Forecast Dataset
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Raw Sales
+
+↓
+
+Cleaning
+
+↓
+
+Validation
+
+↓
+
+Vehicle Mapping
+
+↓
+
+Dealer Mapping
+
+↓
+
+Regional Aggregation
+
+↓
+
+Feature Engineering
+
+↓
+
+Anomaly Detection
+
+↓
+
+Forecast Dataset
+
+↓
+
+Publish
+
+---
+
+# 7. Sales Object
+
+Transaction ID
+
+Enterprise Vehicle ID
+
+Dealer ID
+
+Province
+
+Sales Date
+
+Invoice Date
+
+Quantity
+
+Sales Value
+
+Campaign
+
+Promotion
+
+Confidence
+
+---
+
+# 8. Data Cleaning
+
+Remove
+
+Duplicate invoices
+
+Cancelled sales
+
+Negative quantities
+
+Incorrect dates
+
+Missing vehicle IDs
+
+Invalid dealers
+
+---
+
+# 9. Vehicle Mapping
+
+Map
+
+Sales Model
+
+↓
+
+Enterprise Vehicle
+
+↓
+
+Vehicle Family
+
+↓
+
+Generation
+
+↓
+
+Variant
+
+---
+
+# 10. Dealer Mapping
+
+Every transaction receives
+
+Enterprise Dealer ID
+
+Region
+
+Province
+
+Sales Office
+
+Dealer Category
+
+Dealer Tier
+
+---
+
+# 11. Time Aggregation
+
+Daily
+
+↓
+
+Weekly
+
+↓
+
+Monthly
+
+↓
+
+Quarterly
+
+↓
+
+Yearly
+
+---
+
+# 12. Sales Hierarchy
+
+Company
+
+↓
+
+Region
+
+↓
+
+Province
+
+↓
+
+Dealer
+
+↓
+
+Vehicle Family
+
+↓
+
+Generation
+
+↓
+
+Variant
+
+---
+
+# 13. Campaign Detection
+
+Identify
+
+Sales Promotion
+
+Festival Campaign
+
+Discount
+
+Finance Campaign
+
+Dealer Incentive
+
+Government Scheme
+
+Store campaign effects.
+
+---
+
+# 14. Sales Feature Engineering
+
+Generate
+
+Monthly Sales
+
+Rolling Mean
+
+Rolling Median
+
+Rolling Std
+
+Growth Rate
+
+MoM Growth
+
+YoY Growth
+
+Sales Rank
+
+Market Share
+
+---
+
+# 15. Seasonality Detection
+
+Detect
+
+Monthly
+
+Quarterly
+
+Festival
+
+Weather
+
+Holiday
+
+School Season
+
+Financial Year
+
+---
+
+# 16. Outlier Detection
+
+Detect
+
+Abnormally High Sales
+
+Abnormally Low Sales
+
+Dealer Spikes
+
+Province Spikes
+
+Promotion Effects
+
+Stock Clearance
+
+Use
+
+Isolation Forest
+
+Z-score
+
+IQR
+
+Business Rules
+
+---
+
+# 17. Missing Data Handling
+
+Fill
+
+Missing Months
+
+↓
+
+Zero Sales
+
+↓
+
+Flag Missing
+
+↓
+
+Maintain Time Continuity
+
+---
+
+# 18. Business Rules
+
+Sales cannot be negative
+
+Vehicle must exist
+
+Dealer must exist
+
+Dates valid
+
+No duplicate transactions
+
+---
+
+# 19. Forecast Dataset
+
+Produce
+
+Monthly Sales Matrix
+
+Vehicle × Month
+
+Dealer × Month
+
+Province × Month
+
+Family × Month
+
+Generation × Month
+
+---
+
+# 20. AI Agents
+
+Chief Sales Agent
+
+↓
+
+Cleaning Agent
+
+↓
+
+Vehicle Mapping Agent
+
+↓
+
+Dealer Agent
+
+↓
+
+Feature Agent
+
+↓
+
+Seasonality Agent
+
+↓
+
+Anomaly Agent
+
+↓
+
+Validation Agent
+
+---
+
+# 21. Database Tables
+
+vehicle_sales
+
+sales_transactions
+
+sales_features
+
+sales_campaigns
+
+sales_anomalies
+
+sales_validation
+
+sales_history
+
+---
+
+# 22. APIs
+
+GET /sales
+
+GET /sales/monthly
+
+GET /sales/dealer
+
+GET /sales/vehicle
+
+GET /sales/features
+
+---
+
+# 23. Event Messages
+
+SalesImported
+
+SalesValidated
+
+FeaturesGenerated
+
+AnomalyDetected
+
+ForecastDatasetPublished
+
+---
+
+# 24. Validation
+
+Verify
+
+Continuous timeline
+
+Vehicle mapping complete
+
+Dealer mapping complete
+
+Monthly aggregation correct
+
+No duplicate transactions
+
+---
+
+# 25. Monitoring
+
+Monthly Sales
+
+Dealer Coverage
+
+Vehicle Coverage
+
+Missing Months
+
+Outlier Rate
+
+Feature Quality
+
+---
+
+# 26. Deliverables
+
+Enterprise Historical Sales
+
+Forecast Dataset
+
+Dealer Intelligence Input
+
+Target Intelligence Input
+
+Knowledge Graph Updates
+
+Ready for Target Intelligence
+
+---
+
+# 03_03_Target_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.03
+
+Target Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Target Intelligence transforms business planning targets into structured,
+validated, and explainable enterprise planning data.
+
+Unlike forecasting, which predicts what is likely to happen, Target
+Intelligence manages what the organization intends to achieve.
+
+It provides a parallel planning layer that complements historical forecasts.
+
+---
+
+# 2. Business Problem
+
+Business targets are influenced by
+
+• Strategic objectives
+
+• Marketing campaigns
+
+• New product launches
+
+• Dealer expansion
+
+• Government policies
+
+• Economic conditions
+
+• Management decisions
+
+Targets often differ significantly from statistical forecasts. Without a
+dedicated intelligence layer, these differences are difficult to analyze and
+justify.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Manage sales targets
+
+✓ Validate targets
+
+✓ Allocate targets
+
+✓ Compare targets with forecasts
+
+✓ Generate planning scenarios
+
+✓ Assess target feasibility
+
+✓ Publish planning datasets
+
+---
+
+# 4. Inputs
+
+Historical Sales
+
+Enterprise Vehicle Master
+
+Dealer Master
+
+Sales Forecast Intelligence
+
+Marketing Plans
+
+Business Strategy
+
+Regional Plans
+
+Knowledge Graph
+
+---
+
+# 5. Outputs
+
+Enterprise Target Dataset
+
+Dealer Targets
+
+Regional Targets
+
+Vehicle Targets
+
+Gap Analysis
+
+Planning Scenarios
+
+Target Features
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Business Targets
+
+↓
+
+Validation
+
+↓
+
+Normalization
+
+↓
+
+Allocation
+
+↓
+
+Forecast Comparison
+
+↓
+
+Gap Analysis
+
+↓
+
+Scenario Generation
+
+↓
+
+Feasibility Assessment
+
+↓
+
+Publication
+
+---
+
+# 7. Target Object
+
+Target ID
+
+Enterprise Vehicle ID
+
+Dealer ID
+
+Province
+
+Planning Period
+
+Target Quantity
+
+Target Revenue
+
+Target Source
+
+Planning Version
+
+Confidence
+
+Approval Status
+
+---
+
+# 8. Target Sources
+
+Annual Budget
+
+Quarterly Plan
+
+Marketing Plan
+
+Regional Plan
+
+Dealer Commitment
+
+Management Override
+
+---
+
+# 9. Target Hierarchy
+
+Enterprise
+
+↓
+
+Region
+
+↓
+
+Province
+
+↓
+
+Dealer
+
+↓
+
+Vehicle Family
+
+↓
+
+Generation
+
+↓
+
+Variant
+
+---
+
+# 10. Allocation Engine
+
+Allocate enterprise targets based on
+
+Historical Sales Share
+
+Dealer Capacity
+
+Regional Growth
+
+Market Potential
+
+Dealer Performance
+
+Vehicle Popularity
+
+---
+
+# 11. Forecast Comparison
+
+For each vehicle
+
+Forecast
+
+↓
+
+Target
+
+↓
+
+Difference
+
+↓
+
+Percentage Gap
+
+Store both values independently.
+
+---
+
+# 12. Gap Analysis
+
+Calculate
+
+Absolute Gap
+
+Relative Gap
+
+Growth Required
+
+Dealer Contribution Gap
+
+Regional Gap
+
+Vehicle Gap
+
+---
+
+# 13. Scenario Generation
+
+Generate
+
+Conservative
+
+Realistic
+
+Optimistic
+
+Stretch
+
+Custom
+
+Each scenario stores assumptions.
+
+---
+
+# 14. Feasibility Assessment
+
+Evaluate using
+
+Historical Growth
+
+Dealer Capacity
+
+Market Growth
+
+Economic Indicators
+
+Campaign Effects
+
+Production Constraints
+
+Generate Feasibility Score.
+
+---
+
+# 15. Planning Features
+
+Target Growth %
+
+Forecast Gap %
+
+Dealer Potential
+
+Province Potential
+
+Seasonal Adjustment
+
+Campaign Impact
+
+Required UIO Growth
+
+---
+
+# 16. Target Versioning
+
+Every revision creates
+
+Version 1
+
+↓
+
+Version 2
+
+↓
+
+Version 3
+
+↓
+
+Current
+
+Previous versions remain immutable.
+
+---
+
+# 17. Approval Workflow
+
+Draft
+
+↓
+
+Regional Review
+
+↓
+
+Sales Review
+
+↓
+
+Management Approval
+
+↓
+
+Published
+
+---
+
+# 18. Business Rules
+
+Target ≥ 0
+
+Vehicle exists
+
+Dealer exists
+
+Planning period valid
+
+Version unique
+
+Approval mandatory before publication
+
+---
+
+# 19. AI Agents
+
+Chief Target Agent
+
+↓
+
+Allocation Agent
+
+↓
+
+Gap Analysis Agent
+
+↓
+
+Scenario Agent
+
+↓
+
+Feasibility Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Knowledge Agent
+
+---
+
+# 20. Database Tables
+
+target_master
+
+target_versions
+
+target_allocations
+
+target_scenarios
+
+target_gap_analysis
+
+target_features
+
+target_validation
+
+target_history
+
+---
+
+# 21. APIs
+
+GET /targets
+
+GET /targets/{id}
+
+GET /targets/scenarios
+
+GET /targets/gap-analysis
+
+POST /targets/publish
+
+---
+
+# 22. Event Messages
+
+TargetImported
+
+TargetAllocated
+
+ScenarioGenerated
+
+GapCalculated
+
+TargetApproved
+
+TargetPublished
+
+---
+
+# 23. Validation
+
+Verify
+
+Target assigned
+
+Vehicle mapped
+
+Dealer mapped
+
+Allocation complete
+
+Approval status valid
+
+No duplicate versions
+
+---
+
+# 24. Monitoring
+
+Target Coverage
+
+Allocation Accuracy
+
+Forecast Gap
+
+Approval Time
+
+Scenario Count
+
+Feasibility Distribution
+
+---
+
+# 25. Deliverables
+
+Enterprise Target Dataset
+
+Scenario Library
+
+Gap Analysis Report
+
+Planning Features
+
+Knowledge Graph Updates
+
+Ready for Sales Forecast Intelligence
+
+---
+
+# 03_04_Sales_Forecast_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.04
+
+Sales Forecast Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Sales Forecast Intelligence predicts future motorcycle sales using statistical,
+machine learning, deep learning and hybrid forecasting techniques.
+
+The engine automatically selects the most suitable forecasting approach based
+on vehicle characteristics, historical behaviour, lifecycle stage and data
+quality.
+
+Forecasts become the primary input to UIO Intelligence.
+
+---
+
+# 2. Business Problem
+
+Historical sales are affected by
+
+• Seasonality
+
+• Promotions
+
+• Product launches
+
+• Vehicle lifecycle
+
+• Economic conditions
+
+• Dealer behaviour
+
+• Supply shortages
+
+• Market competition
+
+Using one forecasting model for every vehicle results in poor accuracy.
+
+Therefore an adaptive forecasting platform is required.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Forecast vehicle sales
+
+✓ Recommend forecasting models
+
+✓ Build ensembles
+
+✓ Estimate uncertainty
+
+✓ Monitor accuracy
+
+✓ Detect drift
+
+✓ Retrain automatically
+
+✓ Publish enterprise forecasts
+
+---
+
+# 4. Inputs
+
+Historical Sales Intelligence
+
+Enterprise Vehicle Master
+
+Dealer Intelligence
+
+Campaign Calendar
+
+Holiday Calendar
+
+Economic Indicators
+
+Target Intelligence
+
+Knowledge Graph
+
+Feature Store
+
+---
+
+# 5. Outputs
+
+Vehicle Forecast
+
+Prediction Intervals
+
+Forecast Confidence
+
+Forecast Features
+
+Forecast Metadata
+
+Model Registry
+
+Forecast Dashboard
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Historical Sales
+
+↓
+
+Data Validation
+
+↓
+
+Feature Engineering
+
+↓
+
+Demand Profiling
+
+↓
+
+Model Recommendation
+
+↓
+
+Model Training
+
+↓
+
+Hyperparameter Optimization
+
+↓
+
+Forecast Generation
+
+↓
+
+Forecast Validation
+
+↓
+
+Ensemble Generation
+
+↓
+
+Prediction Intervals
+
+↓
+
+Publication
+
+---
+
+# 7. Forecast Object
+
+Forecast ID
+
+Enterprise Vehicle ID
+
+Forecast Horizon
+
+Forecast Quantity
+
+Lower Bound
+
+Upper Bound
+
+Confidence
+
+Model Used
+
+Training Date
+
+Version
+
+Status
+
+---
+
+# 8. Feature Engineering
+
+Generate
+
+Lag Features
+
+Rolling Mean
+
+Rolling Std
+
+Moving Average
+
+Growth Rate
+
+Trend
+
+Seasonality
+
+Holiday Features
+
+Campaign Features
+
+Dealer Growth
+
+Province Growth
+
+Vehicle Lifecycle
+
+Market Share
+
+UIO Growth
+
+Economic Indicators
+
+---
+
+# 9. Demand Profiling
+
+Calculate
+
+Mean Demand
+
+Variance
+
+Coefficient of Variation
+
+ADI
+
+CV²
+
+Seasonality Index
+
+Trend Strength
+
+Intermittency
+
+Forecastability Index
+
+---
+
+# 10. Vehicle Classification
+
+Assign
+
+ABC Class
+
+XYZ Class
+
+FSN Class
+
+Lifecycle Stage
+
+Growth Category
+
+Demand Stability
+
+These are used for model recommendation.
+
+---
+
+# 11. Model Recommendation Engine
+
+Decision rules consider
+
+History Length
+
+Seasonality
+
+Trend
+
+Intermittency
+
+Volatility
+
+Lifecycle
+
+Forecastability
+
+Data Quality
+
+Recommended model is selected automatically.
+
+---
+
+# 12. Statistical Models
+
+Naïve
+
+Seasonal Naïve
+
+Moving Average
+
+Exponential Smoothing
+
+Holt
+
+Holt-Winters
+
+ARIMA
+
+SARIMA
+
+Theta
+
+Croston
+
+TSB
+
+---
+
+# 13. Machine Learning Models
+
+Random Forest
+
+Gradient Boosting
+
+XGBoost
+
+LightGBM
+
+CatBoost
+
+ElasticNet
+
+Support Vector Regression
+
+---
+
+# 14. Deep Learning Models
+
+LSTM
+
+GRU
+
+Temporal CNN
+
+Temporal Fusion Transformer
+
+N-BEATS
+
+N-HiTS
+
+Transformer Time Series
+
+---
+
+# 15. Hybrid Models
+
+Prophet + XGBoost
+
+SARIMA + LSTM
+
+Croston + LightGBM
+
+Ensemble Learning
+
+Weighted Average
+
+Stacking
+
+---
+
+# 16. Model Selection Strategy
+
+Example
+
+Smooth demand
+
+↓
+
+ETS
+
+Seasonal demand
+
+↓
+
+SARIMA
+
+High-dimensional features
+
+↓
+
+XGBoost
+
+Complex nonlinear
+
+↓
+
+LightGBM
+
+Long sequences
+
+↓
+
+LSTM
+
+Multiple correlated variables
+
+↓
+
+Transformer
+
+Intermittent demand
+
+↓
+
+Croston / TSB
+
+---
+
+# 17. Hyperparameter Optimization
+
+Grid Search
+
+Random Search
+
+Bayesian Optimization
+
+Optuna
+
+Early Stopping
+
+Cross Validation
+
+---
+
+# 18. Ensemble Engine
+
+Combine
+
+Top Statistical Model
+
++
+
+Top ML Model
+
++
+
+Top DL Model
+
+↓
+
+Weighted Ensemble
+
+↓
+
+Final Forecast
+
+---
+
+# 19. Forecast Validation
+
+Metrics
+
+MAE
+
+RMSE
+
+MAPE
+
+SMAPE
+
+MASE
+
+WAPE
+
+Bias
+
+Tracking Signal
+
+Prediction Interval Coverage
+
+---
+
+# 20. Drift Detection
+
+Detect
+
+Concept Drift
+
+Data Drift
+
+Feature Drift
+
+Model Drift
+
+Performance Drift
+
+Retrain when thresholds are exceeded.
+
+---
+
+# 21. Forecast Versioning
+
+Every forecast stores
+
+Training Dataset Version
+
+Model Version
+
+Feature Version
+
+Hyperparameters
+
+Prediction Version
+
+Publication Version
+
+---
+
+# 22. AI Agents
+
+Chief Forecast Agent
+
+↓
+
+Feature Agent
+
+↓
+
+Classification Agent
+
+↓
+
+Model Recommendation Agent
+
+↓
+
+Training Agent
+
+↓
+
+Ensemble Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Monitoring Agent
+
+---
+
+# 23. Database Tables
+
+forecast_master
+
+forecast_versions
+
+forecast_features
+
+forecast_models
+
+forecast_metrics
+
+forecast_intervals
+
+forecast_monitoring
+
+forecast_history
+
+---
+
+# 24. APIs
+
+GET /forecast
+
+GET /forecast/{vehicle}
+
+GET /forecast/models
+
+GET /forecast/metrics
+
+POST /forecast/train
+
+POST /forecast/publish
+
+---
+
+# 25. Event Messages
+
+ForecastStarted
+
+ForecastCompleted
+
+ModelSelected
+
+ModelRetrained
+
+ForecastPublished
+
+DriftDetected
+
+---
+
+# 26. Validation
+
+Verify
+
+Model converged
+
+Prediction complete
+
+Intervals valid
+
+Metrics calculated
+
+Forecast approved
+
+---
+
+# 27. Monitoring
+
+Forecast Accuracy
+
+Model Drift
+
+Prediction Bias
+
+Coverage
+
+Training Time
+
+Retraining Frequency
+
+---
+
+# 28. Continuous Learning
+
+Collect
+
+Forecast Error
+
+↓
+
+Model Ranking
+
+↓
+
+Retraining
+
+↓
+
+Feature Updates
+
+↓
+
+Improved Recommendation Engine
+
+---
+
+# 29. Deliverables
+
+Enterprise Vehicle Forecast
+
+Forecast Confidence
+
+Prediction Intervals
+
+Forecast Dashboard
+
+Knowledge Graph Updates
+
+Ready for UIO Intelligence
+
+---
+
+# 03_05_Vehicle_Lifecycle_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.05
+
+Vehicle Lifecycle Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Vehicle Lifecycle Intelligence determines the current lifecycle stage of every
+vehicle model and predicts future lifecycle transitions.
+
+The lifecycle status influences
+
+• Sales Forecast
+
+• UIO Forecast
+
+• Spare Parts Demand
+
+• Procurement Planning
+
+• Inventory Policy
+
+• Service Level
+
+• Safety Stock
+
+• Reorder Policy
+
+Unlike simple "Active/Inactive" classification,
+this module models the complete evolution of a vehicle.
+
+---
+
+# 2. Business Problem
+
+A motorcycle continues generating spare parts demand long after production ends.
+
+Example
+
+Production
+
+2015-2022
+
+↓
+
+Vehicle Sales
+
+2015-2022
+
+↓
+
+UIO
+
+2015-2040+
+
+↓
+
+Spare Parts Demand
+
+2015-2050+
+
+Therefore
+
+Production lifecycle
+
+≠
+
+Demand lifecycle
+
+Ignoring lifecycle causes
+
+Poor forecasting
+
+Overstock
+
+Stockout
+
+Wrong reorder policies
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Detect lifecycle stage
+
+✓ Predict lifecycle transition
+
+✓ Estimate retirement rate
+
+✓ Identify active/inactive models
+
+✓ Estimate service demand duration
+
+✓ Support UIO forecasting
+
+✓ Support Demand Intelligence
+
+✓ Support Inventory Intelligence
+
+---
+
+# 4. Inputs
+
+Enterprise Vehicle Master
+
+Historical Sales
+
+Production Information
+
+Target Intelligence
+
+UIO Intelligence
+
+Dealer Intelligence
+
+Service Records (Optional)
+
+Government Registration Data (Optional)
+
+Knowledge Graph
+
+---
+
+# 5. Outputs
+
+Vehicle Lifecycle
+
+Lifecycle Probability
+
+Retirement Forecast
+
+Service Population
+
+Lifecycle Features
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Vehicle Master
+
+↓
+
+Sales Trend Analysis
+
+↓
+
+Production Analysis
+
+↓
+
+Market Analysis
+
+↓
+
+Lifecycle Classification
+
+↓
+
+Retirement Modelling
+
+↓
+
+Service Population Estimation
+
+↓
+
+Lifecycle Forecast
+
+↓
+
+Publication
+
+---
+
+# 7. Lifecycle Object
+
+Enterprise Vehicle ID
+
+Lifecycle Stage
+
+Lifecycle Score
+
+Lifecycle Confidence
+
+Current Age
+
+Production Status
+
+Expected Retirement
+
+Service Population
+
+Last Updated
+
+---
+
+# 8. Lifecycle Stages
+
+Concept
+
+↓
+
+Launch
+
+↓
+
+Growth
+
+↓
+
+Expansion
+
+↓
+
+Maturity
+
+↓
+
+Decline
+
+↓
+
+Production End
+
+↓
+
+Aftermarket Support
+
+↓
+
+Legacy
+
+↓
+
+Retired
+
+---
+
+# 9. Production Status
+
+Upcoming
+
+Prototype
+
+Production
+
+Limited Production
+
+Production Ending
+
+Discontinued
+
+Historical
+
+---
+
+# 10. Market Status
+
+Growing
+
+Stable
+
+Saturated
+
+Declining
+
+Discontinued
+
+---
+
+# 11. Service Status
+
+High Service Demand
+
+Medium Service Demand
+
+Low Service Demand
+
+Rare Service Demand
+
+Obsolete
+
+---
+
+# 12. Vehicle Age
+
+Calculate
+
+Current Year
+
+−
+
+Model Introduction Year
+
+↓
+
+Vehicle Age
+
+Store
+
+Mean Age
+
+Median Age
+
+Age Distribution
+
+---
+
+# 13. Lifecycle Indicators
+
+Sales Trend
+
+Production Trend
+
+Dealer Demand
+
+UIO Growth
+
+Service Demand
+
+Replacement Rate
+
+Retirement Rate
+
+Market Share
+
+---
+
+# 14. Retirement Model
+
+Estimate
+
+Annual Retirement %
+
+Vehicle Survival Curve
+
+Remaining Active Fleet
+
+Vehicle Half-life
+
+Expected Retirement Year
+
+---
+
+# 15. Active / Inactive Logic
+
+Active
+
+Production exists
+
+OR
+
+Sales target exists
+
+Inactive
+
+Production stopped
+
+No future production
+
+Still supported by UIO
+
+---
+
+# 16. Lifecycle Features
+
+Lifecycle Stage
+
+Vehicle Age
+
+Production Age
+
+Growth Rate
+
+Decline Rate
+
+Retirement Probability
+
+Remaining Service Years
+
+Expected Parts Demand Years
+
+---
+
+# 17. AI Models
+
+Rule-based Classification
+
+Gradient Boosting
+
+Hidden Markov Models
+
+Survival Analysis
+
+Bayesian Transition Models
+
+LSTM Lifecycle Prediction
+
+Hybrid Lifecycle Models
+
+---
+
+# 18. Business Rules
+
+Every vehicle has one lifecycle stage
+
+Lifecycle transitions follow valid sequence
+
+Production cannot restart after retirement
+
+Inactive vehicles may continue generating service demand
+
+---
+
+# 19. AI Agents
+
+Chief Lifecycle Agent
+
+↓
+
+Classification Agent
+
+↓
+
+Retirement Agent
+
+↓
+
+Transition Agent
+
+↓
+
+Survival Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Knowledge Agent
+
+---
+
+# 20. Database Tables
+
+vehicle_lifecycle
+
+lifecycle_history
+
+lifecycle_features
+
+retirement_model
+
+survival_curves
+
+service_population
+
+lifecycle_validation
+
+---
+
+# 21. APIs
+
+GET /lifecycle
+
+GET /lifecycle/{vehicle}
+
+GET /lifecycle/features
+
+GET /lifecycle/history
+
+POST /lifecycle/publish
+
+---
+
+# 22. Event Messages
+
+LifecycleDetected
+
+LifecycleChanged
+
+VehicleRetired
+
+ServicePopulationUpdated
+
+LifecyclePublished
+
+---
+
+# 23. Validation
+
+Verify
+
+Lifecycle valid
+
+Age valid
+
+Production status valid
+
+Retirement model complete
+
+Knowledge Graph updated
+
+---
+
+# 24. Monitoring
+
+Vehicles by Stage
+
+Lifecycle Transitions
+
+Retirement Accuracy
+
+Average Vehicle Age
+
+Service Population
+
+Lifecycle Confidence
+
+---
+
+# 25. Continuous Learning
+
+Collect
+
+Actual Retirement Data
+
+↓
+
+Improve Survival Models
+
+↓
+
+Improve Lifecycle Prediction
+
+↓
+
+Improve Demand Forecast
+
+---
+
+# 26. Deliverables
+
+Enterprise Lifecycle Dataset
+
+Retirement Forecast
+
+Lifecycle Features
+
+Knowledge Graph Updates
+
+Ready for UIO Intelligence
+
+---
+
+# 03_06_UIO_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.06
+
+UIO Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+UIO Intelligence estimates and forecasts the future Units In Operation (UIO)
+for every motorcycle model.
+
+UIO represents the active motorcycle population currently operating in the
+market.
+
+Unlike cumulative sales calculations,
+this module continuously estimates
+
+• New vehicle additions
+
+• Vehicle retirements
+
+• Survival probabilities
+
+• Fleet ageing
+
+• Regional fleet distribution
+
+• Dealer fleet distribution
+
+• Scenario-based fleet evolution
+
+The resulting UIO becomes the primary driver of spare-parts demand forecasting.
+
+---
+
+# 2. Business Problem
+
+Spare-part demand depends on
+
+ACTIVE motorcycles
+
+not
+
+historical motorcycle sales.
+
+Example
+
+Sales
+
+2018
+
+1000
+
+2019
+
+1200
+
+2020
+
+800
+
+2021
+
+500
+
+Production ends
+
+2022
+
+↓
+
+Many motorcycles remain in service
+
+↓
+
+Parts demand continues
+
+Therefore
+
+Historical Sales
+
+≠
+
+UIO
+
+UIO must be estimated separately.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Estimate historical UIO
+
+✓ Forecast future UIO
+
+✓ Model retirements
+
+✓ Model survival
+
+✓ Handle active vehicles
+
+✓ Handle inactive vehicles
+
+✓ Generate UIO scenarios
+
+✓ Publish enterprise UIO
+
+---
+
+# 4. Inputs
+
+Enterprise Vehicle Master
+
+Vehicle Sales Forecast
+
+Target Intelligence
+
+Vehicle Lifecycle
+
+Historical Sales
+
+Retirement Model
+
+Dealer Intelligence
+
+Regional Intelligence
+
+Knowledge Graph
+
+Feature Store
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Historical UIO
+
+Future UIO
+
+Dealer UIO
+
+Province UIO
+
+Fleet Age Distribution
+
+UIO Features
+
+Scenario UIO
+
+Knowledge Graph Updates
+
+Demand Intelligence Input
+
+---
+
+# 6. Workflow
+
+Historical Sales
+
+↓
+
+Forecast Sales
+
+↓
+
+Business Targets
+
+↓
+
+Vehicle Lifecycle
+
+↓
+
+Retirement Model
+
+↓
+
+Fleet Simulation
+
+↓
+
+Historical UIO
+
+↓
+
+Future UIO
+
+↓
+
+Validation
+
+↓
+
+Knowledge Graph
+
+↓
+
+Publish
+
+---
+
+# 7. UIO Object
+
+Enterprise Vehicle ID
+
+Planning Period
+
+Historical UIO
+
+Forecast UIO
+
+Target UIO
+
+Dealer UIO
+
+Province UIO
+
+Fleet Age
+
+Survival Rate
+
+Retirement Rate
+
+Confidence
+
+Scenario
+
+Version
+
+---
+
+# 8. Dual UIO Architecture
+
+Universe A
+
+Historical Sales
+
+↓
+
+Forecast Model
+
+↓
+
+Forecast UIO
+
+Universe B
+
+Business Target
+
+↓
+
+Target Planning
+
+↓
+
+Target UIO
+
+Both remain independent.
+
+Later
+
+Production Intelligence
+
+combines both.
+
+---
+
+# 9. Historical UIO Calculation
+
+For every year
+
+Historical UIO
+
+=
+
+Previous UIO
+
++
+
+New Sales
+
+-
+
+Retirements
+
+where
+
+Retirements
+
+=
+
+Historical UIO
+
+×
+
+Retirement Probability
+
+---
+
+# 10. Future UIO Forecast
+
+Future UIO
+
+=
+
+Current UIO
+
++
+
+Forecast Sales
+
+-
+
+Forecast Retirements
+
+Repeat
+
+for every future period.
+
+---
+
+# 11. Active Vehicle Logic
+
+Production Active
+
+↓
+
+Forecast Sales
+
+↓
+
+UIO Growth
+
+↓
+
+Increasing Fleet
+
+---
+
+# 12. Inactive Vehicle Logic
+
+Production Stopped
+
+↓
+
+No New Sales
+
+↓
+
+Only Retirements
+
+↓
+
+Gradual Fleet Decline
+
+↓
+
+Service Demand Continues
+
+---
+
+# 13. Fleet Age Distribution
+
+Store
+
+Age 0
+
+Age 1
+
+Age 2
+
+...
+
+Age 25+
+
+This supports
+
+replacement behaviour
+
+and
+
+demand prediction.
+
+---
+
+# 14. Survival Model
+
+Estimate
+
+Vehicle Survival
+
+using
+
+Kaplan-Meier
+
+Cox PH
+
+Weibull
+
+Bayesian Survival
+
+Machine Learning Survival
+
+Store
+
+Annual Survival Probability
+
+---
+
+# 15. Retirement Model
+
+Estimate
+
+Vehicle Retirement
+
+using
+
+Vehicle Age
+
+Region
+
+Mileage
+
+Historical UIO
+
+Economic Conditions
+
+Store
+
+Annual Retirement Probability
+
+---
+
+# 16. Fleet Simulation Engine
+
+Every year
+
+Existing Fleet
+
+↓
+
+Age +1
+
+↓
+
+Retire Vehicles
+
+↓
+
+Add New Sales
+
+↓
+
+Generate Updated Fleet
+
+Repeat until forecast horizon.
+
+---
+
+# 17. Regional UIO
+
+Estimate
+
+Province
+
+District
+
+Dealer
+
+Sales Region
+
+Regional UIO
+
+supports
+
+regional inventory planning.
+
+---
+
+# 18. Dealer UIO
+
+Estimate
+
+Dealer Service Population
+
+Dealer Responsibility
+
+Dealer Fleet Growth
+
+Dealer Fleet Age
+
+Dealer Retirement
+
+---
+
+# 19. Scenario Engine
+
+Generate
+
+Conservative
+
+Baseline
+
+Optimistic
+
+Target-based
+
+Economic Downturn
+
+High Growth
+
+Import Restriction
+
+Each produces independent UIO.
+
+---
+
+# 20. UIO Feature Engineering
+
+Generate
+
+Vehicle Age
+
+Fleet Size
+
+Fleet Growth
+
+Growth Rate
+
+Fleet Decline
+
+Retirement Rate
+
+Mean Fleet Age
+
+Median Fleet Age
+
+UIO Density
+
+Dealer Coverage
+
+Province Coverage
+
+Market Share
+
+Lifecycle Stage
+
+Expected Remaining Life
+
+---
+
+# 21. AI Models
+
+Deterministic Fleet Model
+
+System Dynamics
+
+Markov Chain
+
+Survival Analysis
+
+Bayesian Fleet Model
+
+Gradient Boosting
+
+LSTM
+
+Temporal Fusion Transformer
+
+Graph Neural Network
+
+Hybrid Ensemble
+
+---
+
+# 22. Business Rules
+
+UIO cannot be negative
+
+Retirement ≤ Fleet
+
+Vehicle exists
+
+Lifecycle valid
+
+Region valid
+
+Dealer valid
+
+Scenario valid
+
+---
+
+# 23. AI Agents
+
+Chief UIO Agent
+
+↓
+
+Fleet Simulation Agent
+
+↓
+
+Retirement Agent
+
+↓
+
+Survival Agent
+
+↓
+
+Scenario Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Knowledge Graph Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 24. Database Tables
+
+uio_master
+
+uio_history
+
+uio_forecast
+
+uio_retirement
+
+uio_survival
+
+uio_scenarios
+
+uio_features
+
+uio_validation
+
+uio_versions
+
+---
+
+# 25. APIs
+
+GET /uio
+
+GET /uio/{vehicle}
+
+GET /uio/scenario
+
+GET /uio/features
+
+POST /uio/run
+
+POST /uio/publish
+
+---
+
+# 26. Event Messages
+
+UIOStarted
+
+UIOCalculated
+
+FleetUpdated
+
+RetirementCalculated
+
+ScenarioGenerated
+
+UIOPublished
+
+---
+
+# 27. Validation
+
+Verify
+
+Fleet continuity
+
+Historical consistency
+
+No negative UIO
+
+Retirement valid
+
+Scenario complete
+
+Knowledge Graph updated
+
+---
+
+# 28. Monitoring
+
+Fleet Growth
+
+Fleet Decline
+
+Average Vehicle Age
+
+Retirement Accuracy
+
+Scenario Comparison
+
+Forecast Confidence
+
+---
+
+# 29. Continuous Learning
+
+Collect
+
+Actual Sales
+
+↓
+
+Actual Retirements
+
+↓
+
+Actual UIO
+
+↓
+
+Improve Survival Models
+
+↓
+
+Improve Fleet Simulation
+
+↓
+
+Improve Demand Forecast
+
+---
+
+# 30. Deliverables
+
+Enterprise UIO Dataset
+
+Historical Fleet
+
+Future Fleet
+
+Fleet Simulation
+
+UIO Dashboard
+
+Knowledge Graph Updates
+
+Ready for Demand Intelligence
+
+---
+
+# 03_07_Vehicle_Knowledge_Graph.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.07
+
+Vehicle Knowledge Graph
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Vehicle Knowledge Graph (VKG) represents all vehicle-related enterprise
+knowledge as interconnected nodes and relationships.
+
+Instead of disconnected tables,
+Vehicle Intelligence becomes a semantic network.
+
+The graph connects
+
+• Vehicles
+
+• Vehicle Families
+
+• Generations
+
+• Variants
+
+• Sales
+
+• Forecasts
+
+• Targets
+
+• UIO
+
+• Lifecycle
+
+• Dealers
+
+• Regions
+
+• Demand
+
+• Inventory
+
+Every downstream AI agent queries this graph.
+
+---
+
+# 2. Business Problem
+
+Vehicle information exists across multiple systems.
+
+Sales System
+
+↓
+
+Forecast System
+
+↓
+
+Planning
+
+↓
+
+Inventory
+
+↓
+
+Procurement
+
+↓
+
+Dealer Network
+
+↓
+
+Catalogue
+
+Without semantic integration
+
+relationships become difficult to analyze.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Build vehicle graph
+
+✓ Connect enterprise entities
+
+✓ Support graph reasoning
+
+✓ Enable AI agents
+
+✓ Store graph history
+
+✓ Generate graph embeddings
+
+✓ Synchronize enterprise knowledge
+
+---
+
+# 4. Inputs
+
+Vehicle Master
+
+Vehicle Sales
+
+Target Intelligence
+
+Forecast Intelligence
+
+Lifecycle Intelligence
+
+UIO Intelligence
+
+Dealer Master
+
+Region Master
+
+Knowledge Graph
+
+---
+
+# 5. Outputs
+
+Vehicle Knowledge Graph
+
+Graph Embeddings
+
+Reasoning Results
+
+Relationship Repository
+
+Knowledge APIs
+
+Decision Context
+
+---
+
+# 6. Workflow
+
+Vehicle Master
+
+↓
+
+Create Vehicle Nodes
+
+↓
+
+Create Relationship Edges
+
+↓
+
+Validate Ontology
+
+↓
+
+Generate Embeddings
+
+↓
+
+Graph Reasoning
+
+↓
+
+Publish
+
+---
+
+# 7. Core Nodes
+
+Vehicle
+
+Vehicle Family
+
+Generation
+
+Variant
+
+Dealer
+
+Province
+
+Sales
+
+Forecast
+
+Target
+
+UIO
+
+Lifecycle
+
+Campaign
+
+Region
+
+Scenario
+
+Forecast Model
+
+AI Agent
+
+Recommendation
+
+---
+
+# 8. Core Relationships
+
+Vehicle
+
+BELONGS_TO
+
+Family
+
+Vehicle
+
+HAS_GENERATION
+
+Generation
+
+Vehicle
+
+HAS_VARIANT
+
+Variant
+
+Vehicle
+
+SOLD_BY
+
+Dealer
+
+Vehicle
+
+FORECASTED_BY
+
+Forecast
+
+Vehicle
+
+TARGETED_BY
+
+Target
+
+Vehicle
+
+HAS_UIO
+
+UIO
+
+Vehicle
+
+HAS_LIFECYCLE
+
+Lifecycle
+
+Dealer
+
+LOCATED_IN
+
+Province
+
+Province
+
+BELONGS_TO
+
+Region
+
+Vehicle
+
+USED_IN
+
+Demand Model
+
+Vehicle
+
+INFLUENCES
+
+Inventory
+
+---
+
+# 9. Ontology
+
+Every Vehicle node stores
+
+Enterprise Vehicle ID
+
+Family
+
+Generation
+
+Variant
+
+Lifecycle
+
+Status
+
+Created Date
+
+Updated Date
+
+Confidence
+
+---
+
+# 10. Relationship Metadata
+
+Each relationship stores
+
+Confidence
+
+Source
+
+Version
+
+Created Date
+
+Updated Date
+
+Evidence
+
+Reviewer
+
+---
+
+# 11. Graph Versioning
+
+Vehicle Graph
+
+↓
+
+Snapshot
+
+↓
+
+Delta
+
+↓
+
+Current
+
+Historical graphs remain immutable.
+
+---
+
+# 12. Graph Reasoning
+
+Infer
+
+Vehicle Similarity
+
+Shared Dealer Network
+
+Regional Growth
+
+Lifecycle Dependency
+
+Demand Propagation
+
+Inventory Impact
+
+---
+
+# 13. Graph Embeddings
+
+Generate embeddings for
+
+Vehicle
+
+Dealer
+
+Forecast
+
+UIO
+
+Lifecycle
+
+Scenario
+
+These embeddings support recommendation engines.
+
+---
+
+# 14. Explainable Reasoning
+
+Example
+
+Forecast Increased
+
+↓
+
+Target Increased
+
+↓
+
+UIO Increased
+
+↓
+
+Expected Spare Parts Demand Increased
+
+↓
+
+Increase Safety Stock
+
+Store reasoning path.
+
+---
+
+# 15. Business Rules
+
+Every node unique
+
+Every relationship valid
+
+No orphan nodes
+
+Ontology valid
+
+Version immutable
+
+---
+
+# 16. AI Agents
+
+Chief Graph Agent
+
+↓
+
+Node Agent
+
+↓
+
+Relationship Agent
+
+↓
+
+Embedding Agent
+
+↓
+
+Reasoning Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 17. Database Tables
+
+vehicle_graph_nodes
+
+vehicle_graph_edges
+
+vehicle_graph_versions
+
+vehicle_graph_embeddings
+
+vehicle_graph_history
+
+vehicle_graph_validation
+
+---
+
+# 18. APIs
+
+GET /vehicle-graph
+
+GET /vehicle-graph/node
+
+GET /vehicle-graph/relationship
+
+POST /vehicle-graph/query
+
+POST /vehicle-graph/reason
+
+---
+
+# 19. Event Messages
+
+VehicleNodeCreated
+
+RelationshipCreated
+
+GraphUpdated
+
+GraphPublished
+
+EmbeddingGenerated
+
+---
+
+# 20. Validation
+
+Verify
+
+Ontology valid
+
+Relationships complete
+
+Embeddings generated
+
+Graph synchronized
+
+No orphan nodes
+
+---
+
+# 21. Monitoring
+
+Graph Size
+
+Average Degree
+
+Embedding Coverage
+
+Reasoning Time
+
+Query Performance
+
+---
+
+# 22. Deliverables
+
+Vehicle Knowledge Graph
+
+Graph APIs
+
+Embeddings
+
+Reasoning Engine
+
+Ready for Feature Store
+
+---
+
+# 03_08_Vehicle_Feature_Store.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.08
+
+Vehicle Feature Store
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Vehicle Feature Store provides a centralized repository of all vehicle-related
+features required by machine learning, deep learning, optimization, simulation
+and AI agents.
+
+Instead of generating features independently inside every model,
+all intelligence services consume standardized enterprise features.
+
+The Feature Store ensures
+
+• Consistency
+
+• Reproducibility
+
+• Versioning
+
+• Explainability
+
+• Reusability
+
+• Governance
+
+---
+
+# 2. Business Problem
+
+Different forecasting models often create different versions of the same feature.
+
+Example
+
+Notebook A
+
+Rolling Mean = 6 Months
+
+Notebook B
+
+Rolling Mean = 12 Months
+
+Notebook C
+
+Rolling Mean = 9 Months
+
+Results become inconsistent.
+
+A centralized Feature Store eliminates this problem.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Create enterprise features
+
+✓ Store feature versions
+
+✓ Monitor feature quality
+
+✓ Detect feature drift
+
+✓ Publish features
+
+✓ Support online inference
+
+✓ Support offline training
+
+✓ Synchronize Knowledge Graph
+
+---
+
+# 4. Inputs
+
+Vehicle Master
+
+Vehicle Sales Intelligence
+
+Target Intelligence
+
+Sales Forecast Intelligence
+
+Vehicle Lifecycle Intelligence
+
+UIO Intelligence
+
+Dealer Intelligence
+
+Regional Intelligence
+
+Knowledge Graph
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Enterprise Feature Store
+
+Training Features
+
+Inference Features
+
+Feature Metadata
+
+Feature Quality Report
+
+Feature Drift Report
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Raw Enterprise Data
+
+↓
+
+Feature Engineering
+
+↓
+
+Feature Validation
+
+↓
+
+Feature Versioning
+
+↓
+
+Feature Publishing
+
+↓
+
+Offline Store
+
+↓
+
+Online Store
+
+↓
+
+Model Consumption
+
+↓
+
+Monitoring
+
+---
+
+# 7. Feature Categories
+
+Static Features
+
+Temporal Features
+
+Rolling Features
+
+Derived Features
+
+External Features
+
+Graph Features
+
+Scenario Features
+
+AI Features
+
+---
+
+# 8. Static Features
+
+Enterprise Vehicle ID
+
+Family
+
+Generation
+
+Variant
+
+Category
+
+Engine Capacity
+
+Fuel Type
+
+Transmission
+
+Production Status
+
+Lifecycle Stage
+
+---
+
+# 9. Sales Features
+
+Monthly Sales
+
+Quarterly Sales
+
+Annual Sales
+
+Rolling Mean
+
+Rolling Median
+
+Rolling Std
+
+Growth Rate
+
+YoY Growth
+
+MoM Growth
+
+Market Share
+
+Sales Rank
+
+---
+
+# 10. UIO Features
+
+Historical UIO
+
+Forecast UIO
+
+Target UIO
+
+Fleet Size
+
+Fleet Growth
+
+Fleet Decline
+
+Mean Fleet Age
+
+Median Fleet Age
+
+Retirement Rate
+
+Survival Rate
+
+Fleet Density
+
+---
+
+# 11. Lifecycle Features
+
+Vehicle Age
+
+Lifecycle Stage
+
+Years Since Launch
+
+Years Since Production End
+
+Expected Remaining Life
+
+Retirement Probability
+
+Service Population
+
+---
+
+# 12. Dealer Features
+
+Dealer Tier
+
+Dealer Coverage
+
+Dealer Sales
+
+Dealer Growth
+
+Reaction Time
+
+Pre-buy Index
+
+Dealer Loyalty
+
+Dealer Risk
+
+Dealer Potential
+
+Dealer Market Share
+
+---
+
+# 13. Regional Features
+
+Province
+
+District
+
+Sales Region
+
+Regional Growth
+
+Regional UIO
+
+Regional Demand
+
+Market Penetration
+
+Population
+
+Income Index
+
+---
+
+# 14. Campaign Features
+
+Promotion Flag
+
+Campaign Type
+
+Campaign Duration
+
+Marketing Spend
+
+Festival Indicator
+
+Holiday Indicator
+
+Launch Indicator
+
+---
+
+# 15. Forecast Features
+
+Forecast Mean
+
+Forecast Lower Bound
+
+Forecast Upper Bound
+
+Forecast Confidence
+
+Forecast Bias
+
+Forecast Model
+
+Forecast Version
+
+---
+
+# 16. Demand Characteristics
+
+ADI
+
+CV²
+
+ABC Class
+
+XYZ Class
+
+FSN Class
+
+Seasonality Index
+
+Trend Strength
+
+Forecastability Index
+
+Demand Volatility
+
+---
+
+# 17. Graph Features
+
+Node Degree
+
+PageRank
+
+Centrality
+
+Community
+
+Similarity Score
+
+Vehicle Cluster
+
+Shared Component Count
+
+---
+
+# 18. External Features
+
+Fuel Price
+
+Inflation
+
+Exchange Rate
+
+GDP Growth
+
+Weather
+
+Import Delay
+
+Competitor Launch
+
+Government Policy
+
+---
+
+# 19. Scenario Features
+
+Baseline
+
+Conservative
+
+Optimistic
+
+Business Target
+
+Import Delay
+
+Economic Downturn
+
+Promotion Boost
+
+---
+
+# 20. AI Features
+
+Prediction Confidence
+
+Risk Score
+
+Importance Score
+
+Recommendation Score
+
+Lifecycle Risk
+
+Forecast Stability
+
+Inventory Impact
+
+---
+
+# 21. Feature Versioning
+
+Every feature stores
+
+Feature Name
+
+Feature Version
+
+Generation Date
+
+Owner
+
+Source
+
+Transformation Logic
+
+Validation Status
+
+---
+
+# 22. Feature Validation
+
+Verify
+
+No Missing Values
+
+Correct Data Type
+
+Expected Range
+
+No Duplicate Features
+
+Consistent Definitions
+
+Freshness
+
+---
+
+# 23. Feature Drift Detection
+
+Monitor
+
+Distribution Drift
+
+Mean Shift
+
+Variance Shift
+
+Population Stability Index
+
+Kolmogorov–Smirnov Test
+
+Concept Drift
+
+---
+
+# 24. Online Feature Store
+
+Supports
+
+Real-time inference
+
+Dashboard updates
+
+AI agents
+
+Decision Support
+
+---
+
+# 25. Offline Feature Store
+
+Supports
+
+Model training
+
+Batch prediction
+
+Experimentation
+
+Historical analysis
+
+---
+
+# 26. AI Agents
+
+Chief Feature Agent
+
+↓
+
+Feature Engineering Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Version Agent
+
+↓
+
+Monitoring Agent
+
+↓
+
+Publishing Agent
+
+↓
+
+Knowledge Agent
+
+---
+
+# 27. Database Tables
+
+feature_master
+
+feature_versions
+
+feature_metadata
+
+feature_quality
+
+feature_drift
+
+feature_validation
+
+feature_history
+
+online_features
+
+offline_features
+
+---
+
+# 28. APIs
+
+GET /features
+
+GET /features/{vehicle}
+
+GET /features/version
+
+POST /features/publish
+
+GET /features/drift
+
+---
+
+# 29. Event Messages
+
+FeatureGenerated
+
+FeatureValidated
+
+FeaturePublished
+
+FeatureUpdated
+
+FeatureDriftDetected
+
+---
+
+# 30. Monitoring
+
+Feature Freshness
+
+Feature Drift
+
+Feature Usage
+
+Feature Latency
+
+Feature Completeness
+
+Feature Quality Score
+
+---
+
+# 31. Unit Tests
+
+Transformation Logic
+
+Validation Rules
+
+Versioning
+
+Online Sync
+
+Offline Sync
+
+Drift Detection
+
+---
+
+# 32. Continuous Learning
+
+Collect
+
+Model Feedback
+
+↓
+
+Feature Importance
+
+↓
+
+Feature Refinement
+
+↓
+
+New Feature Discovery
+
+↓
+
+Feature Retirement
+
+---
+
+# 33. Deliverables
+
+Enterprise Vehicle Feature Store
+
+Online Feature Store
+
+Offline Feature Store
+
+Feature Catalog
+
+Feature Quality Dashboard
+
+Knowledge Graph Updates
+
+Ready for Vehicle Validation
+
+---
+
+# 03_09_Vehicle_Validation.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.09
+
+Vehicle Validation
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Vehicle Validation ensures that every output produced by Vehicle Intelligence is
+accurate, complete, consistent, explainable and suitable for enterprise
+decision-making.
+
+No dataset is allowed to proceed to Production Intelligence until it passes all
+validation rules.
+
+---
+
+# 2. Objectives
+
+The engine shall
+
+✓ Validate vehicle master
+
+✓ Validate historical sales
+
+✓ Validate sales targets
+
+✓ Validate forecasts
+
+✓ Validate lifecycle
+
+✓ Validate UIO
+
+✓ Validate features
+
+✓ Validate graph integrity
+
+✓ Generate quality scores
+
+✓ Publish validation reports
+
+---
+
+# 3. Inputs
+
+Vehicle Master
+
+Historical Sales
+
+Target Intelligence
+
+Sales Forecast
+
+Vehicle Lifecycle
+
+UIO Intelligence
+
+Feature Store
+
+Knowledge Graph
+
+Business Rules
+
+---
+
+# 4. Outputs
+
+Validation Report
+
+Quality Dashboard
+
+Approval Status
+
+Validation Logs
+
+Issue Repository
+
+Published Status
+
+---
+
+# 5. Validation Workflow
+
+Receive Dataset
+
+↓
+
+Schema Validation
+
+↓
+
+Business Rule Validation
+
+↓
+
+Statistical Validation
+
+↓
+
+ML Validation
+
+↓
+
+Graph Validation
+
+↓
+
+Quality Scoring
+
+↓
+
+Approval
+
+↓
+
+Publication
+
+---
+
+# 6. Schema Validation
+
+Verify
+
+Required Columns
+
+Data Types
+
+Constraints
+
+Primary Keys
+
+Foreign Keys
+
+Duplicates
+
+Missing Values
+
+---
+
+# 7. Vehicle Master Validation
+
+Verify
+
+Unique Vehicle IDs
+
+Known Family
+
+Known Generation
+
+Known Variant
+
+Known Category
+
+Lifecycle Assigned
+
+No Duplicate Alias
+
+---
+
+# 8. Sales Validation
+
+Verify
+
+Continuous Timeline
+
+Negative Sales
+
+Duplicate Invoices
+
+Dealer Exists
+
+Vehicle Exists
+
+Province Exists
+
+Aggregation Correct
+
+---
+
+# 9. Target Validation
+
+Verify
+
+Target Exists
+
+Planning Period Valid
+
+Vehicle Mapping Complete
+
+Dealer Mapping Complete
+
+Approval Complete
+
+Gap Calculation Correct
+
+---
+
+# 10. Forecast Validation
+
+Metrics
+
+MAE
+
+RMSE
+
+MAPE
+
+SMAPE
+
+MASE
+
+Bias
+
+Tracking Signal
+
+Prediction Interval Coverage
+
+Forecast Stability
+
+---
+
+# 11. Lifecycle Validation
+
+Verify
+
+Lifecycle Stage
+
+Vehicle Age
+
+Production Status
+
+Retirement Probability
+
+Remaining Service Life
+
+Stage Transition Valid
+
+---
+
+# 12. UIO Validation
+
+Verify
+
+Historical UIO
+
+Forecast UIO
+
+Target UIO
+
+Fleet Continuity
+
+Retirement Logic
+
+No Negative Fleet
+
+Age Distribution
+
+---
+
+# 13. Feature Validation
+
+Check
+
+Completeness
+
+Freshness
+
+Version
+
+Range
+
+Distribution
+
+Data Leakage
+
+Feature Drift
+
+---
+
+# 14. Knowledge Graph Validation
+
+Verify
+
+Node Count
+
+Edge Count
+
+Orphan Nodes
+
+Relationship Integrity
+
+Embedding Coverage
+
+Ontology Consistency
+
+---
+
+# 15. Statistical Validation
+
+Distribution Comparison
+
+KS Test
+
+Chi-square Test
+
+PSI
+
+Mean Shift
+
+Variance Shift
+
+Trend Comparison
+
+---
+
+# 16. AI Validation
+
+SHAP Consistency
+
+Model Drift
+
+Prediction Stability
+
+Feature Importance Stability
+
+Ensemble Agreement
+
+Confidence Calibration
+
+---
+
+# 17. Explainability Validation
+
+Every prediction must include
+
+Model Used
+
+Top Features
+
+Confidence
+
+Version
+
+Reasoning Path
+
+Decision Trace
+
+---
+
+# 18. Quality Score
+
+Calculate
+
+Data Quality Score
+
+Forecast Quality Score
+
+Feature Quality Score
+
+Graph Quality Score
+
+Overall Enterprise Score
+
+---
+
+# 19. Business Rules
+
+No Missing Critical Data
+
+No Invalid IDs
+
+No Negative Fleet
+
+Forecast Confidence > Threshold
+
+Graph Valid
+
+Version Approved
+
+---
+
+# 20. AI Agents
+
+Chief Validation Agent
+
+↓
+
+Schema Agent
+
+↓
+
+Business Rule Agent
+
+↓
+
+Forecast Validation Agent
+
+↓
+
+Graph Validation Agent
+
+↓
+
+Quality Agent
+
+↓
+
+Approval Agent
+
+---
+
+# 21. Database Tables
+
+validation_master
+
+validation_results
+
+validation_rules
+
+quality_scores
+
+approval_history
+
+validation_logs
+
+---
+
+# 22. APIs
+
+GET /validation
+
+GET /validation/report
+
+GET /validation/issues
+
+POST /validation/run
+
+POST /validation/approve
+
+---
+
+# 23. Event Messages
+
+ValidationStarted
+
+ValidationCompleted
+
+ValidationFailed
+
+ValidationPassed
+
+PublicationApproved
+
+---
+
+# 24. Monitoring
+
+Validation Success Rate
+
+Quality Score
+
+Failure Rate
+
+Approval Time
+
+Critical Errors
+
+---
+
+# 25. Deliverables
+
+Enterprise Validation Report
+
+Quality Dashboard
+
+Approved Vehicle Intelligence Dataset
+
+Ready for Publication
+
+---
+
+# 03_10_Vehicle_Publication.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 03
+
+Module 03.10
+
+Vehicle Publication
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Vehicle Publication distributes validated Vehicle Intelligence outputs to all
+downstream intelligence services.
+
+It becomes the official publishing gateway for enterprise vehicle knowledge.
+
+---
+
+# 2. Objectives
+
+The engine shall
+
+✓ Publish datasets
+
+✓ Publish APIs
+
+✓ Publish graph updates
+
+✓ Publish features
+
+✓ Publish model metadata
+
+✓ Notify downstream services
+
+✓ Maintain publication history
+
+---
+
+# 3. Inputs
+
+Validated Vehicle Master
+
+Validated Sales
+
+Validated Targets
+
+Validated Forecasts
+
+Validated Lifecycle
+
+Validated UIO
+
+Validated Features
+
+Knowledge Graph
+
+---
+
+# 4. Outputs
+
+Enterprise Data Products
+
+Published APIs
+
+Knowledge Graph Updates
+
+Feature Store Updates
+
+Version Registry
+
+Notification Events
+
+---
+
+# 5. Publication Workflow
+
+Receive Approved Dataset
+
+↓
+
+Assign Version
+
+↓
+
+Generate Metadata
+
+↓
+
+Publish APIs
+
+↓
+
+Update Feature Store
+
+↓
+
+Update Knowledge Graph
+
+↓
+
+Notify Subscribers
+
+↓
+
+Archive Snapshot
+
+---
+
+# 6. Published Data Products
+
+Vehicle Master
+
+Historical Sales
+
+Sales Targets
+
+Sales Forecasts
+
+Vehicle Lifecycle
+
+UIO
+
+Vehicle Features
+
+Knowledge Graph
+
+Forecast Metadata
+
+Validation Reports
+
+---
+
+# 7. Publication Metadata
+
+Dataset Name
+
+Version
+
+Publish Date
+
+Owner
+
+Source
+
+Schema Version
+
+Validation Score
+
+Approval Status
+
+---
+
+# 8. API Gateway
+
+Expose
+
+/vehicle
+
+/sales
+
+/forecast
+
+/target
+
+/uio
+
+/lifecycle
+
+/features
+
+/knowledge-graph
+
+---
+
+# 9. Version Control
+
+Every publication stores
+
+Dataset Version
+
+Schema Version
+
+Feature Version
+
+Model Version
+
+Publication Version
+
+---
+
+# 10. Event Bus
+
+Publish
+
+VehicleUpdated
+
+ForecastPublished
+
+UIOUpdated
+
+LifecycleUpdated
+
+FeatureUpdated
+
+KnowledgeGraphUpdated
+
+---
+
+# 11. Subscribers
+
+Production Intelligence
+
+Demand Intelligence
+
+Inventory Intelligence
+
+Procurement Intelligence
+
+Decision Support
+
+Dashboard Services
+
+AI Agents
+
+---
+
+# 12. Knowledge Graph Sync
+
+Update
+
+Nodes
+
+Edges
+
+Embeddings
+
+Reasoning Cache
+
+Semantic Index
+
+---
+
+# 13. Feature Store Sync
+
+Update
+
+Offline Features
+
+Online Features
+
+Feature Metadata
+
+Feature Versions
+
+---
+
+# 14. Publication Policies
+
+Only Approved Data
+
+Immutable Versions
+
+Full Audit Trail
+
+Rollback Support
+
+Complete Metadata
+
+---
+
+# 15. AI Agents
+
+Chief Publication Agent
+
+↓
+
+Version Agent
+
+↓
+
+Metadata Agent
+
+↓
+
+API Agent
+
+↓
+
+Notification Agent
+
+↓
+
+Archive Agent
+
+---
+
+# 16. Database Tables
+
+publication_master
+
+publication_versions
+
+publication_history
+
+publication_metadata
+
+subscriber_registry
+
+event_history
+
+---
+
+# 17. APIs
+
+GET /publication
+
+GET /publication/version
+
+GET /publication/history
+
+POST /publication/publish
+
+POST /publication/rollback
+
+---
+
+# 18. Event Messages
+
+PublicationStarted
+
+PublicationCompleted
+
+PublicationRolledBack
+
+SubscribersNotified
+
+DatasetArchived
+
+---
+
+# 19. Monitoring
+
+Publication Latency
+
+API Availability
+
+Subscriber Success
+
+Dataset Freshness
+
+Version Count
+
+---
+
+# 20. Deliverables
+
+Enterprise Vehicle Data Products
+
+Enterprise APIs
+
+Feature Store Updates
+
+Knowledge Graph Updates
+
+Production Intelligence Ready
+
+---
+

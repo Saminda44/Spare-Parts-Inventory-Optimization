@@ -1,0 +1,5071 @@
+# 01_System_Architecture.md
+
+# Enterprise Spare Parts Intelligence Platform
+
+## Version
+
+1.0
+
+---
+
+# 1. Purpose
+
+This document defines the complete architecture of the Enterprise Spare Parts Intelligence Platform.
+
+Unlike the previous documents which define standards and business context, this document defines how every subsystem communicates.
+
+It specifies
+
+• System architecture
+
+• Data flow
+
+• AI flow
+
+• Business flow
+
+• Knowledge flow
+
+• Feature flow
+
+• Service interactions
+
+• Database ownership
+
+• Event flow
+
+This architecture is the blueprint for the entire implementation.
+
+---
+
+# 2. Architectural Vision
+
+The platform is not a forecasting system.
+
+It is an Enterprise Decision Intelligence Platform.
+
+Its purpose is to convert raw operational data into optimized procurement decisions.
+
+Raw Business Data
+
+↓
+
+Business Intelligence
+
+↓
+
+Artificial Intelligence
+
+↓
+
+Optimization
+
+↓
+
+Decision Support
+
+↓
+
+Business Decision
+
+The architecture must support
+
+• Scalability
+
+• Modularity
+
+• Explainability
+
+• Continuous Learning
+
+• Independent Deployment
+
+---
+
+# 3. Enterprise Architecture
+
+                User Interface
+                      │
+              Decision Dashboard
+                      │
+               REST API Gateway
+                      │
+     ┌──────────────────────────────────────┐
+     │      Decision Support Service         │
+     └──────────────────────────────────────┘
+                      │
+     ┌──────────────────────────────────────┐
+     │ Procurement Intelligence Service      │
+     └──────────────────────────────────────┘
+                      │
+     ┌──────────────────────────────────────┐
+     │ Inventory Intelligence Service        │
+     └──────────────────────────────────────┘
+                      │
+     ┌──────────────────────────────────────┐
+     │ Demand Intelligence Service           │
+     └──────────────────────────────────────┘
+                      │
+     ┌──────────────────────────────────────┐
+     │ Dealer Intelligence Service           │
+     └──────────────────────────────────────┘
+                      │
+     ┌──────────────────────────────────────┐
+     │ Product Intelligence Service          │
+     └──────────────────────────────────────┘
+                      │
+     ┌──────────────────────────────────────┐
+     │ UIO Intelligence Service              │
+     └──────────────────────────────────────┘
+                      │
+     ┌──────────────────────────────────────┐
+     │ Vehicle Intelligence Service          │
+     └──────────────────────────────────────┘
+                      │
+     ┌──────────────────────────────────────┐
+     │ Catalogue Intelligence Service        │
+     └──────────────────────────────────────┘
+                      │
+     ┌──────────────────────────────────────┐
+     │ Data Foundation                       │
+     └──────────────────────────────────────┘
+                      │
+                 Source Systems
+
+---
+
+# 4. Architectural Principles
+
+The platform follows
+
+One Responsibility
+
+↓
+
+One Intelligence Layer
+
+↓
+
+One Output
+
+↓
+
+Next Layer
+
+Every layer owns one business problem.
+
+No module should perform another module's responsibilities.
+
+---
+
+# 5. Core Intelligence Layers
+
+The complete platform contains eleven intelligence layers.
+
+01
+
+Catalogue Intelligence
+
+↓
+
+02
+
+Vehicle Intelligence
+
+↓
+
+03
+
+UIO Intelligence
+
+↓
+
+04
+
+Product Intelligence
+
+↓
+
+05
+
+Dealer Intelligence
+
+↓
+
+06
+
+Demand Intelligence
+
+↓
+
+07
+
+Forecast Intelligence
+
+↓
+
+08
+
+Inventory Intelligence
+
+↓
+
+09
+
+Procurement Intelligence
+
+↓
+
+10
+
+Decision Support
+
+↓
+
+11
+
+Continuous Learning
+
+Each layer is independently replaceable.
+
+---
+
+# 6. Why This Order?
+
+Catalogue Intelligence
+
+creates
+
+↓
+
+SKU Master
+
+Vehicle Intelligence
+
+creates
+
+↓
+
+Vehicle Forecast
+
+UIO Intelligence
+
+creates
+
+↓
+
+Compatible Vehicle Population
+
+Product Intelligence
+
+creates
+
+↓
+
+SKU Behaviour
+
+Dealer Intelligence
+
+creates
+
+↓
+
+Dealer Behaviour
+
+Demand Intelligence
+
+creates
+
+↓
+
+Future Demand
+
+Forecast Intelligence
+
+creates
+
+↓
+
+Best Forecast
+
+Inventory Intelligence
+
+creates
+
+↓
+
+Safety Stock
+
+↓
+
+ROL
+
+↓
+
+ROQ
+
+Procurement Intelligence
+
+creates
+
+↓
+
+Purchase Recommendation
+
+Decision Support
+
+explains
+
+↓
+
+Why
+
+Everything flows naturally.
+
+---
+
+# 7. System Boundaries
+
+Inside Platform
+
+• AI Models
+
+• Optimization
+
+• Forecasting
+
+• Inventory
+
+• Procurement
+
+• Knowledge Graph
+
+Outside Platform
+
+• SAP
+
+• PDF Catalogues
+
+• Excel Files
+
+• Supplier Systems
+
+
+The platform never modifies external systems.
+
+Only reads and publishes outputs.
+
+---
+
+# 8. Data Flow
+
+External Sources
+
+↓
+
+Data Foundation
+
+↓
+
+Catalogue Intelligence
+
+↓
+
+Knowledge Layer
+
+↓
+
+Vehicle Intelligence
+
+↓
+
+UIO Intelligence
+
+↓
+
+Product Intelligence
+
+↓
+
+Dealer Intelligence
+
+↓
+
+Demand Intelligence
+
+↓
+
+Forecast Intelligence
+
+↓
+
+Inventory Intelligence
+
+↓
+
+Procurement Intelligence
+
+↓
+
+Decision Support
+
+↓
+
+Dashboard
+
+Every output is stored before moving to the next layer.
+
+No temporary hidden datasets.
+
+---
+
+# 9. AI Flow
+
+Raw Data
+
+↓
+
+Feature Engineering
+
+↓
+
+Training
+
+↓
+
+Validation
+
+↓
+
+Model Registry
+
+↓
+
+Prediction
+
+↓
+
+Confidence
+
+↓
+
+Explainability
+
+↓
+
+Business Rules
+
+↓
+
+Decision
+
+Every prediction is explainable and versioned.
+
+---
+
+# 10. Service Ownership
+
+Each service owns
+
+Business Logic
+
+Database Tables
+
+Models
+
+Configurations
+
+Validation Rules
+
+Tests
+
+Logging
+
+Documentation
+
+No service accesses another service's private tables directly.
+
+Communication occurs through APIs, repositories, or shared read models where appropriate.
+
+---
+
+# 11. Event-Driven Workflow
+
+Major business events include:
+
+Catalogue Imported
+
+SKU Master Updated
+
+Vehicle Forecast Completed
+
+UIO Forecast Completed
+
+Dealer Features Updated
+
+Demand Forecast Completed
+
+Inventory Calculated
+
+Procurement Optimized
+
+Recommendation Approved
+
+Recommendation Executed
+
+Forecast Validated
+
+These events trigger downstream processing without tight coupling.
+
+---
+
+# 12. System Outputs
+
+The platform produces:
+
+• Clean SKU Master
+
+• Vehicle Forecast
+
+• UIO Forecast
+
+• Product Profiles
+
+• Dealer Profiles
+
+• Demand Forecast
+
+• Forecast Confidence
+
+• Dynamic Safety Stock
+
+• Dynamic Reorder Level
+
+• Dynamic Reorder Quantity
+
+• Procurement Plan
+
+• Executive Dashboard
+
+• Model Performance Reports
+
+• Research Evaluation Results
+
+
+---
+
+# 13. Enterprise Data Ownership
+
+One of the biggest problems in enterprise AI systems is unclear ownership.
+
+Every dataset in the platform must have exactly one owner.
+
+Other services may READ the data.
+
+Only the owner service may WRITE the data.
+
+Example
+
+Catalogue Service
+    owns
+        SKU Master
+
+Vehicle Service
+    owns
+        Vehicle Forecast
+
+UIO Service
+    owns
+        UIO Forecast
+
+Dealer Service
+    owns
+        Dealer Features
+
+Demand Service
+    owns
+        Demand Forecast
+
+Inventory Service
+    owns
+        Safety Stock
+
+Procurement Service
+    owns
+        Procurement Plan
+
+Decision Service
+    owns
+        Final Recommendation
+
+This prevents conflicting updates.
+
+---
+
+# 14. Enterprise Database Architecture
+
+Instead of one huge database,
+
+the platform is logically divided.
+
+postgres/
+
+├── catalogue_schema
+├── vehicle_schema
+├── uio_schema
+├── product_schema
+├── dealer_schema
+├── demand_schema
+├── forecast_schema
+├── inventory_schema
+├── procurement_schema
+├── decision_schema
+├── knowledge_schema
+├── feature_store
+├── monitoring_schema
+└── audit_schema
+
+Advantages
+
+• Better security
+
+• Easier maintenance
+
+• Easier backup
+
+• Future microservices
+
+---
+
+# 15. Knowledge Layer
+
+The Knowledge Layer is NOT another database.
+
+It is the Enterprise Business Memory.
+
+Instead of recalculating relationships,
+
+all intelligence services query here.
+
+Example
+
+Part Number
+
+↓
+
+Compatible Models
+
+↓
+
+Vehicle Family
+
+↓
+
+Vehicle Category
+
+↓
+
+Engine Capacity
+
+↓
+
+Colour Variant
+
+↓
+
+Supplier
+
+↓
+
+Warehouse
+
+↓
+
+ABC
+
+↓
+
+XYZ
+
+↓
+
+FSN
+
+↓
+
+Criticality
+
+↓
+
+Shared Components
+
+Everything becomes reusable.
+
+---
+
+# 16. Knowledge Graph
+
+The platform internally stores relationships.
+
+Vehicle
+
+↓
+
+Generation
+
+↓
+
+Variant
+
+↓
+
+Compatible SKU
+
+↓
+
+Colour
+
+↓
+
+Supplier
+
+↓
+
+Warehouse
+
+↓
+
+Inventory
+
+↓
+
+Forecast
+
+↓
+
+Procurement
+
+This creates a graph instead of isolated tables.
+
+Example
+
+FZ V3
+
+↓
+
+Brake Pad
+
+↓
+
+Shared With
+
+↓
+
+MT-15
+
+↓
+
+Shared With
+
+↓
+
+FZS V3
+
+Now demand can propagate naturally.
+
+---
+
+# 17. Enterprise Feature Store
+
+Every AI model consumes features.
+
+Instead of rebuilding features
+
+each time,
+
+they are stored once.
+
+Feature Store
+
+Vehicle Features
+
+UIO Features
+
+Dealer Features
+
+Demand Features
+
+Inventory Features
+
+Supplier Features
+
+Financial Features
+
+Catalogue Features
+
+Forecast Features
+
+Risk Features
+
+Product Features
+
+Each feature has
+
+Feature Name
+
+Version
+
+Owner
+
+Formula
+
+Update Frequency
+
+Dependencies
+
+Validation Rules
+
+---
+
+# 18. Feature Lifecycle
+
+Business Data
+
+↓
+
+Feature Engineering
+
+↓
+
+Validation
+
+↓
+
+Feature Registry
+
+↓
+
+Feature Store
+
+↓
+
+Training
+
+↓
+
+Prediction
+
+↓
+
+Monitoring
+
+↓
+
+Archive
+
+Every feature is reproducible.
+
+---
+
+# 19. Feature Versioning
+
+Suppose
+
+Compatible UIO
+
+calculation changes.
+
+Instead of replacing
+
+compatible_uio
+
+we create
+
+compatible_uio_v2
+
+Old models continue using
+
+Version 1
+
+New models use
+
+Version 2
+
+Nothing breaks.
+
+---
+
+# 20. Shared Feature Policy
+
+Services may
+
+READ
+
+shared features.
+
+Services may NOT
+
+modify
+
+another service's features.
+
+Only the owner
+
+can update them.
+
+---
+
+# 21. Data Contracts
+
+Every service communicates using contracts.
+
+Vehicle Service
+
+exports
+
+VehicleForecast
+
+UIO Service
+
+imports
+
+VehicleForecast
+
+If structure changes,
+
+Version
+
+must change.
+
+Example
+
+VehicleForecastV1
+
+VehicleForecastV2
+
+Breaking changes
+
+never happen silently.
+
+---
+
+# 22. Data Contract Example
+
+VehicleForecast
+
+{
+
+model_id
+
+forecast_month
+
+forecast_quantity
+
+confidence
+
+scenario
+
+version
+
+created_at
+
+}
+
+No additional fields
+
+may be added
+
+without version increment.
+
+---
+
+# 23. Event Bus
+
+Instead of calling services directly,
+
+the platform publishes events.
+
+Example
+
+CatalogueImported
+
+↓
+
+SKUUpdated
+
+↓
+
+VehicleForecastCompleted
+
+↓
+
+UIOForecastCompleted
+
+↓
+
+DealerFeaturesUpdated
+
+↓
+
+DemandForecastCompleted
+
+↓
+
+SafetyStockCalculated
+
+↓
+
+ProcurementCompleted
+
+↓
+
+DashboardUpdated
+
+This reduces dependencies.
+
+---
+
+# 24. Event Payload
+
+Example
+
+DemandForecastCompleted
+
+{
+
+forecast_run_id
+
+month
+
+sku_count
+
+confidence
+
+version
+
+timestamp
+
+}
+
+Every event includes
+
+Unique ID
+
+Timestamp
+
+Version
+
+Producer
+
+Correlation ID
+
+---
+
+# 25. Orchestration Engine
+
+Instead of
+
+Service A
+
+calling
+
+Service B
+
+calling
+
+Service C
+
+there is one
+
+Workflow Engine.
+
+Workflow
+
+Monthly Procurement
+
+↓
+
+Vehicle Pipeline
+
+↓
+
+UIO Pipeline
+
+↓
+
+Dealer Pipeline
+
+↓
+
+Demand Pipeline
+
+↓
+
+Inventory Pipeline
+
+↓
+
+Optimization Pipeline
+
+↓
+
+Decision Pipeline
+
+This simplifies monitoring.
+
+---
+
+# 26. Scheduling Engine
+
+The platform supports multiple schedules.
+
+Daily
+
+Inventory Refresh
+
+Weekly
+
+Dealer Analysis
+
+Monthly
+
+Forecast
+
+Monthly
+
+Procurement
+
+Quarterly
+
+SKU Classification
+
+Yearly
+
+Model Retirement Analysis
+
+Every workflow is configurable.
+
+---
+
+# 27. Audit Trail
+
+Every important action is recorded.
+
+Example
+
+Demand Forecast
+
+↓
+
+Inventory Calculation
+
+↓
+
+ROL Generated
+
+↓
+
+ROQ Generated
+
+↓
+
+Purchase Approved
+
+↓
+
+Purchase Executed
+
+For every step store
+
+User
+
+Timestamp
+
+Old Value
+
+New Value
+
+Reason
+
+Model Version
+
+This ensures complete traceability.
+
+---
+
+# 28. Security Zones
+
+Public Layer
+
+↓
+
+Dashboard
+
+↓
+
+API Gateway
+
+↓
+
+Application Services
+
+↓
+
+Database
+
+↓
+
+Backup
+
+Each zone has independent access policies.
+
+No direct database access from dashboards.
+
+---
+
+# 29. Monitoring Architecture
+
+Every service publishes
+
+Health
+
+CPU
+
+Memory
+
+Execution Time
+
+Prediction Count
+
+Failure Count
+
+Queue Length
+
+Latest Model
+
+Latest Version
+
+Latest Data Timestamp
+
+Monitoring is centralized.
+
+---
+
+# 30. End-to-End Execution Sequence
+
+1. Load new business data.
+2. Validate all datasets.
+3. Update master data.
+4. Run Catalogue Intelligence (if new catalogues exist).
+5. Refresh Knowledge Layer.
+6. Execute Vehicle Intelligence.
+7. Execute UIO Intelligence.
+8. Update Product Intelligence.
+9. Update Dealer Intelligence.
+10. Execute Demand Intelligence.
+11. Execute Forecast Intelligence.
+12. Execute Inventory Intelligence.
+13. Run Procurement Optimization.
+14. Generate Decision Support outputs.
+15. Publish dashboards.
+16. Store audit records.
+17. Monitor results.
+18. Compare forecasts with actuals.
+19. Trigger continuous learning if performance thresholds are exceeded.
+
+This becomes the standard monthly operational workflow.
+
+---
+
+# 31. Enterprise Intelligence Pipeline
+
+The platform is not a collection of independent AI models.
+
+Instead, it is a chain of intelligence pipelines.
+
+Each pipeline gradually increases business understanding.
+
+Raw Data
+
+↓
+
+Business Knowledge
+
+↓
+
+Market Knowledge
+
+↓
+
+Demand Knowledge
+
+↓
+
+Inventory Knowledge
+
+↓
+
+Procurement Knowledge
+
+↓
+
+Business Decision
+
+Each layer consumes the knowledge produced by the previous layer.
+
+---
+
+# 32. Intelligence Evolution
+
+Level 0
+
+Raw Business Data
+
+Examples
+
+Motorcycle Sales
+
+Orders
+
+Inventory
+
+Catalogues
+
+------------------------------------------------
+
+Level 1
+
+Business Knowledge
+
+Examples
+
+Vehicle Master
+
+SKU Master
+
+Compatible Models
+
+Colour Variants
+
+Dealer Master
+
+------------------------------------------------
+
+Level 2
+
+Market Knowledge
+
+Examples
+
+Vehicle Forecast
+
+UIO Forecast
+
+Dealer Behaviour
+
+Vehicle Life Cycle
+
+------------------------------------------------
+
+Level 3
+
+Product Knowledge
+
+Examples
+
+Replacement Rate
+
+Consumption Rate
+
+ABC
+
+XYZ
+
+FSN
+
+Criticality
+
+------------------------------------------------
+
+Level 4
+
+Demand Knowledge
+
+Examples
+
+Sales Forecast
+
+Order Forecast
+
+UIO Demand
+
+Demand Fusion
+
+Lost Sales
+
+Forecast Confidence
+
+------------------------------------------------
+
+Level 5
+
+Inventory Knowledge
+
+Examples
+
+Safety Stock
+
+ROL
+
+ROQ
+
+Inventory Risk
+
+Stockout Risk
+
+------------------------------------------------
+
+Level 6
+
+Procurement Knowledge
+
+Examples
+
+Purchase Quantity
+
+Supplier Allocation
+
+Container Planning
+
+Budget Allocation
+
+------------------------------------------------
+
+Level 7
+
+Decision Knowledge
+
+Examples
+
+Recommended Purchase
+
+Alternative Plans
+
+Business Explanation
+
+Confidence
+
+Every layer increases business intelligence.
+
+---
+
+# 33. Pipeline Dependency Graph
+
+Catalogue Intelligence
+
+↓
+
+Knowledge Layer
+
+↓
+
+Vehicle Intelligence
+
+↓
+
+UIO Intelligence
+
+↓
+
+Product Intelligence
+
+↓
+
+Dealer Intelligence
+
+↓
+
+Demand Intelligence
+
+↓
+
+Forecast Intelligence
+
+↓
+
+Inventory Intelligence
+
+↓
+
+Optimization
+
+↓
+
+Procurement Intelligence
+
+↓
+
+Decision Support
+
+↓
+
+Continuous Learning
+
+No pipeline skips another.
+
+---
+
+# 34. Why Layered Intelligence?
+
+Without layers
+
+Forecast
+
+↓
+
+Inventory
+
+↓
+
+Purchase
+
+Problems
+
+• No understanding
+
+• No explainability
+
+• Poor accuracy
+
+• Difficult debugging
+
+Layered Intelligence
+
+↓
+
+Understand Vehicles
+
+↓
+
+Understand Products
+
+↓
+
+Understand Dealers
+
+↓
+
+Understand Demand
+
+↓
+
+Understand Inventory
+
+↓
+
+Optimize Procurement
+
+↓
+
+Explain Recommendation
+
+This architecture mirrors how procurement experts think.
+
+---
+
+# 35. Knowledge Transformation
+
+Every pipeline transforms information.
+
+Example
+
+Vehicle Sales
+
+↓
+
+Vehicle Forecast
+
+↓
+
+Compatible UIO
+
+↓
+
+Expected Part Consumption
+
+↓
+
+Forecast Demand
+
+↓
+
+Safety Stock
+
+↓
+
+ROL
+
+↓
+
+ROQ
+
+↓
+
+Purchase Order
+
+Notice
+
+No layer guesses.
+
+Every layer derives information.
+
+---
+
+# 36. Pipeline Inputs and Outputs
+
+Catalogue Intelligence
+
+Input
+
+PDF Catalogues
+
+Output
+
+SKU Master
+
+Compatible Models
+
+Colour Variants
+
+------------------------------------------------
+
+Vehicle Intelligence
+
+Input
+
+Vehicle Sales
+
+Target
+
+Output
+
+Vehicle Forecast
+
+Scenario Forecast
+
+Confidence
+
+------------------------------------------------
+
+UIO Intelligence
+
+Input
+
+Vehicle Forecast
+
+Historical UIO
+
+Output
+
+Future Compatible UIO
+
+------------------------------------------------
+
+Product Intelligence
+
+Input
+
+SKU Master
+
+Compatible Models
+
+Historical Sales
+
+Output
+
+Product Profiles
+
+Replacement Rate
+
+Consumption Behaviour
+
+------------------------------------------------
+
+Dealer Intelligence
+
+Input
+
+Dealer Orders
+
+Sales
+
+Output
+
+Dealer Behaviour Profiles
+
+------------------------------------------------
+
+Demand Intelligence
+
+Input
+
+Sales
+
+Orders
+
+UIO
+
+Dealer Features
+
+Output
+
+Demand Forecast
+
+------------------------------------------------
+
+Forecast Intelligence
+
+Input
+
+Demand Signals
+
+Output
+
+Champion Forecast
+
+Forecast Confidence
+
+------------------------------------------------
+
+Inventory Intelligence
+
+Input
+
+Champion Forecast
+
+Inventory
+
+Lead Time
+
+Output
+
+Safety Stock
+
+ROL
+
+ROQ
+
+------------------------------------------------
+
+Procurement Intelligence
+
+Input
+
+ROQ
+
+Budget
+
+MOQ
+
+Supplier
+
+Container
+
+Output
+
+Purchase Plan
+
+------------------------------------------------
+
+Decision Support
+
+Input
+
+Everything
+
+Output
+
+Business Recommendation
+
+---
+
+# 37. Intelligence Contracts
+
+Every pipeline exports only
+
+Approved Outputs.
+
+Vehicle Intelligence
+
+cannot expose
+
+intermediate calculations.
+
+Only
+
+Vehicle Forecast
+
+Confidence
+
+Scenario
+
+Version
+
+Likewise
+
+Demand Intelligence
+
+exports
+
+Demand Forecast
+
+Confidence
+
+Feature Importance
+
+Nothing else.
+
+This prevents accidental coupling.
+
+---
+
+# 38. Pipeline Versioning
+
+Each pipeline is versioned independently.
+
+Vehicle Pipeline
+
+v1.0
+
+Demand Pipeline
+
+v3.2
+
+Inventory Pipeline
+
+v2.1
+
+If Demand changes,
+
+Inventory does not require modification.
+
+Only
+
+Input Contract
+
+must remain compatible.
+
+---
+
+# 39. Pipeline Registry
+
+Maintain a registry of every pipeline.
+
+Example
+
+Pipeline
+
+Vehicle Intelligence
+
+Owner
+
+Forecast Team
+
+Version
+
+2.0
+
+Input
+
+Vehicle Sales
+
+Output
+
+Vehicle Forecast
+
+Status
+
+Production
+
+Last Updated
+
+2027-01-15
+
+This registry becomes the central reference for operations.
+
+---
+
+# 40. Business Scenario Engine
+
+The platform supports multiple planning scenarios.
+
+Scenario A
+
+Historical Forecast
+
+Scenario B
+
+Target-Based Forecast
+
+Scenario C
+
+Hybrid Forecast
+
+Scenario D
+
+Demand Surge
+
+Scenario E
+
+Supplier Delay
+
+Scenario F
+
+Budget Reduction
+
+Every intelligence pipeline must support scenario execution.
+
+Outputs are tagged with
+
+Scenario ID
+
+Planning Cycle
+
+Pipeline Version
+
+Timestamp
+
+This allows side-by-side comparison without overwriting results.
+
+---
+
+# 41. Planning Context (Global Input)
+
+Every monthly planning cycle begins with a Planning Context.
+
+Planning Context
+
+├── Planning Cycle ID
+├── Planning Date
+├── Forecast Horizon
+├── Procurement Horizon
+├── Scenario Type
+├── Budget
+├── Lead Time Policy
+├── Service Level Policy
+├── Active Catalogue Version
+├── Forecast Model Versions
+├── Exchange Rate
+├── Container Capacity
+├── Supplier Constraints
+└── Optimization Strategy
+
+Every pipeline receives the same Planning Context.
+
+This guarantees consistency across the platform.
+
+---
+
+# 42. Enterprise Execution Flow
+
+Start Planning Cycle
+
+↓
+
+Load Planning Context
+
+↓
+
+Validate Source Data
+
+↓
+
+Update Master Data
+
+↓
+
+Refresh Knowledge Layer
+
+↓
+
+Execute Intelligence Pipelines
+
+↓
+
+Validate Outputs
+
+↓
+
+Run Optimization
+
+↓
+
+Generate Procurement Plan
+
+↓
+
+Explain Recommendations
+
+↓
+
+Publish Dashboard
+
+↓
+
+Archive Results
+
+↓
+
+Start Monitoring
+
+↓
+
+Wait for Next Planning Cycle
+
+Every planning cycle is reproducible from its Planning Context.
+
+---
+
+# 01A_Data_Model_and_Database_Design.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+This document defines the complete enterprise data model for the platform.
+
+It specifies
+
+• Database Architecture
+
+• Database Standards
+
+• Entity Relationships
+
+• Table Ownership
+
+• Keys
+
+• Constraints
+
+• Indexes
+
+• Partitioning
+
+• Versioning
+
+• Audit Tables
+
+• Feature Store
+
+• Knowledge Graph
+
+• Planning Context
+
+Every intelligence service must use this data model.
+
+No service creates its own database structure independently.
+
+---
+
+# 2. Database Philosophy
+
+Database = Enterprise Memory
+
+AI Models = Intelligence
+
+Knowledge Layer = Relationships
+
+Feature Store = Learning Memory
+
+Decision Support = Business Brain
+
+The database stores facts.
+
+The AI creates intelligence from those facts.
+
+---
+
+# 3. Database Architecture
+
+                     PostgreSQL
+
+------------------------------------------------
+
+catalogue_schema
+
+vehicle_schema
+
+uio_schema
+
+product_schema
+
+dealer_schema
+
+demand_schema
+
+forecast_schema
+
+inventory_schema
+
+procurement_schema
+
+decision_schema
+
+knowledge_schema
+
+feature_schema
+
+monitoring_schema
+
+audit_schema
+
+------------------------------------------------
+
+Every schema has one owner.
+
+---
+
+# 4. Naming Convention
+
+Table
+
+snake_case
+
+Example
+
+vehicle_sales
+
+Primary Key
+
+id
+
+Foreign Key
+
+vehicle_id
+
+Datetime
+
+created_at
+
+updated_at
+
+deleted_at
+
+Boolean
+
+is_active
+
+Version
+
+version
+
+UUID
+
+uuid
+
+---
+
+# 5. Master Data Tables
+
+Vehicle
+
+Dealer
+
+Supplier
+
+Warehouse
+
+SKU
+
+Compatible Model
+
+Compatible Color
+
+Province
+
+Sales Region
+
+ABC Class
+
+XYZ Class
+
+FSN Class
+
+Criticality
+
+Lead Time
+
+Currency
+
+Container
+
+Planning Scenario
+
+These tables are slowly changing dimensions (SCD).
+
+---
+
+# 6. Transaction Tables
+
+motorcycle_sales
+
+sparepart_sales
+
+sparepart_orders
+
+purchase_orders
+
+goods_receipts
+
+inventory_transactions
+
+forecast_results
+
+procurement_results
+
+simulation_results
+
+recommendation_history
+
+Transactions are immutable.
+
+Never overwrite.
+
+Only append.
+
+---
+
+# 7. Feature Store Tables
+
+feature_definition
+
+feature_version
+
+feature_values
+
+feature_metadata
+
+feature_dependencies
+
+feature_validation
+
+Every feature is versioned.
+
+---
+
+# 8. Knowledge Layer Tables
+
+vehicle_family
+
+vehicle_generation
+
+vehicle_variant
+
+compatible_vehicle
+
+compatible_part
+
+compatible_color
+
+shared_component
+
+vehicle_lifecycle
+
+supplier_relationship
+
+dealer_relationship
+
+The Knowledge Layer stores relationships.
+
+Not calculations.
+
+---
+
+# 9. Planning Context
+
+planning_cycle
+
+planning_scenario
+
+planning_configuration
+
+planning_constraints
+
+planning_versions
+
+Every planning run references one Planning Context.
+
+This guarantees reproducibility.
+
+---
+
+# 10. Model Registry
+
+ml_model
+
+model_version
+
+training_dataset
+
+training_metrics
+
+validation_metrics
+
+deployment_history
+
+champion_models
+
+challenger_models
+
+Every model is traceable.
+
+---
+
+# 11. Audit Tables
+
+audit_log
+
+data_change
+
+forecast_change
+
+inventory_change
+
+recommendation_change
+
+user_action
+
+Every important change is recorded.
+
+---
+
+# 12. Monitoring Tables
+
+pipeline_execution
+
+pipeline_error
+
+pipeline_performance
+
+service_health
+
+prediction_latency
+
+forecast_accuracy
+
+These tables support operational monitoring.
+
+---
+
+# 13. Entity Relationship Overview
+
+Vehicle
+
+↓
+
+Vehicle Variant
+
+↓
+
+Compatible Models
+
+↓
+
+Compatible SKU
+
+↓
+
+SKU
+
+↓
+
+Inventory
+
+↓
+
+Demand
+
+↓
+
+Forecast
+
+↓
+
+Safety Stock
+
+↓
+
+ROL
+
+↓
+
+ROQ
+
+↓
+
+Procurement Plan
+
+↓
+
+Purchase Order
+
+Every downstream entity references upstream master data.
+
+---
+
+# 14. Data Versioning
+
+Every business object supports versioning.
+
+SKU Master
+
+Vehicle Master
+
+Forecast
+
+UIO
+
+Safety Stock
+
+ROL
+
+ROQ
+
+Procurement Plan
+
+Nothing is overwritten.
+
+Historical versions remain available.
+
+---
+
+# 15. Partitioning Strategy
+
+Large transaction tables are partitioned by
+
+Year
+
+Month
+
+Planning Cycle
+
+This improves query performance.
+
+---
+
+# 16. Indexing Strategy
+
+Indexes should exist on
+
+Part Number
+
+SKU
+
+Vehicle Model
+
+Dealer
+
+Posting Date
+
+Forecast Month
+
+Planning Cycle
+
+Purchase Order
+
+Supplier
+
+Avoid unnecessary indexes.
+
+Review query plans regularly.
+
+---
+
+# 17. Soft Delete Policy
+
+Master tables use
+
+deleted_at
+
+instead of physical deletion.
+
+Transaction tables are never deleted.
+
+---
+
+# 18. Summary
+
+The Enterprise Data Model defines a single source of truth for all intelligence services.
+
+Every future module references this document when creating repositories, APIs, validation rules, and business logic.
+
+# 01B_Knowledge_Graph_Design.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Knowledge Graph Architecture
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Knowledge Graph is the Enterprise Business Memory.
+
+Traditional ERP systems store rows and columns.
+
+This platform stores relationships.
+
+Instead of asking
+
+"What is SKU X?"
+
+The system asks
+
+"How is SKU X connected to the business?"
+
+This enables reasoning instead of simple querying.
+
+---
+
+# 2. Why a Knowledge Graph?
+
+Without Knowledge Graph
+
+SKU
+
+↓
+
+Sales
+
+↓
+
+Forecast
+
+Problems
+
+• Duplicate calculations
+
+• Poor explainability
+
+• Difficult compatibility search
+
+• Weak AI features
+
+• Complex SQL joins
+
+------------------------------------------------
+
+With Knowledge Graph
+
+Vehicle
+
+↓
+
+Generation
+
+↓
+
+Variant
+
+↓
+
+Compatible SKU
+
+↓
+
+Shared Parts
+
+↓
+
+Color Variant
+
+↓
+
+Dealer Demand
+
+↓
+
+Inventory
+
+↓
+
+Forecast
+
+↓
+
+Procurement
+
+Everything becomes connected.
+
+---
+
+# 3. Enterprise Knowledge Layers
+
+Layer 1
+
+Business Objects
+
+Vehicle
+
+Dealer
+
+Supplier
+
+Warehouse
+
+SKU
+
+Color
+
+Catalogues
+
+------------------------------------------------
+
+Layer 2
+
+Relationships
+
+Compatible With
+
+Shared By
+
+Ordered By
+
+Stored At
+
+Supplied By
+
+Belongs To
+
+Used On
+
+Replaced By
+
+------------------------------------------------
+
+Layer 3
+
+Knowledge
+
+Replacement Rate
+
+Consumption Rate
+
+Vehicle Lifecycle
+
+Demand Drivers
+
+Criticality
+
+Dealer Behaviour
+
+------------------------------------------------
+
+Layer 4
+
+Decision Intelligence
+
+Safety Stock
+
+ROL
+
+ROQ
+
+Procurement
+
+Simulation
+
+Recommendation
+
+---
+
+# 4. Core Entities
+
+Vehicle
+
+Vehicle Generation
+
+Vehicle Variant
+
+Engine
+
+Model
+
+Family
+
+SKU
+
+Supplier
+
+Dealer
+
+Warehouse
+
+Container
+
+Forecast
+
+Inventory
+
+Demand
+
+Recommendation
+
+Planning Cycle
+
+Scenario
+
+---
+
+# 5. Relationship Types
+
+Vehicle
+
+USES
+
+SKU
+
+SKU
+
+BELONGS_TO
+
+Category
+
+SKU
+
+SHARED_WITH
+
+SKU
+
+SKU
+
+HAS_COLOR
+
+Color
+
+Vehicle
+
+BELONGS_TO
+
+Family
+
+Dealer
+
+ORDERS
+
+SKU
+
+Supplier
+
+SUPPLIES
+
+SKU
+
+Warehouse
+
+STORES
+
+SKU
+
+SKU
+
+HAS_FORECAST
+
+Forecast
+
+Forecast
+
+GENERATES
+
+Safety Stock
+
+Safety Stock
+
+GENERATES
+
+ROL
+
+ROL
+
+GENERATES
+
+ROQ
+
+ROQ
+
+GENERATES
+
+Purchase Recommendation
+
+---
+
+# 6. Vehicle Knowledge Graph
+
+Vehicle Family
+
+↓
+
+Generation
+
+↓
+
+Variant
+
+↓
+
+Engine
+
+↓
+
+Compatible Parts
+
+↓
+
+Compatible Colors
+
+↓
+
+Expected Demand
+
+↓
+
+Installed Base
+
+↓
+
+Forecast
+
+Every vehicle becomes a connected object.
+
+---
+
+# 7. SKU Knowledge Graph
+
+SKU
+
+↓
+
+Category
+
+↓
+
+ABC
+
+↓
+
+XYZ
+
+↓
+
+FSN
+
+↓
+
+Criticality
+
+↓
+
+Compatible Vehicles
+
+↓
+
+Compatible UIO
+
+↓
+
+Replacement Rate
+
+↓
+
+Consumption Rate
+
+↓
+
+Forecast
+
+↓
+
+Inventory
+
+↓
+
+Procurement
+
+---
+
+# 8. Dealer Knowledge Graph
+
+Dealer
+
+↓
+
+Province
+
+↓
+
+Sales Region
+
+↓
+
+Customer Group
+
+↓
+
+Order Frequency
+
+↓
+
+Reaction Time
+
+↓
+
+Pre-buy Index
+
+↓
+
+Preferred Models
+
+↓
+
+Preferred Categories
+
+↓
+
+Demand Pattern
+
+---
+
+# 9. Supplier Knowledge Graph
+
+Supplier
+
+↓
+
+Lead Time
+
+↓
+
+Reliability
+
+↓
+
+MOQ
+
+↓
+
+Currency
+
+↓
+
+Container Rules
+
+↓
+
+Risk Score
+
+↓
+
+Forecast Dependency
+
+---
+
+# 10. Inventory Knowledge Graph
+
+Warehouse
+
+↓
+
+Inventory
+
+↓
+
+Pipeline Stock
+
+↓
+
+Safety Stock
+
+↓
+
+ROL
+
+↓
+
+ROQ
+
+↓
+
+Purchase Plan
+
+---
+
+# 11. Compatibility Graph
+
+Vehicle A
+
+↓
+
+Brake Pad
+
+↓
+
+Vehicle B
+
+↓
+
+Vehicle C
+
+↓
+
+Vehicle D
+
+Compatible UIO
+
+becomes
+
+UIO(A)+UIO(B)+UIO(C)+UIO(D)
+
+No recalculation required.
+
+---
+
+# 12. Shared Parts Graph
+
+Brake Pad
+
+↓
+
+FZ V2
+
+↓
+
+FZS V2
+
+↓
+
+MT15
+
+↓
+
+FZ V3
+
+↓
+
+FZS V3
+
+↓
+
+R15
+
+One graph.
+
+Multiple compatible vehicles.
+
+---
+
+# 13. Color Graph
+
+Color
+
+↓
+
+Vehicle
+
+↓
+
+Part
+
+↓
+
+Catalogue
+
+↓
+
+Part Number
+
+↓
+
+Inventory
+
+↓
+
+Sales
+
+Useful for color-specific demand forecasting.
+
+---
+
+# 14. Forecast Knowledge
+
+Vehicle Forecast
+
+↓
+
+UIO Forecast
+
+↓
+
+Demand Forecast
+
+↓
+
+Inventory Forecast
+
+↓
+
+Procurement Plan
+
+Forecast lineage is preserved.
+
+---
+
+# 15. Knowledge Update Rules
+
+Whenever
+
+Catalogue changes
+
+↓
+
+Update Graph
+
+Vehicle changes
+
+↓
+
+Update Graph
+
+Forecast changes
+
+↓
+
+Update Graph
+
+Inventory changes
+
+↓
+
+Update Graph
+
+Knowledge is always synchronized.
+
+---
+
+# 16. Knowledge APIs
+
+Examples
+
+GetCompatibleVehicles()
+
+GetCompatibleUIO()
+
+GetSharedParts()
+
+GetVehicleFamily()
+
+GetDealerProfile()
+
+GetSupplierRisk()
+
+GetDemandDrivers()
+
+No service performs manual joins.
+
+---
+
+# 17. Knowledge Validation
+
+Every relationship must satisfy rules.
+
+Vehicle exists
+
+SKU exists
+
+Compatible model valid
+
+Color valid
+
+Supplier valid
+
+No duplicate relationships
+
+Broken relationships are rejected.
+
+---
+
+# 18. Versioning
+
+Knowledge Graph Version
+
+1.0
+
+↓
+
+1.1
+
+↓
+
+2.0
+
+Graph changes never overwrite history.
+
+---
+
+# 19. Future Extension
+
+Graph Neural Networks (GNN)
+
+Recommendation Engine
+
+Semantic Search
+
+LLM Knowledge Retrieval
+
+Natural Language Queries
+
+Root Cause Analysis
+
+Impact Analysis
+
+The graph becomes the intelligence backbone.
+
+---
+
+# 20. Summary
+
+The Knowledge Graph connects every business object.
+
+Instead of isolated datasets,
+
+the Enterprise AI Platform reasons using relationships,
+
+enabling explainable, scalable and reusable intelligence.
+
+a# 01C_Business_Rule_Engine.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Business Rule Engine (BRE)
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Business Rule Engine (BRE) is the central repository for all deterministic business logic.
+
+Machine Learning models should predict.
+
+Business Rules should decide.
+
+The BRE ensures
+
+• Explainability
+
+• Consistency
+
+• Maintainability
+
+• Configurability
+
+No business rules should be hardcoded inside AI models.
+
+---
+
+# 2. Rule Categories
+
+The platform consists of the following rule groups.
+
+01 Catalogue Rules
+
+02 Vehicle Rules
+
+03 UIO Rules
+
+04 Product Rules
+
+05 Dealer Rules
+
+06 Demand Rules
+
+07 Inventory Rules
+
+08 Procurement Rules
+
+09 Financial Rules
+
+10 Optimization Rules
+
+11 Decision Rules
+
+12 Validation Rules
+
+Each rule group is managed independently.
+
+---
+
+# 3. Rule Lifecycle
+
+Business Requirement
+
+↓
+
+Rule Definition
+
+↓
+
+Validation
+
+↓
+
+Versioning
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+↓
+
+Revision
+
+↓
+
+Retirement
+
+Every rule has a lifecycle.
+
+---
+
+# 4. Rule Structure
+
+Each rule contains
+
+Rule ID
+
+Name
+
+Description
+
+Category
+
+Priority
+
+Conditions
+
+Actions
+
+Version
+
+Effective Date
+
+Expiry Date
+
+Owner
+
+Status
+
+Dependencies
+
+Audit History
+
+---
+
+# 5. Rule Priority
+
+Priority levels
+
+Critical
+
+High
+
+Medium
+
+Low
+
+Informational
+
+Higher priority rules execute first.
+
+---
+
+# 6. Rule Execution Order
+
+Validation Rules
+
+↓
+
+Catalogue Rules
+
+↓
+
+Vehicle Rules
+
+↓
+
+UIO Rules
+
+↓
+
+Product Rules
+
+↓
+
+Dealer Rules
+
+↓
+
+Demand Rules
+
+↓
+
+Inventory Rules
+
+↓
+
+Procurement Rules
+
+↓
+
+Decision Rules
+
+This ensures upstream assumptions are finalized before downstream calculations.
+
+---
+
+# 7. Catalogue Rules
+
+Examples
+
+Rule C001
+
+IF
+
+Part Number is duplicated
+
+THEN
+
+Reject Extraction
+
+------------------------------------------------
+
+Rule C002
+
+IF
+
+Description missing
+
+THEN
+
+Send to Validation Queue
+
+------------------------------------------------
+
+Rule C003
+
+IF
+
+Compatible Model unknown
+
+THEN
+
+Flag for Manual Review
+
+------------------------------------------------
+
+Rule C004
+
+IF
+
+Colour cannot be identified
+
+THEN
+
+Run Colour Agent
+
+------------------------------------------------
+
+Rule C005
+
+IF
+
+Multiple Colour Candidates
+
+THEN
+
+Assign Confidence Score
+
+---
+
+# 8. Colour Extraction Rules
+
+Rule COL001
+
+Look ahead to the FOREWORD page.
+
+Locate the Colour Code Table.
+
+Extract all valid colour abbreviations.
+
+------------------------------------------------
+
+Rule COL002
+
+Never assign all colours from the table directly.
+
+Only assign colours referenced by remarks or description.
+
+------------------------------------------------
+
+Rule COL003
+
+If remark contains
+
+"UR"
+
+or
+
+"FOR"
+
+following a valid abbreviation,
+
+assign only those colour variants.
+
+------------------------------------------------
+
+Rule COL004
+
+If remark contains
+
+"EXCEPT"
+
+exclude the listed abbreviations and assign all remaining colours from the table.
+
+------------------------------------------------
+
+Rule COL005
+
+If remarks contain numeric suffixes (e.g. "-03") and the colour table maps numbers to colours, assign the corresponding colour.
+
+------------------------------------------------
+
+Rule COL006
+
+If colour names appear in the description (suffix or within brackets), apply the same UR/FOR/EXCEPT logic.
+
+------------------------------------------------
+
+Rule COL007
+
+If ambiguity remains, invoke the Colour Verification Agent.
+
+---
+
+# 9. Vehicle Rules
+
+Rule V001
+
+Active models contribute to future sales forecasts.
+
+------------------------------------------------
+
+Rule V002
+
+Inactive models contribute to UIO only until retirement.
+
+------------------------------------------------
+
+Rule V003
+
+If a new model launches, initialize UIO from forecasted sales.
+
+------------------------------------------------
+
+Rule V004
+
+Vehicle age influences replacement demand using configurable age curves.
+
+---
+
+# 10. UIO Rules
+
+Rule U001
+
+Future UIO = Current UIO + Forecast Sales − Retirements
+
+------------------------------------------------
+
+Rule U002
+
+Retirement rates are model-specific.
+
+------------------------------------------------
+
+Rule U003
+
+Inactive models continue contributing until UIO approaches zero.
+
+------------------------------------------------
+
+Rule U004
+
+Compatible UIO equals the sum of UIO for all compatible models.
+
+---
+
+# 11. Product Rules
+
+Rule P001
+
+Classify every SKU using
+
+ABC
+
+XYZ
+
+FSN
+
+------------------------------------------------
+
+Rule P002
+
+Criticality is derived from
+
+Vehicle Coverage
+
+Revenue
+
+Availability
+
+Replacement Necessity
+
+------------------------------------------------
+
+Rule P003
+
+Shared parts inherit Compatible UIO from all linked models.
+
+---
+
+# 12. Dealer Rules
+
+Rule D001
+
+Calculate Dealer Reaction Time monthly.
+
+------------------------------------------------
+
+Rule D002
+
+Calculate Pre-buy Index for each dealer.
+
+------------------------------------------------
+
+Rule D003
+
+Identify seasonal purchasing patterns.
+
+------------------------------------------------
+
+Rule D004
+
+Assign Dealer Reliability Score.
+
+---
+
+# 13. Demand Rules
+
+Rule DEM001
+
+Demand Fusion combines
+
+Historical Sales
+
+Dealer Orders
+
+Compatible UIO
+
+Dealer Behaviour
+
+Business Scenario
+
+------------------------------------------------
+
+Rule DEM002
+
+If target-based planning is selected, blend forecast and target using configurable weights.
+
+------------------------------------------------
+
+Rule DEM003
+
+Lost sales estimation is enabled when stockouts are detected.
+
+---
+
+# 14. Inventory Rules
+
+Rule INV001
+
+Safety Stock is dynamic.
+
+------------------------------------------------
+
+Rule INV002
+
+Service level depends on
+
+ABC
+
+Criticality
+
+Business Policy
+
+------------------------------------------------
+
+Rule INV003
+
+ROL = Lead Time Demand + Safety Stock
+
+------------------------------------------------
+
+Rule INV004
+
+ROQ respects MOQ, budget, and container constraints.
+
+---
+
+# 15. Procurement Rules
+
+Rule PROC001
+
+Never exceed available procurement budget.
+
+------------------------------------------------
+
+Rule PROC002
+
+Respect supplier MOQ.
+
+------------------------------------------------
+
+Rule PROC003
+
+Prefer suppliers with higher reliability.
+
+------------------------------------------------
+
+Rule PROC004
+
+Optimize container utilization.
+
+------------------------------------------------
+
+Rule PROC005
+
+Respect lead time uncertainty.
+
+---
+
+# 16. Decision Rules
+
+Rule DEC001
+
+Every recommendation must include an explanation.
+
+------------------------------------------------
+
+Rule DEC002
+
+Every recommendation includes a confidence score.
+
+------------------------------------------------
+
+Rule DEC003
+
+Recommendations failing validation require manual approval.
+
+---
+
+# 17. Rule Versioning
+
+Rules are immutable.
+
+Updates create new versions.
+
+Example
+
+INV003 v1.0
+
+↓
+
+INV003 v1.1
+
+↓
+
+INV003 v2.0
+
+Historical planning cycles continue using the rule version active at the time.
+
+---
+
+# 18. Rule Repository
+
+Rules are stored in a centralized repository.
+
+Each rule has
+
+Rule ID
+
+YAML/JSON Definition
+
+Owner
+
+Status
+
+Version
+
+Dependencies
+
+Execution Order
+
+Audit Log
+
+---
+
+# 19. Rule Engine Execution
+
+Planning Context
+
+↓
+
+Load Applicable Rule Set
+
+↓
+
+Resolve Dependencies
+
+↓
+
+Execute Rules
+
+↓
+
+Generate Decisions
+
+↓
+
+Return Rule Trace
+
+The Rule Trace records every rule that fired during execution.
+
+---
+
+# 20. Summary
+
+The Business Rule Engine centralizes all deterministic business knowledge.
+
+Machine Learning predicts future behavior.
+
+The Rule Engine governs business policy.
+
+Together they provide an explainable, maintainable, and enterprise-ready decision-making platform.
+
+# Enterprise Multi-Agent AI Architecture
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The platform adopts a Multi-Agent Architecture instead of a monolithic AI system.
+
+Each agent is responsible for a specific business capability.
+
+Agents collaborate through
+
+• Knowledge Graph
+
+• Feature Store
+
+• Rule Engine
+
+• Planning Context
+
+• Event Bus
+
+No agent contains the entire business logic.
+
+Instead,
+
+intelligence emerges through collaboration.
+
+---
+
+# 2. Why Multi-Agent?
+
+Traditional AI
+
+Raw Data
+
+↓
+
+Forecast Model
+
+↓
+
+Inventory
+
+↓
+
+Purchase
+
+Problems
+
+• Difficult to scale
+
+• Hard to debug
+
+• Low explainability
+
+• One model does everything
+
+------------------------------------------------
+
+Multi-Agent
+
+Specialized Experts
+
+↓
+
+Shared Knowledge
+
+↓
+
+Collaboration
+
+↓
+
+Business Decision
+
+Exactly how a real procurement team works.
+
+---
+
+# 3. Enterprise Agent Hierarchy
+
+Chief Planning Agent
+
+│
+
+├── Catalogue Agent
+
+├── Vehicle Agent
+
+├── UIO Agent
+
+├── Product Agent
+
+├── Dealer Agent
+
+├── Demand Agent
+
+├── Forecast Agent
+
+├── Inventory Agent
+
+├── Procurement Agent
+
+├── Risk Agent
+
+├── Simulation Agent
+
+├── Decision Agent
+
+└── Learning Agent
+
+---
+
+# 4. Chief Planning Agent
+
+Responsibilities
+
+Receive Planning Context
+
+Start Planning Cycle
+
+Assign Tasks
+
+Monitor Progress
+
+Handle Exceptions
+
+Collect Outputs
+
+Publish Final Decision
+
+The Chief Planning Agent never performs forecasting.
+
+It only orchestrates.
+
+---
+
+# 5. Catalogue Agent
+
+Input
+
+PDF Catalogues
+
+Responsibilities
+
+Extract Parts
+
+Extract Descriptions
+
+Extract Remarks
+
+Extract Tables
+
+Detect Colors
+
+Detect Compatibility
+
+Generate SKU Master
+
+Publish Knowledge Graph
+
+Confidence Score
+
+Validation Queue
+
+Output
+
+SKU Master
+
+Compatibility Matrix
+
+Color Mapping
+
+Extraction Report
+
+---
+
+# 6. Vehicle Intelligence Agent
+
+Input
+
+Historical Vehicle Sales
+
+Sales Targets
+
+Planning Context
+
+Responsibilities
+
+Vehicle Forecast
+
+Target Adjustment
+
+Hybrid Scenario
+
+Lifecycle Detection
+
+Confidence
+
+Output
+
+Vehicle Forecast
+
+Scenario Forecast
+
+Vehicle Lifecycle
+
+Growth Rate
+
+---
+
+# 7. UIO Agent
+
+Input
+
+Current UIO
+
+Vehicle Forecast
+
+Retirement Rules
+
+Responsibilities
+
+Forecast UIO
+
+Estimate Retirements
+
+Calculate Compatible UIO
+
+Vehicle Population Analysis
+
+Output
+
+Future UIO
+
+Compatible UIO
+
+Vehicle Age Distribution
+
+---
+
+# 8. Product Intelligence Agent
+
+Input
+
+SKU Master
+
+Sales History
+
+Orders
+
+Responsibilities
+
+ABC
+
+XYZ
+
+FSN
+
+Criticality
+
+Replacement Rate
+
+Consumption Rate
+
+Output
+
+Product Profile
+
+---
+
+# 9. Dealer Behaviour Agent
+
+Input
+
+Dealer Orders
+
+Sales
+
+Responsibilities
+
+Reaction Time
+
+Pre-buy Index
+
+Ordering Frequency
+
+Dealer Segmentation
+
+Seasonality
+
+Preferred Products
+
+Output
+
+Dealer Profile
+
+---
+
+# 10. Demand Fusion Agent
+
+Input
+
+Sales Forecast
+
+Order Forecast
+
+Compatible UIO
+
+Dealer Behaviour
+
+Planning Scenario
+
+Responsibilities
+
+Combine Signals
+
+Estimate Lost Sales
+
+Demand Fusion
+
+Forecast Confidence
+
+Output
+
+Unified Demand
+
+Confidence
+
+Feature Importance
+
+---
+
+# 11. Forecast Selection Agent
+
+Responsibilities
+
+Evaluate
+
+ARIMA
+
+Prophet
+
+XGBoost
+
+LSTM
+
+TFT
+
+Croston
+
+LightGBM
+
+CatBoost
+
+N-BEATS
+
+Select Champion
+
+Register Model
+
+Output
+
+Champion Forecast
+
+---
+
+# 12. Inventory Policy Agent
+
+Responsibilities
+
+Dynamic Safety Stock
+
+ROL
+
+ROQ
+
+Inventory Risk
+
+Service Level
+
+ABC Policy
+
+Criticality Policy
+
+Output
+
+Inventory Plan
+
+---
+
+# 13. Procurement Optimization Agent
+
+Input
+
+ROQ
+
+Budget
+
+Lead Time
+
+MOQ
+
+Container
+
+Supplier
+
+Responsibilities
+
+MILP
+
+Budget Optimization
+
+Container Optimization
+
+Supplier Allocation
+
+Output
+
+Procurement Plan
+
+---
+
+# 14. Risk Intelligence Agent
+
+Responsibilities
+
+Supplier Risk
+
+Demand Risk
+
+Inventory Risk
+
+Forecast Risk
+
+Currency Risk
+
+Output
+
+Risk Dashboard
+
+Risk Scores
+
+---
+
+# 15. Simulation Agent
+
+Responsibilities
+
+Digital Twin
+
+Scenario Testing
+
+Lead Time Simulation
+
+Budget Simulation
+
+Demand Shock
+
+Supplier Failure
+
+Output
+
+Simulation Results
+
+Alternative Plans
+
+---
+
+# 16. Decision Support Agent
+
+Responsibilities
+
+Explain AI Decisions
+
+Generate Reports
+
+Recommend Actions
+
+Create Dashboards
+
+Generate Executive Summary
+
+Output
+
+Business Recommendation
+
+Explanation
+
+Confidence
+
+---
+
+# 17. Continuous Learning Agent
+
+Responsibilities
+
+Collect Actual Results
+
+Compare Forecast
+
+Calculate Errors
+
+Retrain Models
+
+Update Features
+
+Update Rules
+
+Register New Models
+
+Output
+
+Improved Platform
+
+---
+
+# 18. Shared Enterprise Components
+
+Every agent shares
+
+Knowledge Graph
+
+↓
+
+Feature Store
+
+↓
+
+Rule Engine
+
+↓
+
+Planning Context
+
+↓
+
+Event Bus
+
+↓
+
+Model Registry
+
+↓
+
+Audit Repository
+
+No duplicated knowledge.
+
+---
+
+# 19. Agent Communication
+
+Agents never call each other directly.
+
+Communication occurs through
+
+Events
+
+Knowledge Graph
+
+Shared Features
+
+Planning Context
+
+Chief Planner
+
+This avoids tight coupling.
+
+---
+
+# 20. Agent Memory
+
+Each agent has
+
+Short-Term Memory
+
+Current Planning Cycle
+
+↓
+
+Long-Term Memory
+
+Historical Performance
+
+↓
+
+Enterprise Memory
+
+Knowledge Graph
+
+↓
+
+Learning Memory
+
+Feature Store
+
+This allows continuous improvement.
+
+---
+
+# 21. Agent Lifecycle
+
+Receive Task
+
+↓
+
+Load Knowledge
+
+↓
+
+Load Rules
+
+↓
+
+Load Features
+
+↓
+
+Reason
+
+↓
+
+Execute
+
+↓
+
+Validate
+
+↓
+
+Publish Results
+
+↓
+
+Archive
+
+↓
+
+Learn
+
+---
+
+# 22. Failure Recovery
+
+If an agent fails
+
+Retry
+
+↓
+
+Fallback Model
+
+↓
+
+Previous Version
+
+↓
+
+Manual Review
+
+↓
+
+Continue Pipeline
+
+No single agent should stop the platform.
+
+---
+
+# 23. Human-in-the-Loop
+
+Low Confidence
+
+↓
+
+Manager Review
+
+↓
+
+Approve
+
+Reject
+
+Modify
+
+↓
+
+Continue Planning
+
+Critical procurement decisions remain supervised.
+
+---
+
+# 24. Explainability
+
+Every agent produces
+
+Reason
+
+Confidence
+
+Evidence
+
+Rules Applied
+
+Features Used
+
+Model Version
+
+Execution Time
+
+Nothing becomes a black box.
+
+---
+
+# 25. Summary
+
+The Enterprise Multi-Agent Architecture transforms the procurement platform into a collaborative AI ecosystem.
+
+Each specialized agent contributes domain expertise while sharing enterprise knowledge, resulting in scalable, explainable, and continuously improving decision intelligence.
+
+# Enterprise Decision Governance
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Decision Governance ensures every recommendation is
+
+• Explainable
+
+• Reproducible
+
+• Auditable
+
+• Version Controlled
+
+• Approved
+
+• Measurable
+
+The platform does not only generate decisions.
+
+It governs decisions throughout their lifecycle.
+
+---
+
+# 2. Decision Lifecycle
+
+Observe
+
+↓
+
+Predict
+
+↓
+
+Simulate
+
+↓
+
+Optimize
+
+↓
+
+Recommend
+
+↓
+
+Approve
+
+↓
+
+Execute
+
+↓
+
+Monitor
+
+↓
+
+Evaluate
+
+↓
+
+Learn
+
+Every recommendation follows this lifecycle.
+
+---
+
+# 3. Decision Record
+
+Every recommendation becomes a Decision Object.
+
+Decision
+
+{
+
+Decision ID
+
+Planning Cycle
+
+Scenario
+
+Date
+
+Decision Type
+
+Status
+
+Owner
+
+Confidence
+
+Business Impact
+
+}
+
+Nothing is temporary.
+
+Everything is recorded.
+
+---
+
+# 4. Decision Inputs
+
+Each decision references
+
+Planning Context
+
+Vehicle Forecast
+
+UIO Forecast
+
+Demand Forecast
+
+Inventory Snapshot
+
+Business Rules
+
+Knowledge Graph Version
+
+Model Versions
+
+Feature Versions
+
+Catalogue Version
+
+Supplier Data
+
+Budget
+
+Service Level
+
+Exchange Rate
+
+Lead Time
+
+Every assumption is traceable.
+
+---
+
+# 5. Decision Outputs
+
+Purchase Quantity
+
+Supplier
+
+Container Allocation
+
+Expected Fill Rate
+
+Expected Inventory Cost
+
+Expected Revenue
+
+Expected Lost Sales
+
+Expected Stockouts
+
+Confidence
+
+Risk Score
+
+Alternative Plans
+
+Executive Summary
+
+---
+
+# 6. Decision Approval
+
+Recommendations are categorized.
+
+Low Risk
+
+↓
+
+Automatic Approval
+
+------------------------
+
+Medium Risk
+
+↓
+
+Planner Review
+
+------------------------
+
+High Risk
+
+↓
+
+Management Approval
+
+------------------------
+
+Critical
+
+↓
+
+Executive Committee
+
+Every decision has an approval path.
+
+---
+
+# 7. Decision Confidence
+
+Confidence is not only
+
+Forecast Accuracy.
+
+It combines
+
+Forecast Confidence
+
+Model Agreement
+
+Data Quality
+
+Supplier Reliability
+
+Scenario Stability
+
+Rule Consistency
+
+Overall Confidence
+
+---
+
+# 8. Decision Risk
+
+Risk Categories
+
+Demand Risk
+
+Inventory Risk
+
+Supplier Risk
+
+Financial Risk
+
+Operational Risk
+
+Strategic Risk
+
+Overall Risk Score
+
+---
+
+# 9. Decision Explanation
+
+Every recommendation answers
+
+Why this SKU?
+
+Why this quantity?
+
+Why this supplier?
+
+Why now?
+
+Why not another option?
+
+Which rules were applied?
+
+Which models were used?
+
+Which features were most influential?
+
+This provides full explainability.
+
+---
+
+# 10. Decision Comparison
+
+The platform stores
+
+Scenario A
+
+Forecast
+
+Scenario B
+
+Target
+
+Scenario C
+
+Hybrid
+
+Scenario D
+
+Budget Limited
+
+Scenario E
+
+Supplier Delay
+
+Users compare recommendations before approval.
+
+---
+
+# 11. Decision KPIs
+
+Expected Fill Rate
+
+Expected Stockouts
+
+Expected Inventory Cost
+
+Expected Service Level
+
+Budget Utilization
+
+Container Utilization
+
+Forecast Error
+
+Procurement Accuracy
+
+Inventory Turnover
+
+Every decision predicts its own KPIs.
+
+---
+
+# 12. Post-Decision Evaluation
+
+After execution compare
+
+Expected Demand
+
+↓
+
+Actual Demand
+
+Expected Purchase
+
+↓
+
+Actual Purchase
+
+Expected Inventory
+
+↓
+
+Actual Inventory
+
+Expected Cost
+
+↓
+
+Actual Cost
+
+Expected Service Level
+
+↓
+
+Actual Service Level
+
+Every recommendation receives a score.
+
+---
+
+# 13. Decision Score
+
+Decision Score
+
+=
+
+Forecast Accuracy
+
++
+
+Inventory Performance
+
++
+
+Financial Performance
+
++
+
+Service Level Achievement
+
++
+
+Business Satisfaction
+
+This measures decision quality instead of model quality.
+
+---
+
+# 14. Decision Memory
+
+All decisions remain searchable.
+
+Examples
+
+Show every decision involving
+
+Brake Pads
+
+during 2028.
+
+Show every decision using
+
+Scenario Hybrid.
+
+Show every recommendation made by
+
+Demand Model v4.
+
+Enterprise memory becomes searchable.
+
+---
+
+# 15. Continuous Governance
+
+If repeated decision failures occur
+
+↓
+
+Root Cause Analysis
+
+↓
+
+Rule Review
+
+↓
+
+Feature Review
+
+↓
+
+Model Retraining
+
+↓
+
+Policy Update
+
+↓
+
+Knowledge Update
+
+↓
+
+Improved Future Decisions
+
+Governance closes the feedback loop.
+
+---
+
+# 16. Summary
+
+Decision Governance transforms AI outputs into accountable business decisions.
+
+Every recommendation becomes traceable, measurable, explainable, and continuously improvable.
+
+

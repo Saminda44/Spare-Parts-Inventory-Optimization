@@ -1,0 +1,6458 @@
+# 05_01_Demand_Master_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.01
+
+Demand Master Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Demand Master Intelligence creates a centralized enterprise definition for every
+SKU from a demand-planning perspective.
+
+Instead of treating spare parts as simple inventory items,
+this module transforms every SKU into an intelligent planning entity by
+combining catalogue knowledge, vehicle compatibility, fleet intelligence,
+dealer behaviour, lifecycle, business rules and historical demand.
+
+Demand Master becomes the primary reference for every downstream forecasting,
+inventory and procurement service.
+
+---
+
+# 2. Business Problem
+
+Traditional ERP systems only store
+
+• Part Number
+
+• Description
+
+• Price
+
+• Warehouse
+
+These fields are insufficient for intelligent forecasting.
+
+A planner also needs to know
+
+• Which vehicles consume the part
+
+• How many vehicles exist
+
+• Vehicle age
+
+• Fleet growth
+
+• Replacement probability
+
+• Colour dependency
+
+• Dealer demand behaviour
+
+• Criticality
+
+• Demand pattern
+
+• Lead time
+
+• Forecastability
+
+Therefore a Demand Master must be built.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Build Enterprise Demand Master
+
+✓ Create Demand Entity for every SKU
+
+✓ Link Catalogue Intelligence
+
+✓ Link Fleet Intelligence
+
+✓ Link Dealer Intelligence
+
+✓ Link Inventory Intelligence
+
+✓ Maintain Planning Parameters
+
+✓ Publish Demand Master
+
+---
+
+# 4. Inputs
+
+Enterprise Demand Context (EDC)
+
+Catalogue Master
+
+Vehicle Master
+
+Fleet Intelligence Package
+
+Dealer Intelligence
+
+Sales History
+
+Inventory History
+
+Procurement History
+
+Knowledge Graph
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Enterprise Demand Master
+
+Demand Planning Dataset
+
+Demand Metadata
+
+Demand Hierarchy
+
+Demand Knowledge Graph Updates
+
+Planning Features
+
+---
+
+# 6. Workflow
+
+Enterprise Demand Context
+
+↓
+
+Identify SKU
+
+↓
+
+Load Catalogue Context
+
+↓
+
+Load Vehicle Context
+
+↓
+
+Load Fleet Context
+
+↓
+
+Load Dealer Context
+
+↓
+
+Load Inventory Context
+
+↓
+
+Generate Demand Entity
+
+↓
+
+Validate
+
+↓
+
+Publish
+
+---
+
+# 7. Demand Entity
+
+Every SKU becomes an enterprise demand object.
+
+Fields
+
+Demand ID
+
+SKU
+
+Part Number
+
+Description
+
+Planning Status
+
+Planning Version
+
+Creation Date
+
+Owner
+
+Confidence
+
+---
+
+# 8. Catalogue Context
+
+Store
+
+Part Category
+
+Sub Category
+
+Assembly
+
+Component Group
+
+Compatible Vehicles
+
+Compatible Families
+
+Compatible Platforms
+
+Colour Variants
+
+Supersessions
+
+Shared Components
+
+Applicability Rules
+
+---
+
+# 9. Vehicle Context
+
+Store
+
+Compatible Vehicle Count
+
+Vehicle Families
+
+Vehicle Lifecycle
+
+Vehicle Age Distribution
+
+Average Vehicle Age
+
+Vehicle Survival
+
+Vehicle Growth
+
+Vehicle Decline
+
+---
+
+# 10. Fleet Context
+
+Store
+
+Forecast Fleet
+
+Historical Fleet
+
+Fleet Growth
+
+Fleet Evolution Index
+
+Migration Rate
+
+Replacement Rate
+
+Platform Growth
+
+Scenario Information
+
+---
+
+# 11. Dealer Context
+
+Store
+
+Dealer Coverage
+
+Dealer Growth
+
+Dealer Loyalty
+
+Dealer Reaction Time
+
+Dealer Pre-buy Index
+
+Dealer Service Capacity
+
+Dealer Inventory Behaviour
+
+Regional Dealer Distribution
+
+---
+
+# 12. Demand Characteristics
+
+Classify
+
+Demand Pattern
+
+Smooth
+
+Erratic
+
+Intermittent
+
+Lumpy
+
+Seasonal
+
+Trending
+
+Declining
+
+Growing
+
+New SKU
+
+Obsolete
+
+---
+
+# 13. Planning Classifications
+
+ABC Classification
+
+XYZ Classification
+
+FSN Classification
+
+VED Classification
+
+Criticality
+
+Movement Class
+
+Service Level Class
+
+Forecastability Class
+
+Inventory Policy
+
+---
+
+# 14. Lifecycle Context
+
+Store
+
+Launch Date
+
+First Sale
+
+Current Lifecycle
+
+Growth Stage
+
+Maturity
+
+Decline
+
+Obsolete
+
+Service Support End
+
+---
+
+# 15. Procurement Context
+
+Store
+
+Supplier
+
+Country
+
+Lead Time
+
+Minimum Order Quantity
+
+Order Multiple
+
+Container Constraints
+
+Import Cycle
+
+Currency
+
+Procurement Risk
+
+---
+
+# 16. Inventory Context
+
+Store
+
+Current Stock
+
+Average Inventory
+
+Stockout Frequency
+
+Inventory Turns
+
+Fill Rate
+
+Backorders
+
+Holding Cost
+
+Ordering Cost
+
+Carrying Cost
+
+---
+
+# 17. Demand Drivers
+
+Store
+
+Fleet Growth
+
+Vehicle Age
+
+Dealer Growth
+
+Seasonality
+
+Promotion
+
+Price
+
+Market Conditions
+
+Fuel Prices
+
+Weather
+
+Economic Indicators
+
+Business Targets
+
+---
+
+# 18. Forecast Metadata
+
+Preferred Forecast Model
+
+Forecast Frequency
+
+Forecast Horizon
+
+Prediction Interval
+
+Confidence Level
+
+Forecast Version
+
+Model Owner
+
+Model History
+
+---
+
+# 19. Risk Assessment
+
+Calculate
+
+Demand Risk
+
+Supply Risk
+
+Inventory Risk
+
+Forecast Risk
+
+Financial Risk
+
+Service Risk
+
+Operational Risk
+
+Business Risk
+
+---
+
+# 20. AI Metadata
+
+Store
+
+Feature Vector
+
+Graph Embedding
+
+Demand Embedding
+
+Similarity Cluster
+
+Recommendation Confidence
+
+Explainability Metadata
+
+SHAP Summary
+
+---
+
+# 21. Knowledge Graph Links
+
+Connect
+
+SKU
+
+↓
+
+Vehicle
+
+↓
+
+Fleet
+
+↓
+
+Dealer
+
+↓
+
+Demand
+
+↓
+
+Inventory
+
+↓
+
+Supplier
+
+↓
+
+Procurement
+
+---
+
+# 22. Business Rules
+
+Every SKU must
+
+Have one Demand Entity
+
+Have compatible vehicles
+
+Have planning class
+
+Have lifecycle
+
+Have demand pattern
+
+Have feature vector
+
+Have graph node
+
+---
+
+# 23. AI Agents
+
+Chief Demand Agent
+
+↓
+
+Demand Classification Agent
+
+↓
+
+Planning Agent
+
+↓
+
+Risk Agent
+
+↓
+
+Metadata Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 24. Database Tables
+
+demand_master
+
+demand_context
+
+demand_classification
+
+planning_parameters
+
+forecast_metadata
+
+risk_registry
+
+demand_validation
+
+---
+
+# 25. APIs
+
+GET /demand-master
+
+GET /demand-master/{sku}
+
+GET /demand-master/context
+
+POST /demand-master/publish
+
+---
+
+# 26. Event Messages
+
+DemandEntityCreated
+
+DemandClassified
+
+PlanningUpdated
+
+RiskCalculated
+
+DemandPublished
+
+---
+
+# 27. Validation
+
+Verify
+
+SKU Exists
+
+Catalogue Linked
+
+Fleet Linked
+
+Dealer Linked
+
+Lifecycle Valid
+
+Planning Class Assigned
+
+No Missing Context
+
+---
+
+# 28. Monitoring
+
+Demand Entity Coverage
+
+Planning Completeness
+
+Classification Accuracy
+
+Metadata Completeness
+
+Data Freshness
+
+---
+
+# 29. Deliverables
+
+Enterprise Demand Master
+
+Planning Dataset
+
+Planning Parameters
+
+Demand Context
+
+Knowledge Graph Updates
+
+Ready for Demand History Intelligence
+
+---
+
+# 05_02_Demand_History_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.02
+
+Demand History Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Demand History Intelligence reconstructs the complete historical demand profile
+for every SKU.
+
+Instead of relying solely on historical sales,
+the engine estimates true historical demand by incorporating
+
+• Actual Sales
+
+• Lost Sales
+
+• Stockouts
+
+• Inventory Availability
+
+• Fleet Evolution
+
+• Dealer Behaviour
+
+• Promotions
+
+• Procurement Delays
+
+• External Factors
+
+The result is an Enterprise Demand History Dataset suitable for advanced
+forecasting.
+
+---
+
+# 2. Business Problem
+
+Historical sales ≠ Historical demand.
+
+Sales only represent fulfilled demand.
+
+Examples
+
+Customer requests part
+
+↓
+
+Stock unavailable
+
+↓
+
+No sale recorded
+
+↓
+
+Demand lost
+
+Historical sales underestimate true demand.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Build Enterprise Demand History
+
+✓ Estimate Lost Sales
+
+✓ Detect Stockout Periods
+
+✓ Correct Historical Demand
+
+✓ Build Demand Timeline
+
+✓ Generate Historical Features
+
+✓ Publish Demand History Dataset
+
+---
+
+# 4. Inputs
+
+Enterprise Demand Context
+
+Demand Master
+
+Sales Transactions
+
+Inventory History
+
+Goods Issue History
+
+Goods Receipt History
+
+Dealer Orders
+
+Backorders
+
+Returns
+
+Procurement History
+
+Promotion History
+
+External Events
+
+Knowledge Graph
+
+---
+
+# 5. Outputs
+
+Demand History Dataset
+
+Lost Sales Dataset
+
+Demand Timeline
+
+Historical Features
+
+Forecast Training Dataset
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Collect Raw Transactions
+
+↓
+
+Clean Data
+
+↓
+
+Build Monthly Timeline
+
+↓
+
+Detect Missing Periods
+
+↓
+
+Estimate Lost Sales
+
+↓
+
+Correct Demand
+
+↓
+
+Generate Features
+
+↓
+
+Validate
+
+↓
+
+Publish
+
+---
+
+# 7. Demand Timeline
+
+Generate one record
+
+per
+
+SKU
+
+per
+
+Month
+
+Fields
+
+SKU
+
+Date
+
+Actual Sales
+
+Estimated Demand
+
+Lost Sales
+
+Returns
+
+Stock
+
+Fleet Size
+
+Dealer Count
+
+Scenario
+
+Version
+
+---
+
+# 8. Historical Sales
+
+Store
+
+Sales Quantity
+
+Sales Value
+
+Order Count
+
+Customer Count
+
+Dealer Count
+
+Province
+
+Warehouse
+
+Sales Frequency
+
+Average Selling Price
+
+---
+
+# 9. Lost Sales Estimation
+
+Estimate
+
+Demand During Stockout
+
+Partial Stockout
+
+Hidden Demand
+
+Backorder Demand
+
+Suppressed Demand
+
+Cancelled Orders
+
+---
+
+# 10. Stockout Intelligence
+
+Detect
+
+Complete Stockout
+
+Partial Stockout
+
+Repeated Stockout
+
+Long Stockout
+
+Emergency Purchase
+
+Stock Recovery
+
+---
+
+# 11. Returns Intelligence
+
+Track
+
+Returns
+
+Warranty Returns
+
+Damaged Parts
+
+Incorrect Orders
+
+Seasonal Returns
+
+Net Demand
+
+---
+
+# 12. Fleet Context
+
+Attach
+
+Compatible Fleet
+
+Fleet Growth
+
+Fleet Decline
+
+Vehicle Age
+
+Replacement Rate
+
+Migration Rate
+
+Fleet Evolution Index
+
+---
+
+# 13. Dealer Context
+
+Attach
+
+Dealer Coverage
+
+Dealer Growth
+
+Dealer Loyalty
+
+Dealer Reaction Time
+
+Dealer Pre-buy Index
+
+Dealer Inventory
+
+Dealer Service Capacity
+
+---
+
+# 14. Market Context
+
+Attach
+
+Seasonality
+
+Holiday
+
+Promotion
+
+Economic Indicators
+
+Fuel Price
+
+Weather
+
+Exchange Rate
+
+Competitor Launch
+
+---
+
+# 15. Procurement Context
+
+Attach
+
+Lead Time
+
+Import Delay
+
+Supplier Issues
+
+Order Cycle
+
+Purchase Frequency
+
+Emergency Procurement
+
+---
+
+# 16. Demand Corrections
+
+Correct
+
+Stockout Bias
+
+Promotion Bias
+
+Dealer Bias
+
+Price Changes
+
+Vehicle Launch Effect
+
+Vehicle Retirement Effect
+
+Import Delay Effect
+
+---
+
+# 17. Historical Features
+
+Rolling Mean
+
+Rolling Median
+
+Rolling Std
+
+Rolling Max
+
+Rolling Min
+
+Lag Features
+
+Growth Rate
+
+Demand Velocity
+
+Demand Acceleration
+
+Demand Stability
+
+---
+
+# 18. Advanced Features
+
+Demand Entropy
+
+Demand Intermittency
+
+Zero Demand Ratio
+
+Seasonal Strength
+
+Trend Strength
+
+Promotion Lift
+
+Dealer Lift
+
+Fleet Elasticity
+
+---
+
+# 19. AI Features
+
+Historical Embedding
+
+Demand Cluster
+
+Behaviour Cluster
+
+Forecastability Score
+
+Data Quality Score
+
+Demand Readiness Score
+
+---
+
+# 20. AI Models
+
+Lost Sales Estimation
+
+Bayesian Models
+
+Survival Analysis
+
+Hidden Markov Models
+
+Anomaly Detection
+
+Time Series Reconstruction
+
+---
+
+# 21. Business Rules
+
+Historical timeline continuous
+
+No duplicate months
+
+Negative demand not allowed
+
+Returns separated
+
+Lost sales estimated
+
+Stockout documented
+
+---
+
+# 22. AI Agents
+
+Chief History Agent
+
+↓
+
+Timeline Agent
+
+↓
+
+Lost Sales Agent
+
+↓
+
+Stockout Agent
+
+↓
+
+Feature Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 23. Database Tables
+
+demand_history
+
+lost_sales
+
+stockout_history
+
+returns_history
+
+historical_features
+
+history_validation
+
+history_metadata
+
+---
+
+# 24. APIs
+
+GET /demand-history
+
+GET /demand-history/{sku}
+
+GET /lost-sales
+
+GET /stockouts
+
+POST /demand-history/publish
+
+---
+
+# 25. Event Messages
+
+DemandHistoryCreated
+
+LostSalesEstimated
+
+StockoutDetected
+
+HistoryValidated
+
+HistoryPublished
+
+---
+
+# 26. Validation
+
+Verify
+
+Timeline complete
+
+Missing months filled
+
+Lost sales estimated
+
+Fleet linked
+
+Dealer linked
+
+No duplicate records
+
+Historical continuity
+
+---
+
+# 27. Monitoring
+
+Timeline Completeness
+
+Lost Sales Accuracy
+
+Feature Freshness
+
+Stockout Detection Rate
+
+Data Quality
+
+---
+
+# 28. Deliverables
+
+Enterprise Demand History
+
+Lost Sales Repository
+
+Historical Features
+
+Forecast Training Dataset
+
+Knowledge Graph Updates
+
+Ready for Demand Segmentation
+
+---
+
+# 05_03_Demand_Segmentation_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.03
+
+Demand Segmentation Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Demand Segmentation Intelligence automatically classifies every SKU using
+multiple business and statistical dimensions.
+
+Instead of relying on a single ABC analysis,
+the engine builds a complete Demand Profile describing how every SKU behaves.
+
+The Demand Profile becomes the primary input for
+
+• Forecast Model Selection
+
+• Inventory Policy
+
+• Safety Stock
+
+• Reorder Policy
+
+• Procurement Strategy
+
+• Service Level
+
+---
+
+# 2. Business Problem
+
+Not all spare parts behave similarly.
+
+Some parts
+
+• Sell daily
+
+Some
+
+• Sell monthly
+
+Some
+
+• Sell once per year
+
+Some
+
+• Only sell after failures
+
+Using the same forecasting model for every SKU produces poor forecasts.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Segment Demand
+
+✓ Classify SKU Behaviour
+
+✓ Select Forecast Family
+
+✓ Recommend Inventory Policy
+
+✓ Calculate Forecastability
+
+✓ Publish Demand Profiles
+
+---
+
+# 4. Inputs
+
+Demand Master
+
+Demand History
+
+Enterprise Demand Context
+
+Fleet Intelligence
+
+Dealer Intelligence
+
+Inventory Intelligence
+
+Knowledge Graph
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Demand Profile
+
+Segmentation Repository
+
+Forecast Recommendation
+
+Planning Recommendation
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Demand History
+
+↓
+
+Calculate Statistics
+
+↓
+
+Calculate Business Metrics
+
+↓
+
+Run Segmentation
+
+↓
+
+Generate Demand Profile
+
+↓
+
+Validate
+
+↓
+
+Publish
+
+---
+
+# 7. Statistical Features
+
+Average Demand
+
+Median
+
+Variance
+
+Standard Deviation
+
+Coefficient of Variation
+
+Demand Frequency
+
+Zero Demand %
+
+Demand Entropy
+
+Seasonality
+
+Trend
+
+Intermittency
+
+---
+
+# 8. ABC Classification
+
+Based on
+
+Annual Consumption Value
+
+Class
+
+A
+
+B
+
+C
+
+Store
+
+Contribution %
+
+Rank
+
+Cumulative %
+
+---
+
+# 9. XYZ Classification
+
+Based on
+
+Demand Variability
+
+X
+
+Stable
+
+Y
+
+Moderate Variation
+
+Z
+
+Highly Variable
+
+Store
+
+Coefficient of Variation
+
+Threshold
+
+Confidence
+
+---
+
+# 10. FSN Classification
+
+Based on
+
+Movement Frequency
+
+Fast
+
+Slow
+
+Non-moving
+
+Store
+
+Days Since Last Sale
+
+Sales Frequency
+
+Inventory Movement
+
+---
+
+# 11. VED Classification
+
+Critical
+
+Essential
+
+Desirable
+
+Based on
+
+Business Rules
+
+Service Impact
+
+Safety Risk
+
+Customer Impact
+
+---
+
+# 12. Demand Pattern Classification
+
+Smooth
+
+Erratic
+
+Intermittent
+
+Lumpy
+
+Seasonal
+
+Trending
+
+Declining
+
+Growing
+
+Obsolete
+
+New SKU
+
+---
+
+# 13. ADI–CV² Classification
+
+Calculate
+
+Average Demand Interval (ADI)
+
+Squared Coefficient of Variation (CV²)
+
+Classify
+
+Smooth
+
+Intermittent
+
+Erratic
+
+Lumpy
+
+Store
+
+Threshold
+
+Confidence
+
+---
+
+# 14. Lifecycle Segmentation
+
+Launch
+
+Growth
+
+Maturity
+
+Decline
+
+Obsolete
+
+Service Support
+
+Store
+
+Lifecycle Confidence
+
+---
+
+# 15. Fleet Dependency
+
+Calculate
+
+Fleet Dependency Ratio
+
+Vehicle Diversity
+
+Platform Diversity
+
+Replacement Dependency
+
+Migration Dependency
+
+Fleet Elasticity
+
+---
+
+# 16. Dealer Dependency
+
+Calculate
+
+Dealer Concentration
+
+Top Dealer %
+
+Dealer Diversity
+
+Dealer Loyalty
+
+Dealer Growth
+
+Dealer Risk
+
+---
+
+# 17. Procurement Dependency
+
+Supplier Risk
+
+Lead Time Risk
+
+Import Dependency
+
+MOQ Constraint
+
+Order Frequency
+
+Procurement Complexity
+
+---
+
+# 18. Inventory Behaviour
+
+Inventory Turnover
+
+Fill Rate
+
+Stockout Frequency
+
+Holding Cost
+
+Ordering Cost
+
+Backorder Rate
+
+Emergency Purchases
+
+---
+
+# 19. Forecastability
+
+Calculate
+
+Forecastability Score
+
+Data Quality
+
+History Length
+
+Demand Stability
+
+Seasonality
+
+Intermittency
+
+Confidence
+
+---
+
+# 20. Recommended Forecast Models
+
+Smooth
+
+↓
+
+Prophet
+
+ETS
+
+ARIMA
+
+Seasonal
+
+↓
+
+Prophet
+
+TFT
+
+Intermittent
+
+↓
+
+Croston
+
+TSB
+
+SBA
+
+Lumpy
+
+↓
+
+TSB
+
+Bayesian
+
+Machine Learning
+
+Growing
+
+↓
+
+LightGBM
+
+XGBoost
+
+TFT
+
+New SKU
+
+↓
+
+Compatibility Graph
+
+Fleet Growth
+
+Graph Neural Network
+
+---
+
+# 21. Inventory Recommendation
+
+Recommend
+
+Service Level
+
+Review Policy
+
+Safety Stock
+
+Reorder Policy
+
+Forecast Frequency
+
+Planning Frequency
+
+---
+
+# 22. Demand Profile
+
+Demand Profile ID
+
+SKU
+
+ABC
+
+XYZ
+
+FSN
+
+VED
+
+ADI Class
+
+Lifecycle
+
+Forecastability
+
+Forecast Model
+
+Inventory Policy
+
+Risk Level
+
+Confidence
+
+---
+
+# 23. AI Models
+
+K-Means
+
+Gaussian Mixture
+
+DBSCAN
+
+Hierarchical Clustering
+
+Self-Organizing Maps
+
+Graph Clustering
+
+---
+
+# 24. AI Agents
+
+Chief Segmentation Agent
+
+↓
+
+Classification Agent
+
+↓
+
+Forecast Agent
+
+↓
+
+Inventory Agent
+
+↓
+
+Risk Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 25. Database Tables
+
+demand_segmentation
+
+demand_profiles
+
+forecast_recommendation
+
+planning_profiles
+
+segmentation_validation
+
+---
+
+# 26. APIs
+
+GET /demand-profile
+
+GET /demand-profile/{sku}
+
+GET /segmentation
+
+GET /forecast-recommendation
+
+POST /demand-profile/publish
+
+---
+
+# 27. Event Messages
+
+DemandSegmented
+
+ForecastAssigned
+
+PlanningUpdated
+
+ProfilePublished
+
+---
+
+# 28. Validation
+
+Verify
+
+Every SKU classified
+
+Forecast assigned
+
+Planning profile assigned
+
+Confidence calculated
+
+No missing classifications
+
+---
+
+# 29. Monitoring
+
+Segmentation Coverage
+
+Forecast Assignment Rate
+
+Forecastability Distribution
+
+Risk Distribution
+
+Classification Drift
+
+---
+
+# 30. Deliverables
+
+Enterprise Demand Profiles
+
+Forecast Recommendation Repository
+
+Planning Profiles
+
+Knowledge Graph Updates
+
+Ready for Demand Driver Intelligence
+
+---
+
+# 05_04_Demand_Driver_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.04
+
+Demand Driver Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Demand Driver Intelligence identifies, quantifies and continuously monitors the
+factors that influence demand for every SKU.
+
+Instead of treating demand as an isolated time series,
+this module models demand as a causal system influenced by vehicle population,
+dealer behaviour, inventory availability, seasonality, market conditions,
+procurement constraints and external events.
+
+The output becomes the primary input for Forecast Intelligence.
+
+---
+
+# 2. Business Problem
+
+Historical sales alone cannot explain demand.
+
+Example
+
+Brake Pad
+
+Sales Increased
+
+Why?
+
+Possible reasons
+
+• More motorcycles
+
+• Older motorcycles
+
+• New dealers
+
+• Promotion
+
+• Seasonal riding
+
+• Import delay
+
+• Dealer pre-buy
+
+• Vehicle replacement
+
+Forecasts become more accurate when demand drivers are understood.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Identify demand drivers
+
+✓ Measure driver importance
+
+✓ Detect driver interactions
+
+✓ Detect driver changes
+
+✓ Calculate elasticity
+
+✓ Build causal relationships
+
+✓ Publish Driver Repository
+
+---
+
+# 4. Inputs
+
+Enterprise Demand Context
+
+Demand Master
+
+Demand History
+
+Demand Profile
+
+Fleet Intelligence
+
+Dealer Intelligence
+
+Market Intelligence
+
+Inventory Intelligence
+
+Procurement Intelligence
+
+Knowledge Graph
+
+Feature Store
+
+External Data
+
+---
+
+# 5. Outputs
+
+Demand Driver Repository
+
+Driver Importance
+
+Elasticity Scores
+
+Driver Relationships
+
+Forecast Features
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Load Enterprise Demand Context
+
+↓
+
+Extract Candidate Drivers
+
+↓
+
+Generate Driver Features
+
+↓
+
+Correlation Analysis
+
+↓
+
+Causal Analysis
+
+↓
+
+Interaction Analysis
+
+↓
+
+Rank Drivers
+
+↓
+
+Validate
+
+↓
+
+Publish
+
+---
+
+# 7. Driver Categories
+
+Fleet Drivers
+
+Vehicle Drivers
+
+Dealer Drivers
+
+Market Drivers
+
+Inventory Drivers
+
+Procurement Drivers
+
+External Drivers
+
+Business Drivers
+
+Customer Drivers
+
+Operational Drivers
+
+---
+
+# 8. Fleet Drivers
+
+Forecast Fleet
+
+Fleet Growth
+
+Fleet Decline
+
+Vehicle Age
+
+Vehicle Survival
+
+Replacement Rate
+
+Migration Rate
+
+Fleet Evolution Index
+
+Compatible Vehicle Count
+
+Platform Growth
+
+---
+
+# 9. Vehicle Drivers
+
+Vehicle Lifecycle
+
+Vehicle Family
+
+Vehicle Popularity
+
+Vehicle Usage
+
+Failure Rate
+
+Average Mileage
+
+Model Age
+
+Service Frequency
+
+---
+
+# 10. Dealer Drivers
+
+Dealer Coverage
+
+Dealer Growth
+
+Dealer Loyalty
+
+Dealer Density
+
+Dealer Stock
+
+Dealer Reaction Time
+
+Dealer Pre-buy Index
+
+Dealer Promotion
+
+Dealer Capacity
+
+Dealer Risk
+
+---
+
+# 11. Inventory Drivers
+
+Stock Availability
+
+Stockouts
+
+Safety Stock
+
+Inventory Turnover
+
+Fill Rate
+
+Backorders
+
+Emergency Orders
+
+Holding Cost
+
+Inventory Health
+
+---
+
+# 12. Procurement Drivers
+
+Lead Time
+
+Supplier Reliability
+
+Import Delay
+
+MOQ
+
+Order Cycle
+
+Container Utilization
+
+Currency
+
+Supplier Risk
+
+Procurement Cost
+
+---
+
+# 13. Market Drivers
+
+Seasonality
+
+Rainfall
+
+Temperature
+
+Fuel Price
+
+Inflation
+
+GDP
+
+Consumer Confidence
+
+Exchange Rate
+
+Holiday
+
+Festivals
+
+Competitor Activity
+
+---
+
+# 14. Business Drivers
+
+Sales Target
+
+Marketing Campaign
+
+Discount
+
+Promotion
+
+Product Launch
+
+Dealer Incentive
+
+Pricing Strategy
+
+Corporate Strategy
+
+---
+
+# 15. Customer Drivers
+
+Vehicle Population
+
+Customer Retention
+
+Repeat Purchase
+
+Failure Behaviour
+
+Maintenance Behaviour
+
+Regional Preferences
+
+---
+
+# 16. Driver Engineering
+
+Calculate
+
+Lag Effects
+
+Rolling Statistics
+
+Elasticity
+
+Interaction Terms
+
+Moving Average
+
+Growth Rates
+
+Decay Functions
+
+Acceleration
+
+---
+
+# 17. Driver Relationships
+
+Store
+
+Driver A
+
+↓
+
+Influences
+
+↓
+
+Driver B
+
+↓
+
+Influences
+
+↓
+
+Demand
+
+Example
+
+Fleet Growth
+
+↓
+
+Brake Pad Demand
+
+---
+
+# 18. Elasticity
+
+Estimate
+
+Fleet Elasticity
+
+Dealer Elasticity
+
+Price Elasticity
+
+Promotion Elasticity
+
+Inventory Elasticity
+
+Fuel Elasticity
+
+Weather Elasticity
+
+---
+
+# 19. Driver Importance
+
+Calculate
+
+SHAP Values
+
+Permutation Importance
+
+Gain
+
+Split Count
+
+Attention Weights
+
+Feature Importance
+
+Store
+
+Global Importance
+
+Local Importance
+
+Temporal Importance
+
+---
+
+# 20. Causal Analysis
+
+Estimate
+
+Direct Effect
+
+Indirect Effect
+
+Mediator Effect
+
+Interaction Effect
+
+Delayed Effect
+
+Feedback Loop
+
+---
+
+# 21. Driver Drift
+
+Monitor
+
+Importance Drift
+
+Distribution Drift
+
+Relationship Drift
+
+Elasticity Drift
+
+Concept Drift
+
+---
+
+# 22. AI Models
+
+SHAP
+
+LightGBM
+
+XGBoost
+
+CatBoost
+
+Bayesian Networks
+
+Structural Causal Models
+
+Graph Neural Networks
+
+Temporal Fusion Transformer
+
+---
+
+# 23. AI Agents
+
+Chief Driver Agent
+
+↓
+
+Feature Agent
+
+↓
+
+Causal Agent
+
+↓
+
+Elasticity Agent
+
+↓
+
+Importance Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 24. Database Tables
+
+demand_drivers
+
+driver_importance
+
+driver_elasticity
+
+driver_relationships
+
+driver_history
+
+driver_validation
+
+---
+
+# 25. APIs
+
+GET /demand-drivers
+
+GET /driver-importance
+
+GET /driver-elasticity
+
+GET /driver-relationships
+
+POST /demand-drivers/publish
+
+---
+
+# 26. Event Messages
+
+DriversIdentified
+
+ImportanceCalculated
+
+ElasticityUpdated
+
+DriverPublished
+
+---
+
+# 27. Validation
+
+Verify
+
+Drivers linked
+
+Importance calculated
+
+Elasticity valid
+
+No missing drivers
+
+Relationships valid
+
+---
+
+# 28. Monitoring
+
+Driver Stability
+
+Importance Drift
+
+Elasticity Drift
+
+Coverage
+
+Prediction Contribution
+
+---
+
+# 29. Deliverables
+
+Demand Driver Repository
+
+Elasticity Repository
+
+Driver Importance Repository
+
+Knowledge Graph Updates
+
+Forecast Feature Repository
+
+Ready for Forecast Intelligence
+
+---
+
+# 05_05_Demand_Forecast_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.05
+
+Demand Forecast Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Demand Forecast Intelligence predicts future demand for every spare-part SKU
+using a hybrid forecasting architecture that combines statistical forecasting,
+machine learning, deep learning, graph intelligence and business knowledge.
+
+Instead of relying on a single forecasting model,
+the engine automatically selects, combines and calibrates forecasting experts
+based on the Demand Profile of each SKU.
+
+The output becomes the enterprise demand forecast used by Inventory
+Intelligence, Procurement Intelligence and Decision Support.
+
+---
+
+# 2. Business Problem
+
+Different SKUs require different forecasting approaches.
+
+Examples
+
+Fast Moving
+
+↓
+
+Statistical Forecast
+
+Intermittent
+
+↓
+
+Croston
+
+Seasonal
+
+↓
+
+Prophet
+
+Highly Causal
+
+↓
+
+Machine Learning
+
+New SKU
+
+↓
+
+Graph Intelligence
+
+Using one model for every SKU produces poor forecasts.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Forecast SKU demand
+
+✓ Automatically select forecasting models
+
+✓ Combine multiple forecasts
+
+✓ Estimate forecast confidence
+
+✓ Generate prediction intervals
+
+✓ Explain every prediction
+
+✓ Publish Enterprise Demand Forecast
+
+---
+
+# 4. Inputs
+
+Enterprise Demand Context
+
+Demand Master
+
+Demand History
+
+Demand Profile
+
+Demand Driver Objects
+
+Knowledge Graph
+
+Feature Store
+
+Business Rules
+
+External Intelligence
+
+---
+
+# 5. Outputs
+
+Demand Forecast
+
+Prediction Interval
+
+Forecast Confidence
+
+Forecast Explanation
+
+Forecast Repository
+
+Knowledge Graph Updates
+
+Inventory Intelligence Dataset
+
+---
+
+# 6. Workflow
+
+Load Demand Context
+
+↓
+
+Identify Demand Profile
+
+↓
+
+Select Forecast Experts
+
+↓
+
+Generate Individual Forecasts
+
+↓
+
+Forecast Fusion
+
+↓
+
+Forecast Calibration
+
+↓
+
+Explain Prediction
+
+↓
+
+Validate
+
+↓
+
+Publish
+
+---
+
+# 7. Forecast Object
+
+Forecast ID
+
+SKU
+
+Planning Period
+
+Forecast Quantity
+
+Lower Bound
+
+Upper Bound
+
+Confidence
+
+Scenario
+
+Version
+
+Model Ensemble
+
+---
+
+# 8. Forecast Horizons
+
+Daily
+
+Weekly
+
+Monthly
+
+Quarterly
+
+Annual
+
+Rolling Forecast
+
+Lead Time Forecast
+
+---
+
+# 9. Forecast Experts
+
+Statistical Expert
+
+Machine Learning Expert
+
+Deep Learning Expert
+
+Graph Expert
+
+Business Rule Expert
+
+Scenario Expert
+
+Dealer Expert
+
+Fleet Expert
+
+---
+
+# 10. Statistical Models
+
+Moving Average
+
+SES
+
+Holt
+
+Holt-Winters
+
+ETS
+
+ARIMA
+
+SARIMA
+
+Croston
+
+TSB
+
+SBA
+
+Prophet
+
+---
+
+# 11. Machine Learning Models
+
+Random Forest
+
+XGBoost
+
+LightGBM
+
+CatBoost
+
+ElasticNet
+
+Support Vector Regression
+
+---
+
+# 12. Deep Learning Models
+
+LSTM
+
+GRU
+
+N-BEATS
+
+DeepAR
+
+Temporal Fusion Transformer
+
+Informer
+
+PatchTST
+
+---
+
+# 13. Graph Intelligence
+
+Graph Neural Networks
+
+Compatibility Graph
+
+Fleet Graph
+
+Knowledge Graph
+
+Cold Start Prediction
+
+Demand Propagation
+
+---
+
+# 14. Ensemble Engine
+
+Combine
+
+Weighted Average
+
+Stacking
+
+Blending
+
+Bayesian Averaging
+
+Dynamic Model Selection
+
+Mixture of Experts
+
+---
+
+# 15. Forecast Calibration
+
+Bias Correction
+
+Residual Learning
+
+Scale Adjustment
+
+Business Constraints
+
+Seasonality Adjustment
+
+Inventory Constraints
+
+---
+
+# 16. Explainability
+
+Generate
+
+SHAP Values
+
+Driver Importance
+
+Prediction Reasoning
+
+Scenario Contribution
+
+Confidence
+
+Evidence Chain
+
+---
+
+# 17. Cold Start Forecast
+
+Estimate using
+
+Compatible Vehicles
+
+Fleet Growth
+
+Shared Components
+
+Graph Embeddings
+
+Supplier Similarity
+
+Lifecycle
+
+Business Rules
+
+---
+
+# 18. Hierarchical Forecast
+
+Generate
+
+SKU
+
+↓
+
+Vehicle
+
+↓
+
+Vehicle Family
+
+↓
+
+Platform
+
+↓
+
+Dealer
+
+↓
+
+Province
+
+↓
+
+Region
+
+↓
+
+National
+
+Ensure forecast reconciliation.
+
+---
+
+# 19. Forecast Features
+
+Prediction
+
+Confidence
+
+Prediction Interval
+
+Bias
+
+Variance
+
+Residual
+
+Model Agreement
+
+Scenario Agreement
+
+---
+
+# 20. AI Models
+
+Hybrid Ensemble
+
+AutoML
+
+Mixture of Experts
+
+Bayesian Ensemble
+
+Graph Neural Networks
+
+Temporal Fusion Transformer
+
+Meta Learning
+
+---
+
+# 21. AI Agents
+
+Chief Forecast Agent
+
+↓
+
+Model Selection Agent
+
+↓
+
+Forecast Agent
+
+↓
+
+Fusion Agent
+
+↓
+
+Calibration Agent
+
+↓
+
+Explainability Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 22. Database Tables
+
+demand_forecast
+
+forecast_models
+
+forecast_ensemble
+
+forecast_confidence
+
+forecast_explanation
+
+forecast_validation
+
+forecast_history
+
+---
+
+# 23. APIs
+
+GET /forecast
+
+GET /forecast/{sku}
+
+GET /forecast/explanation
+
+GET /forecast/models
+
+POST /forecast/run
+
+POST /forecast/publish
+
+---
+
+# 24. Event Messages
+
+ForecastStarted
+
+ForecastGenerated
+
+ForecastCalibrated
+
+ForecastValidated
+
+ForecastPublished
+
+---
+
+# 25. Validation
+
+Verify
+
+Forecast complete
+
+Prediction intervals valid
+
+Model convergence
+
+Bias acceptable
+
+Forecast reconciliation
+
+No missing SKUs
+
+---
+
+# 26. Monitoring
+
+MAPE
+
+RMSE
+
+MAE
+
+MASE
+
+WMAPE
+
+Forecast Bias
+
+Coverage
+
+Calibration
+
+Model Drift
+
+---
+
+# 27. Deliverables
+
+Enterprise Demand Forecast
+
+Forecast Repository
+
+Forecast Explanation
+
+Knowledge Graph Updates
+
+Ready for Uncertainty Intelligence
+
+---
+
+# 05_06_Demand_Uncertainty_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.06
+
+Demand Uncertainty Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Demand Uncertainty Intelligence quantifies uncertainty associated with every
+forecast.
+
+Instead of publishing only a point forecast,
+the engine estimates the probability distribution of future demand,
+prediction intervals, confidence intervals and business risk.
+
+The resulting uncertainty measures become direct inputs to Inventory
+Intelligence, Procurement Intelligence and Decision Support.
+
+---
+
+# 2. Business Problem
+
+Forecasts are never perfectly accurate.
+
+Example
+
+Forecast
+
+=
+
+120 Units
+
+Actual Demand may be
+
+90
+
+110
+
+123
+
+148
+
+175
+
+Inventory decisions require uncertainty estimates rather than a single value.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Estimate forecast uncertainty
+
+✓ Calculate prediction intervals
+
+✓ Estimate probability distributions
+
+✓ Measure forecast confidence
+
+✓ Quantify forecast risk
+
+✓ Detect uncertainty drift
+
+✓ Publish uncertainty repository
+
+---
+
+# 4. Inputs
+
+Enterprise Demand Forecast
+
+Demand History
+
+Forecast Residuals
+
+Demand Drivers
+
+Demand Profile
+
+Scenario Intelligence
+
+Knowledge Graph
+
+Feature Store
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Uncertainty Repository
+
+Prediction Intervals
+
+Probability Distributions
+
+Forecast Confidence
+
+Risk Metrics
+
+Inventory Inputs
+
+---
+
+# 6. Workflow
+
+Demand Forecast
+
+↓
+
+Residual Analysis
+
+↓
+
+Estimate Distribution
+
+↓
+
+Monte Carlo Simulation
+
+↓
+
+Prediction Interval
+
+↓
+
+Confidence Estimation
+
+↓
+
+Risk Analysis
+
+↓
+
+Validation
+
+↓
+
+Publication
+
+---
+
+# 7. Uncertainty Object
+
+Forecast ID
+
+SKU
+
+Planning Period
+
+Forecast
+
+Mean
+
+Median
+
+Variance
+
+Standard Deviation
+
+Confidence
+
+Distribution
+
+Version
+
+---
+
+# 8. Prediction Intervals
+
+Generate
+
+50%
+
+80%
+
+90%
+
+95%
+
+99%
+
+Prediction Intervals
+
+Store
+
+Lower Bound
+
+Upper Bound
+
+Coverage
+
+---
+
+# 9. Probability Distribution
+
+Estimate
+
+Normal
+
+Poisson
+
+Negative Binomial
+
+Gamma
+
+Lognormal
+
+Zero Inflated
+
+Empirical
+
+Bayesian
+
+Store
+
+Best Fit
+
+Parameters
+
+Confidence
+
+---
+
+# 10. Residual Intelligence
+
+Calculate
+
+Residual
+
+Absolute Error
+
+Squared Error
+
+Bias
+
+Rolling Error
+
+Residual Distribution
+
+Residual Drift
+
+---
+
+# 11. Monte Carlo Simulation
+
+Generate
+
+10,000+
+
+Demand Simulations
+
+Estimate
+
+Expected Demand
+
+Worst Case
+
+Best Case
+
+Percentiles
+
+Tail Risk
+
+---
+
+# 12. Forecast Confidence
+
+Estimate
+
+Model Confidence
+
+Historical Accuracy
+
+Data Quality
+
+Feature Stability
+
+Scenario Stability
+
+Driver Stability
+
+Confidence Score
+
+---
+
+# 13. Risk Measures
+
+Calculate
+
+Demand Risk
+
+Forecast Risk
+
+Tail Risk
+
+Extreme Demand Risk
+
+Under Forecast Risk
+
+Over Forecast Risk
+
+Service Risk
+
+Financial Risk
+
+---
+
+# 14. Scenario Uncertainty
+
+Estimate
+
+Baseline
+
+Optimistic
+
+Pessimistic
+
+Import Delay
+
+Economic Crisis
+
+Competitor Growth
+
+Store
+
+Probability
+
+Confidence
+
+---
+
+# 15. Business Impact
+
+Estimate
+
+Expected Stockout
+
+Expected Overstock
+
+Lost Sales Risk
+
+Holding Cost Risk
+
+Emergency Purchase Risk
+
+Revenue Risk
+
+Service Level Risk
+
+---
+
+# 16. Explainability
+
+Store
+
+Sources of Uncertainty
+
+Major Drivers
+
+Model Variance
+
+Residual Behaviour
+
+Scenario Contributions
+
+Confidence Explanation
+
+---
+
+# 17. AI Models
+
+Bayesian Forecasting
+
+Quantile Regression
+
+Bootstrap
+
+Monte Carlo Simulation
+
+Conformal Prediction
+
+Gaussian Processes
+
+Bayesian Neural Networks
+
+---
+
+# 18. AI Agents
+
+Chief Uncertainty Agent
+
+↓
+
+Distribution Agent
+
+↓
+
+Simulation Agent
+
+↓
+
+Confidence Agent
+
+↓
+
+Risk Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 19. Database Tables
+
+forecast_uncertainty
+
+prediction_intervals
+
+forecast_distribution
+
+forecast_residuals
+
+forecast_risk
+
+uncertainty_validation
+
+---
+
+# 20. APIs
+
+GET /forecast-uncertainty
+
+GET /prediction-interval
+
+GET /forecast-confidence
+
+GET /forecast-risk
+
+POST /forecast-uncertainty/publish
+
+---
+
+# 21. Event Messages
+
+UncertaintyEstimated
+
+PredictionIntervalsCreated
+
+MonteCarloCompleted
+
+ConfidenceUpdated
+
+UncertaintyPublished
+
+---
+
+# 22. Validation
+
+Verify
+
+Coverage Accuracy
+
+Distribution Fit
+
+Confidence Valid
+
+Residual Stability
+
+Simulation Convergence
+
+---
+
+# 23. Monitoring
+
+Prediction Interval Coverage
+
+Residual Drift
+
+Confidence Drift
+
+Distribution Drift
+
+Tail Risk
+
+Calibration
+
+---
+
+# 24. Deliverables
+
+Enterprise Uncertainty Repository
+
+Prediction Intervals
+
+Risk Repository
+
+Inventory Inputs
+
+Knowledge Graph Updates
+
+Ready for Scenario Intelligence
+
+---
+
+# 05_07_Demand_Scenario_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.07
+
+Demand Scenario Intelligence
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Demand Scenario Intelligence generates multiple future demand scenarios for
+every SKU by combining forecast uncertainty, business assumptions, market
+conditions, fleet evolution and external events.
+
+Instead of producing a single demand forecast,
+the engine estimates multiple possible futures together with their
+probabilities and business impacts.
+
+These scenarios become direct inputs for Inventory Intelligence,
+Procurement Intelligence and Decision Support.
+
+---
+
+# 2. Business Problem
+
+Future demand is uncertain.
+
+Demand can change because of
+
+• Fleet Growth
+
+• Fleet Decline
+
+• Vehicle Replacement
+
+• New Vehicle Launch
+
+• Dealer Expansion
+
+• Promotions
+
+• Economic Conditions
+
+• Fuel Prices
+
+• Weather
+
+• Import Restrictions
+
+Planning with only one forecast increases business risk.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Generate demand scenarios
+
+✓ Simulate business assumptions
+
+✓ Estimate scenario probabilities
+
+✓ Quantify scenario risks
+
+✓ Compare scenarios
+
+✓ Publish scenario repository
+
+---
+
+# 4. Inputs
+
+Enterprise Demand Forecast
+
+Demand Uncertainty Object
+
+Demand Drivers
+
+Demand Profiles
+
+Enterprise Demand Context
+
+Fleet Intelligence
+
+Dealer Intelligence
+
+External Intelligence
+
+Knowledge Graph
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Demand Scenario Repository
+
+Scenario Forecasts
+
+Scenario Probabilities
+
+Scenario Risks
+
+Scenario Comparison
+
+Inventory Planning Inputs
+
+---
+
+# 6. Workflow
+
+Load Forecast
+
+↓
+
+Load Uncertainty
+
+↓
+
+Generate Assumptions
+
+↓
+
+Generate Scenarios
+
+↓
+
+Run Demand Simulation
+
+↓
+
+Evaluate Results
+
+↓
+
+Estimate Probabilities
+
+↓
+
+Validate
+
+↓
+
+Publish
+
+---
+
+# 7. Scenario Object
+
+Scenario ID
+
+SKU
+
+Planning Period
+
+Scenario Name
+
+Forecast
+
+Probability
+
+Confidence
+
+Risk
+
+Business Impact
+
+Version
+
+---
+
+# 8. Standard Scenarios
+
+Baseline
+
+Optimistic
+
+Pessimistic
+
+Fleet Growth
+
+Fleet Decline
+
+Economic Downturn
+
+Import Delay
+
+Supplier Failure
+
+Promotion
+
+Fuel Price Increase
+
+Exchange Rate Change
+
+New Vehicle Launch
+
+Vehicle Retirement
+
+Dealer Expansion
+
+Dealer Closure
+
+---
+
+# 9. Demand Simulation
+
+For every scenario
+
+Demand Drivers
+
+↓
+
+Modify Driver Values
+
+↓
+
+Generate Forecast
+
+↓
+
+Estimate Distribution
+
+↓
+
+Calculate Risk
+
+↓
+
+Store Results
+
+---
+
+# 10. Business Assumptions
+
+Sales Target
+
+Dealer Growth
+
+Vehicle Population
+
+Fleet Growth
+
+Replacement Rate
+
+Import Lead Time
+
+Supplier Reliability
+
+Inventory Policy
+
+Economic Indicators
+
+---
+
+# 11. External Assumptions
+
+Inflation
+
+Exchange Rate
+
+Fuel Price
+
+Rainfall
+
+Temperature
+
+Holiday
+
+Government Policy
+
+Competitor Activity
+
+Consumer Confidence
+
+---
+
+# 12. Scenario KPIs
+
+Expected Demand
+
+Demand Growth
+
+Demand Variance
+
+Forecast Confidence
+
+Demand Risk
+
+Tail Risk
+
+Expected Revenue
+
+Expected Stockout
+
+Expected Overstock
+
+---
+
+# 13. Scenario Comparison
+
+Compare
+
+Forecast
+
+Probability
+
+Confidence
+
+Risk
+
+Revenue
+
+Service Level
+
+Inventory Cost
+
+Procurement Cost
+
+---
+
+# 14. Monte Carlo Scenarios
+
+Generate
+
+10,000+
+
+Demand Simulations
+
+Estimate
+
+Expected Demand
+
+Worst Case
+
+Best Case
+
+Percentiles
+
+Scenario Distribution
+
+---
+
+# 15. What-if Analysis
+
+Examples
+
+What if demand grows by 15%?
+
+What if lead time increases?
+
+What if fleet declines?
+
+What if a supplier fails?
+
+What if exchange rate rises?
+
+---
+
+# 16. Business Impact
+
+Estimate
+
+Revenue
+
+Profit
+
+Service Level
+
+Inventory Cost
+
+Holding Cost
+
+Stockout Cost
+
+Procurement Cost
+
+Emergency Purchases
+
+---
+
+# 17. Explainability
+
+Store
+
+Scenario Assumptions
+
+Driver Changes
+
+Forecast Changes
+
+Risk Factors
+
+Confidence
+
+Reasoning Chain
+
+---
+
+# 18. AI Models
+
+Monte Carlo Simulation
+
+Bayesian Networks
+
+System Dynamics
+
+Scenario Trees
+
+Generative AI
+
+Graph Neural Networks
+
+Hybrid Ensemble
+
+---
+
+# 19. AI Agents
+
+Chief Scenario Agent
+
+↓
+
+Simulation Agent
+
+↓
+
+Probability Agent
+
+↓
+
+Risk Agent
+
+↓
+
+Comparison Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 20. Database Tables
+
+demand_scenarios
+
+scenario_assumptions
+
+scenario_forecasts
+
+scenario_probabilities
+
+scenario_risks
+
+scenario_validation
+
+---
+
+# 21. APIs
+
+GET /demand-scenarios
+
+GET /demand-scenarios/{sku}
+
+GET /scenario-comparison
+
+POST /demand-scenarios/run
+
+POST /demand-scenarios/publish
+
+---
+
+# 22. Event Messages
+
+ScenarioCreated
+
+ScenarioSimulated
+
+ScenarioValidated
+
+ScenarioPublished
+
+---
+
+# 23. Validation
+
+Verify
+
+Scenario complete
+
+Probability valid
+
+Forecast valid
+
+Risk calculated
+
+Business impact calculated
+
+---
+
+# 24. Monitoring
+
+Scenario Coverage
+
+Simulation Time
+
+Probability Calibration
+
+Scenario Accuracy
+
+Business Impact Accuracy
+
+---
+
+# 25. Deliverables
+
+Demand Scenario Repository
+
+Scenario Dashboard
+
+Scenario Comparison Report
+
+Inventory Planning Inputs
+
+Knowledge Graph Updates
+
+Ready for Demand Knowledge Graph
+
+---
+
+# 05_08_Demand_Knowledge_Graph.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.08
+
+Demand Knowledge Graph
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Demand Knowledge Graph (DKG) represents enterprise demand knowledge as a
+semantic graph.
+
+Rather than storing isolated demand records,
+the graph captures relationships between
+
+• SKUs
+
+• Vehicles
+
+• Fleet
+
+• Dealers
+
+• Customers
+
+• Demand Drivers
+
+• Forecasts
+
+• Inventory
+
+• Procurement
+
+• Business Scenarios
+
+• External Factors
+
+The graph enables explainable reasoning across the demand planning process.
+
+---
+
+# 2. Business Problem
+
+Demand is generated by relationships rather than isolated observations.
+
+Example
+
+Vehicle Population
+
+↓
+
+Vehicle Aging
+
+↓
+
+Brake Pad Wear
+
+↓
+
+Brake Pad Demand
+
+↓
+
+Inventory Requirement
+
+↓
+
+Procurement Decision
+
+Without these relationships,
+forecasting models cannot fully explain demand behaviour.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Build Demand Knowledge Graph
+
+✓ Connect Enterprise Demand Context
+
+✓ Store Demand Relationships
+
+✓ Generate Graph Embeddings
+
+✓ Support Graph Reasoning
+
+✓ Publish Graph Services
+
+---
+
+# 4. Inputs
+
+Enterprise Demand Context
+
+Demand Master
+
+Demand History
+
+Demand Profiles
+
+Demand Drivers
+
+Demand Forecast
+
+Demand Scenarios
+
+Fleet Intelligence
+
+Catalogue Knowledge Graph
+
+Vehicle Knowledge Graph
+
+Production Knowledge Graph
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Demand Knowledge Graph
+
+Graph Embeddings
+
+Reasoning Repository
+
+Demand Paths
+
+Knowledge APIs
+
+Forecast Context
+
+---
+
+# 6. Workflow
+
+Enterprise Demand Context
+
+↓
+
+Create Nodes
+
+↓
+
+Create Relationships
+
+↓
+
+Validate Ontology
+
+↓
+
+Generate Embeddings
+
+↓
+
+Run Reasoning
+
+↓
+
+Publish
+
+---
+
+# 7. Primary Nodes
+
+SKU
+
+Vehicle
+
+Vehicle Family
+
+Platform
+
+Fleet
+
+Dealer
+
+Region
+
+Province
+
+Supplier
+
+Forecast
+
+Scenario
+
+Inventory
+
+Procurement
+
+Demand Driver
+
+Risk
+
+Promotion
+
+External Event
+
+Customer Segment
+
+---
+
+# 8. Core Relationships
+
+SKU
+
+COMPATIBLE_WITH
+
+Vehicle
+
+Vehicle
+
+BELONGS_TO
+
+Platform
+
+Vehicle
+
+PART_OF
+
+Fleet
+
+Fleet
+
+GENERATES
+
+Demand
+
+Demand
+
+FORECASTED_BY
+
+Forecast
+
+Forecast
+
+AFFECTS
+
+Inventory
+
+Inventory
+
+TRIGGERS
+
+Procurement
+
+Dealer
+
+SERVES
+
+Region
+
+Promotion
+
+INCREASES
+
+Demand
+
+Import Delay
+
+INCREASES
+
+Risk
+
+---
+
+# 9. Demand Driver Relationships
+
+Demand Driver
+
+INFLUENCES
+
+Demand
+
+Demand Driver
+
+AFFECTS
+
+Forecast
+
+Demand Driver
+
+MODIFIED_BY
+
+Scenario
+
+Driver
+
+HAS_ELASTICITY
+
+Demand
+
+---
+
+# 10. Forecast Relationships
+
+Forecast
+
+GENERATED_BY
+
+Model
+
+Forecast
+
+SUPPORTED_BY
+
+Drivers
+
+Forecast
+
+HAS_CONFIDENCE
+
+Confidence
+
+Forecast
+
+BELONGS_TO
+
+Scenario
+
+---
+
+# 11. Inventory Relationships
+
+Demand
+
+CONSUMES
+
+Inventory
+
+Inventory
+
+HAS
+
+Safety Stock
+
+Inventory
+
+HAS
+
+Reorder Point
+
+Inventory
+
+SUPPLIED_BY
+
+Procurement
+
+---
+
+# 12. Procurement Relationships
+
+Procurement
+
+PURCHASES
+
+SKU
+
+Supplier
+
+SUPPLIES
+
+SKU
+
+Lead Time
+
+INFLUENCES
+
+Procurement
+
+MOQ
+
+CONSTRAINS
+
+Procurement
+
+---
+
+# 13. Scenario Relationships
+
+Scenario
+
+MODIFIES
+
+Driver
+
+Scenario
+
+MODIFIES
+
+Forecast
+
+Scenario
+
+CHANGES
+
+Risk
+
+Scenario
+
+AFFECTS
+
+Inventory
+
+---
+
+# 14. Graph Reasoning
+
+Support
+
+Root Cause Analysis
+
+Demand Propagation
+
+Recommendation Paths
+
+Impact Analysis
+
+Scenario Reasoning
+
+Risk Propagation
+
+---
+
+# 15. Explainable AI
+
+Every prediction stores
+
+Evidence Nodes
+
+Evidence Relationships
+
+Reasoning Chain
+
+Confidence
+
+Supporting Drivers
+
+Supporting Scenarios
+
+---
+
+# 16. Graph Embeddings
+
+Generate embeddings for
+
+SKU
+
+Vehicle
+
+Dealer
+
+Demand Driver
+
+Scenario
+
+Supplier
+
+Region
+
+Inventory
+
+Forecast
+
+---
+
+# 17. Ontology Rules
+
+Every SKU must
+
+Connect to Vehicle
+
+Connect to Demand
+
+Connect to Forecast
+
+Connect to Inventory
+
+Connect to Procurement
+
+Connect to Scenario
+
+No orphan nodes
+
+No invalid cycles
+
+---
+
+# 18. AI Models
+
+Graph Neural Networks
+
+Node2Vec
+
+GraphSAGE
+
+TransE
+
+Knowledge Graph Embeddings
+
+Graph Attention Networks
+
+---
+
+# 19. AI Agents
+
+Chief Graph Agent
+
+↓
+
+Ontology Agent
+
+↓
+
+Relationship Agent
+
+↓
+
+Embedding Agent
+
+↓
+
+Reasoning Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 20. Database Tables
+
+demand_graph_nodes
+
+demand_graph_edges
+
+demand_graph_embeddings
+
+graph_reasoning
+
+graph_validation
+
+graph_versions
+
+---
+
+# 21. APIs
+
+GET /demand-graph
+
+GET /demand-graph/node
+
+GET /demand-graph/path
+
+GET /demand-graph/reasoning
+
+POST /demand-graph/query
+
+---
+
+# 22. Event Messages
+
+GraphCreated
+
+RelationshipsGenerated
+
+EmbeddingsGenerated
+
+ReasoningCompleted
+
+GraphPublished
+
+---
+
+# 23. Validation
+
+Verify
+
+Ontology
+
+Relationships
+
+Embeddings
+
+Reasoning
+
+No orphan nodes
+
+Graph completeness
+
+---
+
+# 24. Monitoring
+
+Graph Size
+
+Relationship Density
+
+Embedding Coverage
+
+Reasoning Accuracy
+
+Graph Query Performance
+
+---
+
+# 25. Deliverables
+
+Enterprise Demand Knowledge Graph
+
+Graph APIs
+
+Graph Embeddings
+
+Reasoning Engine
+
+Knowledge Services
+
+Ready for Demand Feature Store
+
+---
+
+# 05_09_Demand_Feature_Store.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.09
+
+Demand Feature Store
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Demand Feature Store provides a centralized, versioned and governed
+repository of all demand-related features used across enterprise AI services.
+
+Instead of generating features independently inside forecasting models,
+all services consume standardized enterprise features.
+
+The Feature Store guarantees
+
+• Consistency
+
+• Reproducibility
+
+• Explainability
+
+• Governance
+
+• Versioning
+
+• Reusability
+
+---
+
+# 2. Business Problem
+
+Different AI models often calculate the same feature differently.
+
+Example
+
+Rolling Mean
+
+Forecast Model
+
+↓
+
+12 Months
+
+Inventory Model
+
+↓
+
+6 Months
+
+Procurement Model
+
+↓
+
+9 Months
+
+This inconsistency creates conflicting decisions.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Generate enterprise demand features
+
+✓ Validate features
+
+✓ Version features
+
+✓ Monitor feature drift
+
+✓ Publish online features
+
+✓ Publish offline features
+
+✓ Support AI services
+
+---
+
+# 4. Inputs
+
+Enterprise Demand Context
+
+Demand History
+
+Demand Profiles
+
+Demand Drivers
+
+Demand Forecast
+
+Demand Scenarios
+
+Demand Knowledge Graph
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Demand Feature Store
+
+Feature Metadata
+
+Feature Repository
+
+Training Features
+
+Inference Features
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Enterprise Demand Context
+
+↓
+
+Feature Engineering
+
+↓
+
+Feature Validation
+
+↓
+
+Feature Versioning
+
+↓
+
+Publish
+
+↓
+
+Online Store
+
+↓
+
+Offline Store
+
+↓
+
+Monitoring
+
+---
+
+# 7. Feature Categories
+
+Demand Features
+
+Statistical Features
+
+Fleet Features
+
+Dealer Features
+
+Inventory Features
+
+Procurement Features
+
+Market Features
+
+Graph Features
+
+Scenario Features
+
+Risk Features
+
+AI Features
+
+---
+
+# 8. Demand Features
+
+Monthly Demand
+
+Rolling Mean
+
+Rolling Median
+
+Rolling Maximum
+
+Rolling Minimum
+
+Growth Rate
+
+Demand Velocity
+
+Demand Acceleration
+
+Demand Stability
+
+---
+
+# 9. Statistical Features
+
+Variance
+
+Standard Deviation
+
+Coefficient of Variation
+
+Demand Entropy
+
+Zero Demand Ratio
+
+Trend Strength
+
+Seasonality Strength
+
+Intermittency
+
+---
+
+# 10. Fleet Features
+
+Compatible Fleet
+
+Fleet Growth
+
+Fleet Age
+
+Replacement Rate
+
+Migration Rate
+
+Fleet Evolution Index
+
+Platform Growth
+
+Vehicle Diversity
+
+---
+
+# 11. Dealer Features
+
+Dealer Coverage
+
+Dealer Growth
+
+Dealer Diversity
+
+Dealer Loyalty
+
+Dealer Concentration
+
+Dealer Reaction Time
+
+Dealer Inventory
+
+---
+
+# 12. Inventory Features
+
+Current Inventory
+
+Inventory Turnover
+
+Safety Stock
+
+Fill Rate
+
+Stockout Frequency
+
+Holding Cost
+
+Inventory Health
+
+---
+
+# 13. Procurement Features
+
+Lead Time
+
+MOQ
+
+Supplier Reliability
+
+Import Delay
+
+Currency Risk
+
+Procurement Risk
+
+---
+
+# 14. Market Features
+
+Seasonality
+
+Holiday
+
+Promotion
+
+Inflation
+
+Exchange Rate
+
+Fuel Price
+
+Weather
+
+Economic Indicators
+
+---
+
+# 15. Graph Features
+
+Node Degree
+
+Betweenness
+
+Centrality
+
+Community
+
+Graph Embedding
+
+Demand Connectivity
+
+Knowledge Paths
+
+---
+
+# 16. Scenario Features
+
+Scenario Probability
+
+Scenario Risk
+
+Scenario Confidence
+
+Scenario Spread
+
+Scenario Stability
+
+---
+
+# 17. Risk Features
+
+Demand Risk
+
+Forecast Risk
+
+Inventory Risk
+
+Supply Risk
+
+Business Risk
+
+Financial Risk
+
+---
+
+# 18. AI Features
+
+Feature Embeddings
+
+Demand Embeddings
+
+Driver Embeddings
+
+Similarity Scores
+
+SHAP Features
+
+Latent Features
+
+---
+
+# 19. Feature Metadata
+
+Feature Name
+
+Business Definition
+
+Mathematical Definition
+
+Owner
+
+Source
+
+Refresh Frequency
+
+Consumers
+
+Version
+
+Validation Rules
+
+---
+
+# 20. Feature Validation
+
+Check
+
+Completeness
+
+Freshness
+
+Consistency
+
+Missing Values
+
+Outliers
+
+Distribution
+
+Feature Leakage
+
+Duplicates
+
+---
+
+# 21. Feature Drift
+
+Monitor
+
+Population Stability Index
+
+KS Test
+
+Distribution Shift
+
+Mean Shift
+
+Variance Shift
+
+Feature Importance Drift
+
+Concept Drift
+
+---
+
+# 22. Online Feature Store
+
+Supports
+
+Real-Time Forecasting
+
+Decision Support
+
+Digital Twins
+
+AI Agents
+
+API Services
+
+---
+
+# 23. Offline Feature Store
+
+Supports
+
+Model Training
+
+Backtesting
+
+Simulation
+
+Research
+
+Experimentation
+
+---
+
+# 24. AI Agents
+
+Chief Feature Agent
+
+↓
+
+Feature Engineering Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Version Agent
+
+↓
+
+Publishing Agent
+
+↓
+
+Monitoring Agent
+
+↓
+
+Knowledge Agent
+
+---
+
+# 25. Database Tables
+
+demand_feature_master
+
+demand_feature_versions
+
+demand_feature_metadata
+
+demand_feature_quality
+
+demand_feature_drift
+
+online_demand_features
+
+offline_demand_features
+
+---
+
+# 26. APIs
+
+GET /demand-features
+
+GET /demand-features/{sku}
+
+GET /demand-features/version
+
+POST /demand-features/publish
+
+GET /demand-features/drift
+
+---
+
+# 27. Event Messages
+
+FeatureGenerated
+
+FeatureValidated
+
+FeaturePublished
+
+FeatureUpdated
+
+FeatureDriftDetected
+
+---
+
+# 28. Monitoring
+
+Feature Freshness
+
+Feature Drift
+
+Feature Usage
+
+Feature Latency
+
+Feature Completeness
+
+Quality Score
+
+---
+
+# 29. Deliverables
+
+Enterprise Demand Feature Store
+
+Online Feature Store
+
+Offline Feature Store
+
+Feature Catalog
+
+Feature Quality Dashboard
+
+Knowledge Graph Updates
+
+Ready for Demand Digital Twin
+
+---
+
+# 05_10_Demand_Digital_Twin.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.10
+
+Demand Digital Twin
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Demand Digital Twin creates a real-time virtual representation of every SKU
+within the enterprise.
+
+The Digital Twin continuously integrates demand history, forecast,
+fleet evolution, dealer behaviour, inventory status, procurement information,
+business scenarios and external events.
+
+Rather than storing static forecasts,
+the Digital Twin continuously evolves as new information becomes available.
+
+---
+
+# 2. Business Problem
+
+Traditional forecasting systems only store
+
+Forecast
+
+↓
+
+Next Month
+
+↓
+
+Done
+
+However,
+
+Demand changes daily.
+
+New vehicles arrive.
+
+Dealers grow.
+
+Inventory changes.
+
+Lead time changes.
+
+Forecasts become outdated.
+
+A continuously updating Digital Twin solves this problem.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Build Digital Twin for every SKU
+
+✓ Synchronize enterprise data
+
+✓ Simulate future demand
+
+✓ Monitor real-time changes
+
+✓ Support What-if Analysis
+
+✓ Publish Twin Services
+
+---
+
+# 4. Inputs
+
+Enterprise Demand Context
+
+Demand Master
+
+Demand History
+
+Demand Profiles
+
+Demand Drivers
+
+Demand Forecast
+
+Demand Uncertainty
+
+Demand Scenarios
+
+Demand Feature Store
+
+Demand Knowledge Graph
+
+Inventory Intelligence
+
+Procurement Intelligence
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Demand Digital Twin
+
+Twin State
+
+Simulation Results
+
+Twin Health
+
+Twin Recommendations
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Enterprise Demand Context
+
+↓
+
+Create Digital Twin
+
+↓
+
+Synchronize Data
+
+↓
+
+Update Twin State
+
+↓
+
+Run Simulations
+
+↓
+
+Generate Recommendations
+
+↓
+
+Validate
+
+↓
+
+Publish
+
+---
+
+# 7. Twin Identity
+
+Twin ID
+
+SKU
+
+Part Number
+
+Planning Version
+
+Current State
+
+Last Updated
+
+Health Score
+
+Confidence
+
+---
+
+# 8. Current State
+
+Current Demand
+
+Current Inventory
+
+Current Fleet
+
+Current Dealers
+
+Current Forecast
+
+Current Risk
+
+Current Scenario
+
+Current Procurement Status
+
+---
+
+# 9. Historical State
+
+Historical Demand
+
+Historical Inventory
+
+Historical Forecast
+
+Historical Stockouts
+
+Historical Lead Time
+
+Historical Dealer Behaviour
+
+Historical Fleet
+
+Historical Procurement
+
+---
+
+# 10. Future State
+
+Forecast Demand
+
+Prediction Interval
+
+Scenario Forecast
+
+Expected Inventory
+
+Expected Procurement
+
+Expected Service Level
+
+Expected Stockouts
+
+---
+
+# 11. Fleet Synchronization
+
+Synchronize
+
+Compatible Vehicles
+
+Fleet Growth
+
+Vehicle Age
+
+Replacement
+
+Migration
+
+Fleet Evolution Index
+
+---
+
+# 12. Dealer Synchronization
+
+Synchronize
+
+Dealer Coverage
+
+Dealer Orders
+
+Dealer Inventory
+
+Dealer Growth
+
+Dealer Loyalty
+
+Dealer Capacity
+
+---
+
+# 13. Inventory Synchronization
+
+Synchronize
+
+Current Stock
+
+Safety Stock
+
+Reorder Point
+
+Inventory Health
+
+Fill Rate
+
+Backorders
+
+Warehouse Capacity
+
+---
+
+# 14. Procurement Synchronization
+
+Synchronize
+
+Lead Time
+
+Supplier Status
+
+Purchase Orders
+
+Import Delays
+
+MOQ
+
+Currency
+
+Procurement Risk
+
+---
+
+# 15. Simulation Engine
+
+Run
+
+Demand Simulation
+
+Inventory Simulation
+
+Procurement Simulation
+
+Scenario Simulation
+
+Monte Carlo Simulation
+
+Policy Simulation
+
+---
+
+# 16. What-if Analysis
+
+Examples
+
+What if fleet grows by 20%?
+
+What if lead time doubles?
+
+What if dealer demand increases?
+
+What if supplier fails?
+
+What if exchange rate increases?
+
+---
+
+# 17. Recommendation Engine
+
+Recommend
+
+Forecast Update
+
+Inventory Adjustment
+
+Safety Stock Change
+
+Reorder Point Update
+
+Procurement Quantity
+
+Risk Mitigation
+
+---
+
+# 18. Explainability
+
+Store
+
+Reasoning Chain
+
+Driver Contributions
+
+Scenario Contributions
+
+Confidence
+
+Simulation Results
+
+Decision Path
+
+---
+
+# 19. AI Models
+
+Digital Twin Engine
+
+System Dynamics
+
+Agent-Based Simulation
+
+Monte Carlo
+
+Reinforcement Learning
+
+Graph Neural Networks
+
+Bayesian Networks
+
+---
+
+# 20. AI Agents
+
+Chief Twin Agent
+
+↓
+
+Synchronization Agent
+
+↓
+
+Simulation Agent
+
+↓
+
+Recommendation Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 21. Database Tables
+
+demand_digital_twins
+
+twin_state
+
+twin_history
+
+twin_simulations
+
+twin_recommendations
+
+twin_health
+
+---
+
+# 22. APIs
+
+GET /digital-twin
+
+GET /digital-twin/{sku}
+
+GET /digital-twin/state
+
+GET /digital-twin/simulation
+
+POST /digital-twin/simulate
+
+POST /digital-twin/publish
+
+---
+
+# 23. Event Messages
+
+TwinCreated
+
+TwinUpdated
+
+SimulationCompleted
+
+RecommendationGenerated
+
+TwinPublished
+
+---
+
+# 24. Validation
+
+Verify
+
+Twin synchronized
+
+Forecast synchronized
+
+Inventory synchronized
+
+Fleet synchronized
+
+Scenario synchronized
+
+No stale data
+
+---
+
+# 25. Monitoring
+
+Twin Freshness
+
+Synchronization Latency
+
+Simulation Time
+
+Recommendation Accuracy
+
+Twin Health
+
+---
+
+# 26. Deliverables
+
+Enterprise Demand Digital Twins
+
+Simulation Engine
+
+Recommendation Engine
+
+Twin APIs
+
+Knowledge Graph Updates
+
+Ready for Demand Validation
+
+---
+
+# 05_11_Demand_Validation_and_Governance.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Phase 05
+
+Module 05.11
+
+Demand Validation and Governance
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Demand Validation and Governance ensures that every demand intelligence
+artifact meets enterprise quality, consistency, explainability and governance
+requirements before publication.
+
+The module validates forecasts, uncertainty estimates, scenarios, feature
+quality, digital twins and knowledge graph consistency.
+
+Only validated outputs are released to downstream enterprise services.
+
+---
+
+# 2. Business Problem
+
+Forecasts can fail because of
+
+• Poor Data
+
+• Feature Drift
+
+• Model Drift
+
+• Invalid Scenarios
+
+• Low Confidence
+
+• Missing Relationships
+
+• Business Rule Violations
+
+Publishing low-quality forecasts can cause
+
+Stockouts
+
+Overstock
+
+Poor Procurement
+
+Incorrect Safety Stock
+
+Financial Loss
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Validate forecasts
+
+✓ Validate uncertainty
+
+✓ Validate scenarios
+
+✓ Validate digital twins
+
+✓ Validate feature quality
+
+✓ Validate graph integrity
+
+✓ Publish approved intelligence
+
+---
+
+# 4. Inputs
+
+Demand Forecast Object
+
+Demand Uncertainty Object
+
+Demand Scenario Object
+
+Demand Feature Object
+
+Demand Twin Object
+
+Demand Graph Object
+
+Business Rules
+
+Knowledge Graph
+
+Historical Performance
+
+---
+
+# 5. Outputs
+
+Validation Repository
+
+Approval Status
+
+Quality Reports
+
+Governance Reports
+
+Demand Certification
+
+Enterprise Audit Trail
+
+---
+
+# 6. Workflow
+
+Load Intelligence Objects
+
+↓
+
+Run Validation Rules
+
+↓
+
+Calculate Quality Metrics
+
+↓
+
+Generate Audit Report
+
+↓
+
+Approve / Reject
+
+↓
+
+Publish
+
+---
+
+# 7. Forecast Validation
+
+Validate
+
+Forecast Completeness
+
+Prediction Interval
+
+Forecast Bias
+
+Forecast Stability
+
+Forecast Consistency
+
+Forecast Confidence
+
+Forecast Explainability
+
+---
+
+# 8. Uncertainty Validation
+
+Validate
+
+Distribution Fit
+
+Coverage
+
+Calibration
+
+Monte Carlo Stability
+
+Residual Behaviour
+
+Tail Risk
+
+---
+
+# 9. Scenario Validation
+
+Validate
+
+Scenario Logic
+
+Business Assumptions
+
+Probability Sum
+
+Scenario Coverage
+
+Scenario Consistency
+
+---
+
+# 10. Digital Twin Validation
+
+Validate
+
+Synchronization
+
+Simulation Accuracy
+
+Current State
+
+Historical State
+
+Recommendation Consistency
+
+Twin Fidelity
+
+---
+
+# 11. Feature Validation
+
+Validate
+
+Completeness
+
+Freshness
+
+Feature Drift
+
+Feature Leakage
+
+Outliers
+
+Duplicates
+
+Metadata
+
+---
+
+# 12. Knowledge Graph Validation
+
+Validate
+
+Ontology
+
+Relationships
+
+Embeddings
+
+Orphan Nodes
+
+Broken Links
+
+Graph Completeness
+
+---
+
+# 13. Business Rule Validation
+
+Verify
+
+Lead Time Rules
+
+MOQ Rules
+
+Forecast Horizon
+
+Planning Cycle
+
+Inventory Policies
+
+Critical Parts
+
+Approval Thresholds
+
+---
+
+# 14. Explainability Validation
+
+Verify
+
+SHAP Available
+
+Reasoning Chain
+
+Driver Evidence
+
+Scenario Evidence
+
+Prediction Traceability
+
+Confidence Explanation
+
+---
+
+# 15. Governance
+
+Maintain
+
+Version History
+
+Approval History
+
+Model Registry
+
+Feature Registry
+
+Policy Registry
+
+Audit Trail
+
+---
+
+# 16. Quality Scores
+
+Forecast Quality Score
+
+Feature Reliability Score
+
+Demand Uncertainty Index
+
+Twin Fidelity Score
+
+Scenario Robustness Score
+
+Demand Connectivity Index
+
+Overall Demand Quality Index
+
+---
+
+# 17. AI Models
+
+Rule Engine
+
+Anomaly Detection
+
+Graph Validation
+
+Model Drift Detection
+
+Data Quality Models
+
+Explainability Validation
+
+---
+
+# 18. AI Agents
+
+Chief Governance Agent
+
+↓
+
+Forecast Validation Agent
+
+↓
+
+Feature Validation Agent
+
+↓
+
+Scenario Validation Agent
+
+↓
+
+Twin Validation Agent
+
+↓
+
+Graph Validation Agent
+
+↓
+
+Approval Agent
+
+---
+
+# 19. Database Tables
+
+demand_validation
+
+forecast_validation
+
+feature_validation
+
+scenario_validation
+
+twin_validation
+
+graph_validation
+
+governance_audit
+
+---
+
+# 20. APIs
+
+GET /demand-validation
+
+GET /quality-report
+
+GET /governance
+
+POST /validate-demand
+
+POST /approve-demand
+
+---
+
+# 21. Event Messages
+
+DemandValidated
+
+ForecastApproved
+
+FeatureApproved
+
+TwinApproved
+
+ScenarioApproved
+
+DemandPublished
+
+---
+
+# 22. Validation Metrics
+
+Forecast Accuracy
+
+Prediction Coverage
+
+Quality Score
+
+Drift
+
+Consistency
+
+Traceability
+
+Explainability
+
+---
+
+# 23. Monitoring
+
+Approval Rate
+
+Validation Time
+
+Drift Frequency
+
+Quality Trends
+
+Audit Compliance
+
+---
+
+# 24. Deliverables
+
+Enterprise Validation Repository
+
+Governance Dashboard
+
+Quality Certification
+
+Approved Demand Intelligence
+
+Knowledge Graph Updates
+
+Ready for Inventory Intelligence
+
+---
+

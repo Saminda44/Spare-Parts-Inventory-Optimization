@@ -1,0 +1,9376 @@
+Enterprise Spare Parts Intelligence Platform
+
+Module 02
+
+Catalogue Intelligence
+
+Version 1.0
+
+---
+
+# Purpose
+
+Catalogue Intelligence converts raw Yamaha spare-parts PDF catalogues into an enterprise-quality SKU Master and Compatibility Knowledge Base.
+
+The module is responsible for understanding every catalogue and generating structured business knowledge that can be consumed by downstream intelligence services.
+
+Catalogue Intelligence is the foundation of the entire Enterprise Decision Intelligence Platform.
+
+Without a correct SKU Master, all forecasting, demand estimation, inventory optimization, and procurement recommendations become unreliable.
+
+---
+
+# Business Objectives
+
+The module shall
+
+• Discover catalogues
+
+• Understand catalogue structure
+
+• Extract all spare parts
+
+• Identify compatible motorcycle models
+
+• Extract colour variants
+
+• Generate a normalized SKU Master
+
+• Populate the Knowledge Graph
+
+• Produce confidence scores
+
+• Route uncertain records for review
+
+• Continuously improve through feedback
+
+---
+
+# Inputs
+
+PDF Catalogues
+
+Catalogue Metadata
+
+Business Rules
+
+Knowledge Graph
+
+Planning Context
+
+Previous Catalogue Versions
+
+Colour Tables
+
+Model Master
+
+---
+
+# Outputs
+
+SKU Master
+
+Compatibility Matrix
+
+Colour Matrix
+
+Catalogue Metadata
+
+Extraction Report
+
+Validation Report
+
+Knowledge Graph Updates
+
+Confidence Report
+
+Review Queue
+
+Learning Dataset
+
+---
+
+# Downstream Consumers
+
+Vehicle Intelligence
+
+UIO Intelligence
+
+Product Intelligence
+
+Demand Intelligence
+
+Inventory Intelligence
+
+Decision Intelligence
+
+Knowledge Graph
+
+Feature Store
+
+---
+
+# Internal Pipeline
+
+Catalogue Discovery
+
+↓
+
+PDF Preprocessing
+
+↓
+
+OCR
+
+↓
+
+Layout Detection
+
+↓
+
+Table Detection
+
+↓
+
+Table Parsing
+
+↓
+
+Part Extraction
+
+↓
+
+Compatibility Extraction
+
+↓
+
+Colour Extraction
+
+↓
+
+Validation
+
+↓
+
+Confidence Scoring
+
+↓
+
+Knowledge Graph
+
+↓
+
+SKU Master
+
+↓
+
+Learning
+
+---
+
+# Submodules
+
+02_01 Catalogue Discovery
+
+02_02 PDF Preprocessing
+
+02_03 OCR Engine
+
+02_04 Layout Analysis
+
+02_05 Table Extraction
+
+02_06 Part Extraction
+
+02_07 Compatibility Engine
+
+02_08 Colour Intelligence
+
+02_09 SKU Master
+
+02_10 Validation
+
+02_11 Knowledge Graph
+
+02_12 Confidence Engine
+
+02_13 Human Review
+
+02_14 Continuous Learning
+
+02_15 APIs
+
+02_16 Testing
+
+02_17 Deployment
+
+---
+
+# Enterprise Principles
+
+Single Source of Truth
+
+Version Everything
+
+Never Overwrite Data
+
+Human Review for Low Confidence
+
+Explain Every Decision
+
+Learn Continuously
+
+Maintain Complete Audit History
+
+---
+
+# Success Criteria
+
+Extraction Accuracy
+
+Compatibility Accuracy
+
+Colour Accuracy
+
+Processing Time
+
+Review Rate
+
+Automation Rate
+
+Knowledge Graph Completeness
+
+SKU Coverage
+
+End of Overview
+
+# 02_01_Catalogue_Discovery.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.01
+
+Catalogue Discovery Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Catalogue Discovery Engine is responsible for identifying, registering,
+validating, versioning and indexing every spare parts catalogue entering the
+Enterprise Planning Platform.
+
+This module guarantees that only valid catalogues proceed to the extraction
+pipeline.
+
+It acts as the entry point of Catalogue Intelligence.
+
+---
+
+# 2. Business Problem
+
+Businesses receive spare parts catalogues from multiple sources.
+
+Examples
+
+Manufacturer
+
+Dealer
+
+Supplier
+
+Internal Archive
+
+Updated Revision
+
+Previous Version
+
+The system must determine
+
+• Is this catalogue new?
+
+• Is this catalogue already processed?
+
+• Which motorcycle models belong to it?
+
+• Which revision is it?
+
+• Should it replace an older catalogue?
+
+Without this module,
+
+duplicate extraction,
+
+incorrect SKU versions,
+
+and inconsistent compatibility occur.
+
+---
+
+# 3. Objectives
+
+The module shall
+
+✓ Discover catalogues
+
+✓ Validate files
+
+✓ Register metadata
+
+✓ Detect revisions
+
+✓ Detect duplicates
+
+✓ Generate catalogue IDs
+
+✓ Generate page index
+
+✓ Register processing status
+
+✓ Publish processing events
+
+---
+
+# 4. Supported Inputs
+
+PDF
+
+Scanned PDF
+
+Digital PDF
+
+ZIP archive
+
+Folder Import
+
+Manual Upload
+
+API Upload
+
+Cloud Storage
+
+---
+
+# 5. Output
+
+Catalogue Registry
+
+Catalogue Metadata
+
+Processing Queue
+
+Page Registry
+
+Discovery Report
+
+Planning Context Registration
+
+Audit Log
+
+---
+
+# 6. Functional Requirements
+
+FR001
+
+Automatically detect new catalogues.
+
+FR002
+
+Assign unique Catalogue ID.
+
+FR003
+
+Calculate file checksum.
+
+FR004
+
+Detect duplicate files.
+
+FR005
+
+Detect revised catalogues.
+
+FR006
+
+Extract metadata.
+
+FR007
+
+Register processing status.
+
+FR008
+
+Create page inventory.
+
+FR009
+
+Trigger OCR Pipeline.
+
+---
+
+# 7. Non-functional Requirements
+
+Processing Time
+
+<30 seconds
+
+Scalability
+
+1000+ catalogues
+
+Availability
+
+99.9%
+
+Recovery
+
+Automatic
+
+Logging
+
+Complete
+
+---
+
+# 8. Processing Workflow
+
+Catalogue Arrival
+
+↓
+
+Virus Scan
+
+↓
+
+Checksum
+
+↓
+
+Duplicate Detection
+
+↓
+
+Metadata Extraction
+
+↓
+
+Version Detection
+
+↓
+
+Catalogue Registration
+
+↓
+
+Page Registration
+
+↓
+
+Queue Generation
+
+↓
+
+Publish Event
+
+↓
+
+OCR Pipeline
+
+---
+
+# 9. Catalogue Identification
+
+Each catalogue receives
+
+Catalogue UUID
+
+Catalogue Number
+
+Manufacturer
+
+Brand
+
+Vehicle Family
+
+Vehicle Generation
+
+Catalogue Version
+
+Revision
+
+Publication Date
+
+Language
+
+Region
+
+Source
+
+Checksum
+
+---
+
+# 10. Database Tables
+
+catalogues
+
+catalogue_versions
+
+catalogue_sources
+
+catalogue_files
+
+catalogue_pages
+
+catalogue_events
+
+catalogue_status
+
+catalogue_processing
+
+catalogue_checksums
+
+catalogue_errors
+
+---
+
+# 11. Catalogue Status
+
+NEW
+
+REGISTERED
+
+VALIDATED
+
+PROCESSING
+
+OCR_COMPLETE
+
+EXTRACTED
+
+VALIDATED_OUTPUT
+
+PUBLISHED
+
+FAILED
+
+ARCHIVED
+
+---
+
+# 12. Metadata Extraction
+
+Automatically identify
+
+PDF Title
+
+PDF Author
+
+Producer
+
+Creation Date
+
+Modification Date
+
+PDF Version
+
+Page Count
+
+Encrypted
+
+Language
+
+File Size
+
+Image Quality
+
+Resolution
+
+---
+
+# 13. Duplicate Detection
+
+Method 1
+
+SHA256 Checksum
+
+Method 2
+
+Catalogue Number
+
+Method 3
+
+Publication Date
+
+Method 4
+
+Version Number
+
+Method 5
+
+Page Similarity
+
+Method 6
+
+Visual Hash
+
+Confidence Score produced.
+
+---
+
+# 14. Version Detection
+
+Determine
+
+Original Catalogue
+
+Minor Revision
+
+Major Revision
+
+Replacement Catalogue
+
+Obsolete Catalogue
+
+Relationships stored.
+
+---
+
+# 15. Catalogue Relationships
+
+Example
+
+Catalogue V1
+
+↓
+
+Catalogue V2
+
+↓
+
+Catalogue V3
+
+↓
+
+Superseded
+
+All versions remain traceable.
+
+---
+
+# 16. Catalogue Classification
+
+Automatically classify
+
+Motorcycle
+
+Scooter
+
+ATV
+
+Marine
+
+Generator
+
+Other
+
+---
+
+# 17. Yamaha Model Detection
+
+Extract possible models
+
+FZ
+
+FZS
+
+MT
+
+R15
+
+Ray
+
+RayZR
+
+Fascino
+
+Saluto
+
+NMAX
+
+Aerox
+
+etc.
+
+Store confidence.
+
+---
+
+# 18. Language Detection
+
+English
+
+Japanese
+
+Thai
+
+Indonesian
+
+Mixed
+
+Unknown
+
+---
+
+# 19. Region Detection
+
+Sri Lanka
+
+India
+
+Indonesia
+
+Global
+
+Unknown
+
+---
+
+# 20. Quality Assessment
+
+Check
+
+Blur
+
+Rotation
+
+Missing Pages
+
+Low Resolution
+
+Skew
+
+Noise
+
+Compression
+
+Quality Score
+
+---
+
+# 21. Catalogue Confidence
+
+Overall confidence
+
+Metadata
+
+Structure
+
+Language
+
+Version
+
+Quality
+
+Duplicate Detection
+
+Combined Score
+
+---
+
+# 22. Event Publication
+
+Publish
+
+CatalogueRegistered
+
+CatalogueValidated
+
+CatalogueQueued
+
+CatalogueRejected
+
+CatalogueArchived
+
+---
+
+# 23. API
+
+POST
+
+/catalogues/upload
+
+GET
+
+/catalogues
+
+GET
+
+/catalogues/{id}
+
+GET
+
+/catalogues/status
+
+DELETE
+
+/catalogues/archive
+
+---
+
+# 24. Agent Architecture
+
+Chief Catalogue Agent
+
+↓
+
+Discovery Agent
+
+↓
+
+Metadata Agent
+
+↓
+
+Duplicate Agent
+
+↓
+
+Version Agent
+
+↓
+
+Classification Agent
+
+↓
+
+Quality Agent
+
+↓
+
+Registration Agent
+
+---
+
+# 25. Validation Rules
+
+File exists
+
+File readable
+
+PDF valid
+
+Checksum unique
+
+Page count >0
+
+Manufacturer supported
+
+No corruption
+
+---
+
+# 26. Error Handling
+
+Unreadable PDF
+
+Duplicate
+
+Corrupted File
+
+Encrypted PDF
+
+Missing Pages
+
+Unknown Version
+
+Unknown Language
+
+Queue Failure
+
+Retry Policy
+
+---
+
+# 27. Logging
+
+Every action logged
+
+Timestamp
+
+User
+
+File
+
+Status
+
+Duration
+
+Agent
+
+Planning Cycle
+
+---
+
+# 28. Monitoring
+
+Daily uploads
+
+Average processing time
+
+Duplicate rate
+
+Failure rate
+
+Average PDF quality
+
+Average confidence
+
+---
+
+# 29. Unit Tests
+
+Duplicate Detection
+
+Checksum
+
+Metadata
+
+Version Detection
+
+Quality Detection
+
+Language Detection
+
+API
+
+Database
+
+---
+
+# 30. Integration Tests
+
+Upload
+
+↓
+
+Database
+
+↓
+
+Queue
+
+↓
+
+OCR
+
+↓
+
+Knowledge Graph
+
+Verify complete pipeline.
+
+---
+
+# 31. Continuous Learning
+
+Manual corrections improve
+
+Version Detection
+
+Language Detection
+
+Quality Assessment
+
+Classification
+
+Confidence Calibration
+
+---
+
+# 32. Deliverables
+
+Validated Catalogue Registry
+
+Metadata Repository
+
+Page Inventory
+
+Processing Queue
+
+Audit Trail
+
+Confidence Report
+
+Ready for OCR Pipeline
+
+---
+
+# 02_02_Document_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.02
+
+Document Intelligence Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Document Intelligence Engine prepares every catalogue for semantic
+understanding.
+
+Unlike a traditional preprocessing module,
+Document Intelligence does not simply clean PDF pages.
+
+It understands document structure,
+quality,
+page types,
+visual hierarchy,
+and extraction complexity before OCR begins.
+
+The objective is to maximize extraction accuracy while minimizing OCR errors.
+
+---
+
+# 2. Business Problem
+
+Manufacturer catalogues differ significantly.
+
+Examples
+
+• Digital PDFs
+
+• Scanned PDFs
+
+• Mixed digital/scanned
+
+• Rotated pages
+
+• Fold-out pages
+
+• Colour pages
+
+• Black-and-white pages
+
+• Low-quality scans
+
+• Watermarks
+
+• Handwritten notes
+
+Without intelligent preprocessing,
+
+OCR accuracy drops significantly.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Classify document type
+
+✓ Assess image quality
+
+✓ Normalize pages
+
+✓ Detect orientation
+
+✓ Detect page types
+
+✓ Detect diagrams
+
+✓ Detect tables
+
+✓ Detect text blocks
+
+✓ Detect headers
+
+✓ Detect footers
+
+✓ Produce optimized images for OCR
+
+---
+
+# 4. Inputs
+
+Registered Catalogue
+
+PDF
+
+Metadata
+
+Planning Context
+
+Catalogue Version
+
+Previous Versions
+
+Knowledge Graph
+
+---
+
+# 5. Outputs
+
+Optimized Images
+
+Page Metadata
+
+Page Classification
+
+Document Layout
+
+Quality Report
+
+OCR Queue
+
+Image Cache
+
+Document Features
+
+---
+
+# 6. Workflow
+
+Load PDF
+
+↓
+
+Extract Pages
+
+↓
+
+Analyze Quality
+
+↓
+
+Correct Rotation
+
+↓
+
+Deskew
+
+↓
+
+Remove Noise
+
+↓
+
+Normalize Resolution
+
+↓
+
+Detect Page Type
+
+↓
+
+Detect Layout
+
+↓
+
+Generate OCR Package
+
+↓
+
+Publish
+
+---
+
+# 7. Supported Document Types
+
+Digital PDF
+
+Scanned PDF
+
+Hybrid PDF
+
+Image-only PDF
+
+Vector PDF
+
+Encrypted PDF
+
+Archived PDF
+
+---
+
+# 8. Image Processing
+
+Resolution Detection
+
+Contrast Enhancement
+
+Brightness Correction
+
+Sharpening
+
+Noise Removal
+
+Background Cleaning
+
+Border Removal
+
+Margin Detection
+
+---
+
+# 9. Rotation Detection
+
+Detect
+
+0°
+
+90°
+
+180°
+
+270°
+
+Automatically rotate.
+
+---
+
+# 10. Deskew
+
+Estimate skew angle.
+
+Correct skew.
+
+Maintain original proportions.
+
+---
+
+# 11. Resolution Normalization
+
+Minimum DPI
+
+300
+
+Preferred DPI
+
+400
+
+Maximum
+
+600
+
+Upscale if necessary.
+
+---
+
+# 12. Quality Assessment
+
+Metrics
+
+Blur Score
+
+Contrast
+
+Noise Level
+
+Brightness
+
+Compression Artifacts
+
+Skew
+
+Page Completeness
+
+Overall Quality Score
+
+---
+
+# 13. Page Classification
+
+Every page classified as
+
+Cover
+
+Foreword
+
+Contents
+
+Exploded Diagram
+
+Parts Table
+
+Colour Table
+
+Model Index
+
+Notes
+
+Blank
+
+Advertisement
+
+Appendix
+
+Unknown
+
+---
+
+# 14. Why Page Classification?
+
+Different pages require different extraction logic.
+
+Example
+
+Foreword
+
+↓
+
+Colour Intelligence
+
+Parts Table
+
+↓
+
+Part Extraction
+
+Exploded Diagram
+
+↓
+
+Diagram Intelligence
+
+---
+
+# 15. Layout Detection
+
+Detect
+
+Columns
+
+Tables
+
+Images
+
+Figures
+
+Paragraphs
+
+Captions
+
+Page Number
+
+Headers
+
+Footers
+
+Margins
+
+---
+
+# 16. Region Detection
+
+Every page divided into regions.
+
+Example
+
+Header
+
+Body
+
+Table
+
+Diagram
+
+Footer
+
+Each region processed separately.
+
+---
+
+# 17. Diagram Detection
+
+Detect
+
+Exploded Views
+
+Mechanical Drawings
+
+Illustrations
+
+Connector Lines
+
+Callout Numbers
+
+These pages later feed Diagram Intelligence.
+
+---
+
+# 18. Table Detection
+
+Locate
+
+Rows
+
+Columns
+
+Merged Cells
+
+Nested Tables
+
+Split Tables
+
+Rotated Tables
+
+Confidence generated.
+
+---
+
+# 19. Colour Detection
+
+Determine whether page contains
+
+Colour Table
+
+Colour Legend
+
+Colour Remarks
+
+Colour Codes
+
+This enables Colour Intelligence.
+
+---
+
+# 20. Header/Footer Detection
+
+Extract
+
+Catalogue Name
+
+Page Number
+
+Revision
+
+Publication Date
+
+Section
+
+Chapter
+
+Used later for validation.
+
+---
+
+# 21. OCR Preparation
+
+Generate
+
+OCR Image
+
+Mask Layers
+
+Layout Coordinates
+
+Reading Order
+
+Image Metadata
+
+---
+
+# 22. AI Agents
+
+Chief Document Agent
+
+↓
+
+Quality Agent
+
+↓
+
+Rotation Agent
+
+↓
+
+Deskew Agent
+
+↓
+
+Layout Agent
+
+↓
+
+Page Classification Agent
+
+↓
+
+Table Detection Agent
+
+↓
+
+Diagram Agent
+
+↓
+
+OCR Preparation Agent
+
+---
+
+# 23. Database Tables
+
+document_pages
+
+page_quality
+
+page_layout
+
+page_regions
+
+page_types
+
+ocr_queue
+
+document_images
+
+image_cache
+
+layout_metadata
+
+processing_logs
+
+---
+
+# 24. Event Messages
+
+DocumentLoaded
+
+PageProcessed
+
+LayoutDetected
+
+TableDetected
+
+DiagramDetected
+
+OCRReady
+
+DocumentFailed
+
+---
+
+# 25. APIs
+
+GET /documents/{id}
+
+GET /documents/{id}/pages
+
+GET /documents/{id}/layout
+
+GET /documents/{id}/quality
+
+POST /documents/process
+
+---
+
+# 26. Validation
+
+Verify
+
+Every page processed
+
+No missing pages
+
+Resolution acceptable
+
+Rotation corrected
+
+Layout generated
+
+OCR package complete
+
+---
+
+# 27. Error Handling
+
+Unreadable Page
+
+Image Corruption
+
+Unsupported Format
+
+Missing Page
+
+Processing Timeout
+
+Memory Limit
+
+Recovery strategy defined.
+
+---
+
+# 28. Logging
+
+Log
+
+Processing Time
+
+Image Quality
+
+Rotation Angle
+
+Regions
+
+Page Type
+
+Confidence
+
+Agent Decisions
+
+---
+
+# 29. Monitoring
+
+Average Processing Time
+
+Average Quality Score
+
+Rotation Frequency
+
+Page Type Distribution
+
+OCR Preparation Success Rate
+
+---
+
+# 30. Unit Tests
+
+Rotation
+
+Deskew
+
+Quality
+
+Layout
+
+Page Classification
+
+Table Detection
+
+Diagram Detection
+
+OCR Package
+
+---
+
+# 31. Continuous Learning
+
+Human corrections improve
+
+Page Classification
+
+Layout Detection
+
+Quality Thresholds
+
+Diagram Detection
+
+Table Detection
+
+Confidence Calibration
+
+---
+
+# 32. Deliverables
+
+Optimized Document Images
+
+Document Structure
+
+Page Metadata
+
+Layout Metadata
+
+OCR Packages
+
+Quality Report
+
+Ready for OCR Intelligence
+
+---
+
+# 02_03_OCR_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.03
+
+OCR Intelligence Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The OCR Intelligence Engine converts optimized catalogue pages into structured,
+coordinate-aware textual information while preserving document semantics.
+
+Unlike conventional OCR systems, this module understands the visual structure
+of spare-parts catalogues and prepares structured information for downstream
+semantic extraction.
+
+OCR Intelligence does not directly extract spare parts.
+
+Its responsibility is to accurately recognize all textual elements and preserve
+their spatial relationships.
+
+---
+
+# 2. Business Problem
+
+Motorcycle spare-parts catalogues contain
+
+• Tables
+
+• Remarks
+
+• Callout numbers
+
+• Model names
+
+• Colour abbreviations
+
+• Footnotes
+
+• Headers
+
+• Exploded diagrams
+
+Traditional OCR often
+
+• breaks rows
+
+• merges columns
+
+• loses coordinates
+
+• ignores superscripts
+
+• confuses similar characters
+
+• destroys reading order
+
+This causes downstream extraction failures.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Recognize all text
+
+✓ Preserve coordinates
+
+✓ Preserve reading order
+
+✓ Preserve page hierarchy
+
+✓ Generate confidence
+
+✓ Support multiple OCR engines
+
+✓ Detect low-confidence regions
+
+✓ Produce structured OCR objects
+
+---
+
+# 4. Inputs
+
+Optimized Images
+
+Page Metadata
+
+Layout Metadata
+
+Region Metadata
+
+Page Type
+
+Planning Context
+
+Knowledge Graph
+
+---
+
+# 5. Outputs
+
+OCR Text
+
+OCR Tokens
+
+OCR Lines
+
+OCR Blocks
+
+OCR Coordinates
+
+OCR Confidence
+
+Reading Order
+
+Character Bounding Boxes
+
+Word Bounding Boxes
+
+---
+
+# 6. OCR Workflow
+
+Receive Image
+
+↓
+
+Select OCR Strategy
+
+↓
+
+Run OCR
+
+↓
+
+Merge Results
+
+↓
+
+Reconstruct Reading Order
+
+↓
+
+Assign Coordinates
+
+↓
+
+Calculate Confidence
+
+↓
+
+Generate OCR Objects
+
+↓
+
+Publish
+
+---
+
+# 7. OCR Strategies
+
+Digital PDF OCR
+
+Scanned OCR
+
+Mixed OCR
+
+Table OCR
+
+Diagram OCR
+
+Text OCR
+
+Colour Table OCR
+
+Index OCR
+
+Each page type uses a different strategy.
+
+---
+
+# 8. Multi-Engine Architecture
+
+The engine supports
+
+Engine A
+
+Engine B
+
+Engine C
+
+Engine D
+
+The platform may use one or several OCR engines.
+
+Results can be fused.
+
+---
+
+# 9. OCR Selection Agent
+
+Select OCR engine based on
+
+Page Quality
+
+Page Type
+
+Language
+
+Table Density
+
+Diagram Density
+
+Previous Accuracy
+
+Confidence History
+
+---
+
+# 10. OCR Objects
+
+Character
+
+↓
+
+Word
+
+↓
+
+Line
+
+↓
+
+Paragraph
+
+↓
+
+Table Cell
+
+↓
+
+Region
+
+↓
+
+Page
+
+↓
+
+Document
+
+Hierarchical structure maintained.
+
+---
+
+# 11. Coordinate Preservation
+
+Every OCR object stores
+
+Page Number
+
+X
+
+Y
+
+Width
+
+Height
+
+Rotation
+
+Confidence
+
+Coordinates remain unchanged.
+
+---
+
+# 12. Reading Order
+
+Reconstruct
+
+Left → Right
+
+Top → Bottom
+
+Columns
+
+Nested Regions
+
+Tables
+
+Captions
+
+Footnotes
+
+---
+
+# 13. Table-aware OCR
+
+Special handling for
+
+Merged Cells
+
+Split Rows
+
+Rotated Tables
+
+Hidden Borders
+
+Empty Cells
+
+Nested Tables
+
+---
+
+# 14. Diagram-aware OCR
+
+Extract
+
+Callout Numbers
+
+Labels
+
+Reference Numbers
+
+Captions
+
+Connector Text
+
+Later used by Diagram Intelligence.
+
+---
+
+# 15. Colour Table OCR
+
+Recognize
+
+Abbreviation
+
+Colour Name
+
+Colour Number
+
+Variant Code
+
+These are forwarded to Colour Intelligence.
+
+---
+
+# 16. Header/Footer OCR
+
+Extract
+
+Catalogue Name
+
+Revision
+
+Page Number
+
+Publication Date
+
+Section
+
+Chapter
+
+---
+
+# 17. OCR Confidence
+
+Confidence generated at
+
+Character
+
+Word
+
+Line
+
+Paragraph
+
+Region
+
+Page
+
+Document
+
+---
+
+# 18. Confidence Calibration
+
+Confidence combines
+
+OCR Engine Score
+
+Image Quality
+
+Language Model
+
+Neighbour Consistency
+
+Dictionary Match
+
+Business Rules
+
+---
+
+# 19. OCR Corrections
+
+Automatically correct
+
+Common OCR mistakes
+
+O ↔ 0
+
+I ↔ 1
+
+S ↔ 5
+
+B ↔ 8
+
+Z ↔ 2
+
+using business context.
+
+---
+
+# 20. Dictionary Support
+
+Use dictionaries for
+
+Yamaha Models
+
+Part Prefixes
+
+Colour Abbreviations
+
+Business Terms
+
+Known Part Descriptions
+
+Known Suppliers
+
+Known Remarks
+
+---
+
+# 21. Business-aware OCR
+
+Example
+
+FZN150
+
+should not become
+
+FZNI50
+
+because model dictionary validates it.
+
+Likewise
+
+5VK-12345-00
+
+should be recognised as a valid Yamaha part number.
+
+---
+
+# 22. OCR Knowledge Graph
+
+Every OCR object becomes connected.
+
+Document
+
+↓
+
+Page
+
+↓
+
+Region
+
+↓
+
+Table
+
+↓
+
+Row
+
+↓
+
+Cell
+
+↓
+
+Word
+
+↓
+
+Character
+
+---
+
+# 23. Database Tables
+
+ocr_documents
+
+ocr_pages
+
+ocr_regions
+
+ocr_lines
+
+ocr_words
+
+ocr_characters
+
+ocr_confidence
+
+ocr_coordinates
+
+ocr_reading_order
+
+ocr_errors
+
+---
+
+# 24. APIs
+
+POST /ocr/run
+
+GET /ocr/document/{id}
+
+GET /ocr/page/{id}
+
+GET /ocr/confidence
+
+GET /ocr/errors
+
+---
+
+# 25. Event Messages
+
+OCRStarted
+
+OCRCompleted
+
+LowConfidenceDetected
+
+OCRFailed
+
+OCRPublished
+
+---
+
+# 26. Validation
+
+Verify
+
+No missing regions
+
+Reading order complete
+
+Coordinates preserved
+
+Confidence available
+
+Page coverage >99%
+
+---
+
+# 27. Error Handling
+
+Unreadable Region
+
+OCR Timeout
+
+Low Confidence
+
+Engine Failure
+
+Memory Overflow
+
+Language Detection Failure
+
+Retry Strategy
+
+Fallback Engine
+
+---
+
+# 28. Logging
+
+Log
+
+OCR Engine
+
+Processing Time
+
+Confidence
+
+Detected Language
+
+Regions
+
+Failures
+
+Corrections
+
+---
+
+# 29. Monitoring
+
+Average OCR Accuracy
+
+Average Confidence
+
+Characters per Second
+
+Processing Time
+
+Low-confidence Rate
+
+Fallback Usage
+
+---
+
+# 30. Unit Tests
+
+Character Recognition
+
+Word Detection
+
+Coordinate Mapping
+
+Reading Order
+
+Table OCR
+
+Diagram OCR
+
+Colour OCR
+
+Dictionary Validation
+
+---
+
+# 31. Continuous Learning
+
+Store
+
+Manual OCR Corrections
+
+↓
+
+Correction Dataset
+
+↓
+
+Engine Evaluation
+
+↓
+
+Dictionary Expansion
+
+↓
+
+Confidence Calibration
+
+↓
+
+Retraining
+
+---
+
+# 32. Deliverables
+
+Structured OCR Objects
+
+Coordinate-aware Text
+
+Confidence Scores
+
+Reading Order
+
+Correction Report
+
+Ready for Layout Intelligence
+
+---
+
+# 02_03_OCR_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.03
+
+OCR Intelligence Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The OCR Intelligence Engine converts optimized catalogue pages into structured,
+coordinate-aware textual information while preserving document semantics.
+
+Unlike conventional OCR systems, this module understands the visual structure
+of spare-parts catalogues and prepares structured information for downstream
+semantic extraction.
+
+OCR Intelligence does not directly extract spare parts.
+
+Its responsibility is to accurately recognize all textual elements and preserve
+their spatial relationships.
+
+---
+
+# 2. Business Problem
+
+Motorcycle spare-parts catalogues contain
+
+• Tables
+
+• Remarks
+
+• Callout numbers
+
+• Model names
+
+• Colour abbreviations
+
+• Footnotes
+
+• Headers
+
+• Exploded diagrams
+
+Traditional OCR often
+
+• breaks rows
+
+• merges columns
+
+• loses coordinates
+
+• ignores superscripts
+
+• confuses similar characters
+
+• destroys reading order
+
+This causes downstream extraction failures.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Recognize all text
+
+✓ Preserve coordinates
+
+✓ Preserve reading order
+
+✓ Preserve page hierarchy
+
+✓ Generate confidence
+
+✓ Support multiple OCR engines
+
+✓ Detect low-confidence regions
+
+✓ Produce structured OCR objects
+
+---
+
+# 4. Inputs
+
+Optimized Images
+
+Page Metadata
+
+Layout Metadata
+
+Region Metadata
+
+Page Type
+
+Planning Context
+
+Knowledge Graph
+
+---
+
+# 5. Outputs
+
+OCR Text
+
+OCR Tokens
+
+OCR Lines
+
+OCR Blocks
+
+OCR Coordinates
+
+OCR Confidence
+
+Reading Order
+
+Character Bounding Boxes
+
+Word Bounding Boxes
+
+---
+
+# 6. OCR Workflow
+
+Receive Image
+
+↓
+
+Select OCR Strategy
+
+↓
+
+Run OCR
+
+↓
+
+Merge Results
+
+↓
+
+Reconstruct Reading Order
+
+↓
+
+Assign Coordinates
+
+↓
+
+Calculate Confidence
+
+↓
+
+Generate OCR Objects
+
+↓
+
+Publish
+
+---
+
+# 7. OCR Strategies
+
+Digital PDF OCR
+
+Scanned OCR
+
+Mixed OCR
+
+Table OCR
+
+Diagram OCR
+
+Text OCR
+
+Colour Table OCR
+
+Index OCR
+
+Each page type uses a different strategy.
+
+---
+
+# 8. Multi-Engine Architecture
+
+The engine supports
+
+Engine A
+
+Engine B
+
+Engine C
+
+Engine D
+
+The platform may use one or several OCR engines.
+
+Results can be fused.
+
+---
+
+# 9. OCR Selection Agent
+
+Select OCR engine based on
+
+Page Quality
+
+Page Type
+
+Language
+
+Table Density
+
+Diagram Density
+
+Previous Accuracy
+
+Confidence History
+
+---
+
+# 10. OCR Objects
+
+Character
+
+↓
+
+Word
+
+↓
+
+Line
+
+↓
+
+Paragraph
+
+↓
+
+Table Cell
+
+↓
+
+Region
+
+↓
+
+Page
+
+↓
+
+Document
+
+Hierarchical structure maintained.
+
+---
+
+# 11. Coordinate Preservation
+
+Every OCR object stores
+
+Page Number
+
+X
+
+Y
+
+Width
+
+Height
+
+Rotation
+
+Confidence
+
+Coordinates remain unchanged.
+
+---
+
+# 12. Reading Order
+
+Reconstruct
+
+Left → Right
+
+Top → Bottom
+
+Columns
+
+Nested Regions
+
+Tables
+
+Captions
+
+Footnotes
+
+---
+
+# 13. Table-aware OCR
+
+Special handling for
+
+Merged Cells
+
+Split Rows
+
+Rotated Tables
+
+Hidden Borders
+
+Empty Cells
+
+Nested Tables
+
+---
+
+# 14. Diagram-aware OCR
+
+Extract
+
+Callout Numbers
+
+Labels
+
+Reference Numbers
+
+Captions
+
+Connector Text
+
+Later used by Diagram Intelligence.
+
+---
+
+# 15. Colour Table OCR
+
+Recognize
+
+Abbreviation
+
+Colour Name
+
+Colour Number
+
+Variant Code
+
+These are forwarded to Colour Intelligence.
+
+---
+
+# 16. Header/Footer OCR
+
+Extract
+
+Catalogue Name
+
+Revision
+
+Page Number
+
+Publication Date
+
+Section
+
+Chapter
+
+---
+
+# 17. OCR Confidence
+
+Confidence generated at
+
+Character
+
+Word
+
+Line
+
+Paragraph
+
+Region
+
+Page
+
+Document
+
+---
+
+# 18. Confidence Calibration
+
+Confidence combines
+
+OCR Engine Score
+
+Image Quality
+
+Language Model
+
+Neighbour Consistency
+
+Dictionary Match
+
+Business Rules
+
+---
+
+# 19. OCR Corrections
+
+Automatically correct
+
+Common OCR mistakes
+
+O ↔ 0
+
+I ↔ 1
+
+S ↔ 5
+
+B ↔ 8
+
+Z ↔ 2
+
+using business context.
+
+---
+
+# 20. Dictionary Support
+
+Use dictionaries for
+
+Yamaha Models
+
+Part Prefixes
+
+Colour Abbreviations
+
+Business Terms
+
+Known Part Descriptions
+
+Known Suppliers
+
+Known Remarks
+
+---
+
+# 21. Business-aware OCR
+
+Example
+
+FZN150
+
+should not become
+
+FZNI50
+
+because model dictionary validates it.
+
+Likewise
+
+5VK-12345-00
+
+should be recognised as a valid Yamaha part number.
+
+---
+
+# 22. OCR Knowledge Graph
+
+Every OCR object becomes connected.
+
+Document
+
+↓
+
+Page
+
+↓
+
+Region
+
+↓
+
+Table
+
+↓
+
+Row
+
+↓
+
+Cell
+
+↓
+
+Word
+
+↓
+
+Character
+
+---
+
+# 23. Database Tables
+
+ocr_documents
+
+ocr_pages
+
+ocr_regions
+
+ocr_lines
+
+ocr_words
+
+ocr_characters
+
+ocr_confidence
+
+ocr_coordinates
+
+ocr_reading_order
+
+ocr_errors
+
+---
+
+# 24. APIs
+
+POST /ocr/run
+
+GET /ocr/document/{id}
+
+GET /ocr/page/{id}
+
+GET /ocr/confidence
+
+GET /ocr/errors
+
+---
+
+# 25. Event Messages
+
+OCRStarted
+
+OCRCompleted
+
+LowConfidenceDetected
+
+OCRFailed
+
+OCRPublished
+
+---
+
+# 26. Validation
+
+Verify
+
+No missing regions
+
+Reading order complete
+
+Coordinates preserved
+
+Confidence available
+
+Page coverage >99%
+
+---
+
+# 27. Error Handling
+
+Unreadable Region
+
+OCR Timeout
+
+Low Confidence
+
+Engine Failure
+
+Memory Overflow
+
+Language Detection Failure
+
+Retry Strategy
+
+Fallback Engine
+
+---
+
+# 28. Logging
+
+Log
+
+OCR Engine
+
+Processing Time
+
+Confidence
+
+Detected Language
+
+Regions
+
+Failures
+
+Corrections
+
+---
+
+# 29. Monitoring
+
+Average OCR Accuracy
+
+Average Confidence
+
+Characters per Second
+
+Processing Time
+
+Low-confidence Rate
+
+Fallback Usage
+
+---
+
+# 30. Unit Tests
+
+Character Recognition
+
+Word Detection
+
+Coordinate Mapping
+
+Reading Order
+
+Table OCR
+
+Diagram OCR
+
+Colour OCR
+
+Dictionary Validation
+
+---
+
+# 31. Continuous Learning
+
+Store
+
+Manual OCR Corrections
+
+↓
+
+Correction Dataset
+
+↓
+
+Engine Evaluation
+
+↓
+
+Dictionary Expansion
+
+↓
+
+Confidence Calibration
+
+↓
+
+Retraining
+
+---
+
+# 32. Deliverables
+
+Structured OCR Objects
+
+Coordinate-aware Text
+
+Confidence Scores
+
+Reading Order
+
+Correction Report
+
+Ready for Layout Intelligence
+
+---
+
+# 02_04_Layout_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.04
+
+Layout Intelligence Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Layout Intelligence converts OCR output into a semantic representation of the
+catalogue.
+
+Instead of seeing a page as text,
+
+the engine understands
+
+• sections
+
+• tables
+
+• exploded diagrams
+
+• remarks
+
+• headers
+
+• footers
+
+• colour tables
+
+• model references
+
+• continuation pages
+
+The output is a complete semantic document structure.
+
+---
+
+# 2. Business Problem
+
+OCR only recognizes text.
+
+It does not understand
+
+• which words belong together
+
+• where tables start
+
+• where tables end
+
+• which diagram belongs to which table
+
+• which remarks belong to which parts
+
+• which pages belong together
+
+Therefore a semantic understanding layer is required.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Identify logical page regions
+
+✓ Detect semantic blocks
+
+✓ Detect table boundaries
+
+✓ Detect diagram boundaries
+
+✓ Preserve hierarchy
+
+✓ Link related regions
+
+✓ Build semantic layout graph
+
+---
+
+# 4. Inputs
+
+OCR Objects
+
+Coordinates
+
+Confidence
+
+Document Metadata
+
+Page Metadata
+
+Knowledge Graph
+
+---
+
+# 5. Outputs
+
+Semantic Blocks
+
+Table Structures
+
+Diagram Structures
+
+Reading Graph
+
+Region Relationships
+
+Semantic Document Graph
+
+---
+
+# 6. Workflow
+
+OCR Objects
+
+↓
+
+Region Clustering
+
+↓
+
+Block Detection
+
+↓
+
+Layout Classification
+
+↓
+
+Relationship Detection
+
+↓
+
+Semantic Graph
+
+↓
+
+Validation
+
+↓
+
+Publish
+
+---
+
+# 7. Semantic Regions
+
+Each page divided into
+
+Header
+
+Footer
+
+Margin
+
+Body
+
+Table
+
+Diagram
+
+Caption
+
+Remark
+
+Footnote
+
+Colour Legend
+
+Index
+
+Unknown
+
+---
+
+# 8. Block Detection
+
+Every page becomes
+
+Block 1
+
+Block 2
+
+Block 3
+
+...
+
+Each block has
+
+coordinates
+
+type
+
+confidence
+
+reading order
+
+relationships
+
+---
+
+# 9. Region Hierarchy
+
+Document
+
+↓
+
+Page
+
+↓
+
+Section
+
+↓
+
+Block
+
+↓
+
+Table
+
+↓
+
+Row
+
+↓
+
+Cell
+
+↓
+
+Text
+
+↓
+
+Character
+
+---
+
+# 10. Layout Classification
+
+Detect
+
+Single Column
+
+Double Column
+
+Triple Column
+
+Landscape
+
+Portrait
+
+Foldout
+
+Mixed Layout
+
+---
+
+# 11. Table Detection
+
+Detect
+
+Start Row
+
+End Row
+
+Header Row
+
+Footer Row
+
+Merged Cells
+
+Nested Cells
+
+Split Rows
+
+Multi-page Tables
+
+---
+
+# 12. Table Reconstruction
+
+Rebuild
+
+Columns
+
+Rows
+
+Headers
+
+Missing Cells
+
+Merged Cells
+
+Reading Sequence
+
+Output
+
+Complete Table Object
+
+---
+
+# 13. Cross-Page Table Detection
+
+Identify
+
+Table continues
+
+↓
+
+Next page
+
+↓
+
+Merge automatically
+
+↓
+
+Single logical table
+
+---
+
+# 14. Diagram Detection
+
+Identify
+
+Exploded Diagram
+
+Assembly Diagram
+
+Mechanical Drawing
+
+Connector Diagram
+
+Reference Image
+
+Photograph
+
+---
+
+# 15. Diagram Components
+
+Extract
+
+Callout Circles
+
+Reference Numbers
+
+Leader Lines
+
+Labels
+
+Arrow Connections
+
+Bounding Boxes
+
+---
+
+# 16. Diagram Relationships
+
+Link
+
+Diagram
+
+↓
+
+Callout Number
+
+↓
+
+Table Row
+
+↓
+
+Part Number
+
+↓
+
+Description
+
+↓
+
+Remarks
+
+---
+
+# 17. Header Intelligence
+
+Extract
+
+Catalogue Name
+
+Vehicle Model
+
+Revision
+
+Section
+
+Page Number
+
+Publication Date
+
+---
+
+# 18. Footer Intelligence
+
+Extract
+
+Revision
+
+Copyright
+
+Publication Number
+
+Printing Date
+
+Notes
+
+---
+
+# 19. Remark Regions
+
+Detect
+
+Remark Blocks
+
+Abbreviation Blocks
+
+Footnotes
+
+Colour Notes
+
+Special Notes
+
+---
+
+# 20. Colour Table Detection
+
+Locate
+
+Colour Table
+
+↓
+
+Extract Region
+
+↓
+
+Store Coordinates
+
+↓
+
+Forward to Colour Intelligence
+
+---
+
+# 21. Reading Order Graph
+
+Instead of simple sequence
+
+Create graph
+
+Region A
+
+↓
+
+Region B
+
+↓
+
+Region C
+
+↓
+
+Table
+
+↓
+
+Remark
+
+↓
+
+Diagram
+
+---
+
+# 22. Semantic Relationships
+
+Example
+
+Table 3
+
+references
+
+Diagram 5
+
+Remark Block
+
+applies to
+
+Rows 12–18
+
+Colour Table
+
+defines
+
+Remarks
+
+---
+
+# 23. Layout Knowledge Graph
+
+Every page becomes
+
+Document
+
+↓
+
+Page
+
+↓
+
+Section
+
+↓
+
+Region
+
+↓
+
+Block
+
+↓
+
+Table
+
+↓
+
+Diagram
+
+↓
+
+Remark
+
+↓
+
+Colour Table
+
+---
+
+# 24. Database Tables
+
+layout_documents
+
+layout_pages
+
+layout_regions
+
+layout_blocks
+
+layout_tables
+
+layout_rows
+
+layout_cells
+
+layout_diagrams
+
+layout_relationships
+
+layout_graph
+
+---
+
+# 25. AI Agents
+
+Chief Layout Agent
+
+↓
+
+Region Agent
+
+↓
+
+Table Agent
+
+↓
+
+Diagram Agent
+
+↓
+
+Relationship Agent
+
+↓
+
+Semantic Agent
+
+↓
+
+Validation Agent
+
+---
+
+# 26. APIs
+
+GET /layout/document
+
+GET /layout/page
+
+GET /layout/table
+
+GET /layout/diagram
+
+GET /layout/graph
+
+---
+
+# 27. Event Messages
+
+LayoutStarted
+
+RegionDetected
+
+TableDetected
+
+DiagramDetected
+
+RelationshipCreated
+
+LayoutPublished
+
+---
+
+# 28. Validation
+
+Verify
+
+All OCR assigned
+
+No orphan blocks
+
+Tables complete
+
+Relationships complete
+
+Semantic graph connected
+
+---
+
+# 29. Error Handling
+
+Missing Region
+
+Broken Table
+
+Missing Diagram
+
+Unlinked Remarks
+
+Reading Order Failure
+
+Retry Strategy
+
+---
+
+# 30. Logging
+
+Processing Time
+
+Regions
+
+Tables
+
+Diagrams
+
+Relationships
+
+Confidence
+
+Agent Decisions
+
+---
+
+# 31. Monitoring
+
+Average Regions/Page
+
+Average Tables
+
+Average Diagrams
+
+Relationship Density
+
+Semantic Accuracy
+
+Processing Time
+
+---
+
+# 32. Unit Tests
+
+Table Detection
+
+Diagram Detection
+
+Relationship Detection
+
+Cross-page Merge
+
+Reading Order
+
+Semantic Graph
+
+---
+
+# 33. Continuous Learning
+
+Human corrections improve
+
+Table Detection
+
+Diagram Detection
+
+Relationship Detection
+
+Reading Order
+
+Semantic Classification
+
+---
+
+# 34. Deliverables
+
+Semantic Document Structure
+
+Table Objects
+
+Diagram Objects
+
+Reading Graph
+
+Semantic Graph
+
+Ready for Table Intelligence
+
+---
+
+# 02_05_Table_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.05
+
+Table Intelligence Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+Table Intelligence transforms detected catalogue tables into structured,
+validated, semantic business tables.
+
+Unlike conventional table extraction,
+this engine understands the business meaning of every column,
+row,
+cell,
+and relationship.
+
+The output becomes the foundation for Part Intelligence.
+
+---
+
+# 2. Business Problem
+
+Motorcycle parts catalogues contain complex tables.
+
+Examples
+
+• Merged headers
+
+• Split rows
+
+• Missing borders
+
+• Empty cells
+
+• Multi-page tables
+
+• Remarks spanning multiple rows
+
+• Variable column orders
+
+Traditional OCR cannot reconstruct these correctly.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Detect logical tables
+
+✓ Reconstruct tables
+
+✓ Detect columns
+
+✓ Detect rows
+
+✓ Merge split rows
+
+✓ Merge multi-page tables
+
+✓ Preserve relationships
+
+✓ Validate structure
+
+✓ Produce semantic table objects
+
+---
+
+# 4. Inputs
+
+Semantic Layout Graph
+
+OCR Objects
+
+Layout Regions
+
+Coordinates
+
+Reading Order
+
+Knowledge Graph
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Table Objects
+
+Normalized Rows
+
+Normalized Columns
+
+Cell Objects
+
+Relationship Graph
+
+Table Metadata
+
+Validation Report
+
+Confidence Report
+
+---
+
+# 6. Workflow
+
+Layout Regions
+
+↓
+
+Locate Tables
+
+↓
+
+Detect Headers
+
+↓
+
+Detect Columns
+
+↓
+
+Detect Rows
+
+↓
+
+Cell Reconstruction
+
+↓
+
+Normalize Structure
+
+↓
+
+Validate
+
+↓
+
+Publish Table Object
+
+---
+
+# 7. Table Types
+
+Parts Table
+
+Colour Table
+
+Abbreviation Table
+
+Specification Table
+
+Index Table
+
+Reference Table
+
+Unknown
+
+---
+
+# 8. Table Object
+
+Each table stores
+
+Table ID
+
+Page Number
+
+Section
+
+Coordinates
+
+Rows
+
+Columns
+
+Header
+
+Footer
+
+Confidence
+
+Source Page
+
+Revision
+
+---
+
+# 9. Column Intelligence
+
+The engine identifies columns by meaning,
+not position.
+
+Possible column types
+
+Reference Number
+
+Part Number
+
+Description
+
+Quantity
+
+Remarks
+
+Applicable Model
+
+Applicable Colour
+
+Serial Number
+
+Frame Number
+
+Notes
+
+Unknown
+
+---
+
+# 10. Header Detection
+
+Detect
+
+Single Header
+
+Multi-row Header
+
+Merged Header
+
+Rotated Header
+
+Repeated Header
+
+Missing Header
+
+Automatically normalize.
+
+---
+
+# 11. Row Detection
+
+Each row stores
+
+Row ID
+
+Coordinates
+
+Cells
+
+Parent Table
+
+Reading Order
+
+Confidence
+
+Semantic Type
+
+---
+
+# 12. Cell Intelligence
+
+Each cell stores
+
+Value
+
+Coordinates
+
+Confidence
+
+Cell Type
+
+Merged
+
+Spanning
+
+Row
+
+Column
+
+Relationships
+
+---
+
+# 13. Row Reconstruction
+
+Merge rows when
+
+Description wraps
+
+Remarks wrap
+
+Merged cells
+
+Split page
+
+Continuation symbols
+
+Shared reference numbers
+
+---
+
+# 14. Multi-page Table Stitching
+
+Detect
+
+Table continues
+
+↓
+
+Next page
+
+↓
+
+Repeated Header
+
+↓
+
+Merge
+
+↓
+
+Single logical table
+
+---
+
+# 15. Missing Cell Recovery
+
+Recover
+
+Empty Quantity
+
+Repeated Description
+
+Repeated Remarks
+
+Merged Reference Numbers
+
+Previous Row Values
+
+according to business rules.
+
+---
+
+# 16. Semantic Column Mapping
+
+Map raw columns to enterprise schema.
+
+Example
+
+"REF"
+
+↓
+
+Reference Number
+
+"PART NO."
+
+↓
+
+Part Number
+
+"QTY"
+
+↓
+
+Quantity
+
+"REMARKS"
+
+↓
+
+Remarks
+
+---
+
+# 17. Standard Enterprise Schema
+
+Reference_Number
+
+Part_Number
+
+Description
+
+Quantity
+
+Remarks
+
+Compatible_Model
+
+Compatible_Colour
+
+Frame_No
+
+Engine_No
+
+Notes
+
+Confidence
+
+---
+
+# 18. Table Relationships
+
+Table
+
+↓
+
+Rows
+
+↓
+
+Cells
+
+↓
+
+Referenced Diagram
+
+↓
+
+Referenced Colour Table
+
+↓
+
+Remarks
+
+↓
+
+Knowledge Graph
+
+---
+
+# 19. Business Rule Validation
+
+Verify
+
+Part Number format
+
+Quantity numeric
+
+Reference sequential
+
+Known abbreviations
+
+Known remarks
+
+Known colour codes
+
+Known models
+
+---
+
+# 20. Confidence Engine
+
+Calculate confidence for
+
+Table
+
+Header
+
+Column
+
+Row
+
+Cell
+
+Field
+
+Overall table confidence
+
+---
+
+# 21. AI Agents
+
+Chief Table Agent
+
+↓
+
+Header Agent
+
+↓
+
+Column Agent
+
+↓
+
+Row Agent
+
+↓
+
+Cell Agent
+
+↓
+
+Merge Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Semantic Mapping Agent
+
+---
+
+# 22. Database Tables
+
+catalogue_tables
+
+table_headers
+
+table_columns
+
+table_rows
+
+table_cells
+
+table_relationships
+
+table_confidence
+
+table_validation
+
+table_history
+
+---
+
+# 23. APIs
+
+GET /tables
+
+GET /tables/{id}
+
+GET /tables/{id}/rows
+
+GET /tables/{id}/columns
+
+GET /tables/{id}/confidence
+
+---
+
+# 24. Event Messages
+
+TableDetected
+
+HeaderDetected
+
+RowsMerged
+
+ColumnsMapped
+
+TableValidated
+
+TablePublished
+
+---
+
+# 25. Validation
+
+Verify
+
+No orphan rows
+
+No orphan cells
+
+Header exists
+
+Columns mapped
+
+Row count valid
+
+Confidence acceptable
+
+---
+
+# 26. Error Handling
+
+Broken Table
+
+Missing Header
+
+Split Rows
+
+Duplicate Columns
+
+Unknown Structure
+
+Recovery strategy defined.
+
+---
+
+# 27. Logging
+
+Processing Time
+
+Rows
+
+Columns
+
+Merged Rows
+
+Confidence
+
+Corrections
+
+---
+
+# 28. Monitoring
+
+Average Tables/Page
+
+Average Rows/Table
+
+Average Confidence
+
+Merge Frequency
+
+Validation Failure Rate
+
+---
+
+# 29. Unit Tests
+
+Header Detection
+
+Column Mapping
+
+Row Reconstruction
+
+Multi-page Stitching
+
+Cell Recovery
+
+Confidence Calculation
+
+---
+
+# 30. Continuous Learning
+
+Store manual corrections for
+
+Header mapping
+
+Column mapping
+
+Row reconstruction
+
+Merged cells
+
+Table stitching
+
+Confidence calibration
+
+---
+
+# 31. Deliverables
+
+Semantic Table Objects
+
+Enterprise Table Schema
+
+Normalized Rows
+
+Normalized Cells
+
+Validation Report
+
+Ready for Part Intelligence
+
+---
+
+# 02_06_Part_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.06
+
+Part Intelligence Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Part Intelligence Engine converts normalized catalogue tables into
+enterprise-grade spare part master records.
+
+Unlike simple extraction systems,
+
+Part Intelligence understands
+
+• unique part identity
+
+• superseded part numbers
+
+• duplicate parts
+
+• reusable components
+
+• colour dependency
+
+• compatibility
+
+• lifecycle
+
+• catalogue history
+
+The output becomes the Enterprise SKU Master.
+
+---
+
+# 2. Business Problem
+
+The same spare part may appear
+
+• multiple catalogues
+
+• multiple years
+
+• multiple motorcycles
+
+• multiple colours
+
+• multiple revisions
+
+Examples
+
+5VK-83980-00
+
+appears in
+
+FZ
+
+FZS
+
+R15
+
+MT15
+
+but it is still ONE enterprise SKU.
+
+Without normalization
+
+inventory duplicates occur.
+
+Demand becomes fragmented.
+
+Forecast becomes inaccurate.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Identify unique parts
+
+✓ Normalize descriptions
+
+✓ Merge duplicates
+
+✓ Detect superseded parts
+
+✓ Detect reusable parts
+
+✓ Build enterprise SKU IDs
+
+✓ Maintain history
+
+✓ Update Knowledge Graph
+
+---
+
+# 4. Inputs
+
+Enterprise Tables
+
+Layout Graph
+
+OCR Objects
+
+Catalogue Metadata
+
+Knowledge Graph
+
+Business Rules
+
+Previous SKU Master
+
+Planning Context
+
+---
+
+# 5. Outputs
+
+Enterprise SKU Master
+
+Part Registry
+
+Part Relationships
+
+Supersession Graph
+
+Compatibility Links
+
+Colour Links
+
+Validation Report
+
+Confidence Report
+
+---
+
+# 6. Workflow
+
+Normalized Tables
+
+↓
+
+Part Detection
+
+↓
+
+Description Normalization
+
+↓
+
+Duplicate Resolution
+
+↓
+
+Supersession Detection
+
+↓
+
+Lifecycle Detection
+
+↓
+
+Knowledge Graph Update
+
+↓
+
+SKU Master Update
+
+↓
+
+Publish
+
+---
+
+# 7. Enterprise Part Identity
+
+Every part receives
+
+Enterprise SKU ID
+
+Manufacturer Part Number
+
+Catalogue Part Number
+
+Normalized Description
+
+Category
+
+Subcategory
+
+Status
+
+Confidence
+
+Version
+
+Created Date
+
+Updated Date
+
+---
+
+# 8. Part Number Intelligence
+
+Recognize
+
+Yamaha formats
+
+5VK-12345-00
+
+5D7-E3511-00
+
+1PA-F1711-10
+
+Legacy formats
+
+Regional formats
+
+Invalid formats
+
+Unknown formats
+
+---
+
+# 9. Description Intelligence
+
+Normalize
+
+Uppercase
+
+Spacing
+
+Punctuation
+
+Abbreviations
+
+Typos
+
+OCR errors
+
+Examples
+
+GSKT
+
+↓
+
+GASKET
+
+ASSY
+
+↓
+
+ASSEMBLY
+
+BRKT
+
+↓
+
+BRACKET
+
+---
+
+# 10. Duplicate Detection
+
+Determine
+
+Exact Duplicate
+
+Near Duplicate
+
+Description Duplicate
+
+Catalogue Duplicate
+
+Historical Duplicate
+
+Knowledge Duplicate
+
+---
+
+# 11. Duplicate Resolution
+
+Example
+
+Part A
+
+↓
+
+Same Part Number
+
+↓
+
+Different Description
+
+↓
+
+Keep latest description
+
+↓
+
+Maintain aliases
+
+---
+
+# 12. Supersession Intelligence
+
+Detect
+
+Old Part
+
+↓
+
+Replaced By
+
+↓
+
+New Part
+
+Store complete history.
+
+---
+
+# 13. Enterprise Part Lifecycle
+
+New
+
+Active
+
+Updated
+
+Superseded
+
+Discontinued
+
+Archived
+
+Unknown
+
+---
+
+# 14. Shared Component Detection
+
+Identify
+
+One Part
+
+↓
+
+Used by
+
+Many Models
+
+↓
+
+Shared Component
+
+Store relationships.
+
+---
+
+# 15. Colour Dependency
+
+Classify
+
+Colour Independent
+
+Colour Specific
+
+Accessory
+
+Optional
+
+Unknown
+
+Colour-specific parts later handled by Colour Intelligence.
+
+---
+
+# 16. Part Categories
+
+Engine
+
+Transmission
+
+Frame
+
+Electrical
+
+Fuel
+
+Brake
+
+Suspension
+
+Body
+
+Wheel
+
+Accessory
+
+Unknown
+
+---
+
+# 17. Hierarchical Classification
+
+Category
+
+↓
+
+Subcategory
+
+↓
+
+Assembly
+
+↓
+
+Subassembly
+
+↓
+
+Part
+
+---
+
+# 18. Part Relationships
+
+Part
+
+↓
+
+Assembly
+
+↓
+
+Compatible Models
+
+↓
+
+Colours
+
+↓
+
+Supplier
+
+↓
+
+Catalogue Version
+
+↓
+
+Replacement Part
+
+↓
+
+Related Parts
+
+---
+
+# 19. Business Rule Validation
+
+Verify
+
+Unique Enterprise SKU
+
+Valid Part Number
+
+Known Category
+
+Description Exists
+
+No Circular Supersession
+
+Valid Status
+
+---
+
+# 20. Confidence Engine
+
+Confidence calculated for
+
+Part Number
+
+Description
+
+Category
+
+Lifecycle
+
+Duplicate Match
+
+Supersession
+
+Overall Part Confidence
+
+---
+
+# 21. AI Agents
+
+Chief Part Agent
+
+↓
+
+Part Detection Agent
+
+↓
+
+Description Agent
+
+↓
+
+Duplicate Agent
+
+↓
+
+Supersession Agent
+
+↓
+
+Classification Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Knowledge Agent
+
+---
+
+# 22. Database Tables
+
+enterprise_parts
+
+part_aliases
+
+part_categories
+
+part_supersession
+
+part_relationships
+
+part_lifecycle
+
+part_validation
+
+part_confidence
+
+part_history
+
+---
+
+# 23. APIs
+
+GET /parts
+
+GET /parts/{id}
+
+GET /parts/search
+
+GET /parts/history
+
+GET /parts/relationships
+
+---
+
+# 24. Event Messages
+
+PartCreated
+
+PartUpdated
+
+PartMerged
+
+PartSuperseded
+
+PartValidated
+
+PartPublished
+
+---
+
+# 25. Validation
+
+Verify
+
+No duplicate Enterprise SKU
+
+Valid Part Number
+
+Valid Category
+
+Description normalized
+
+Relationships connected
+
+Knowledge Graph updated
+
+---
+
+# 26. Error Handling
+
+Invalid Part Number
+
+Duplicate Conflict
+
+Unknown Category
+
+Circular Relationship
+
+Missing Description
+
+Supersession Conflict
+
+Recovery strategy defined.
+
+---
+
+# 27. Logging
+
+Processing Time
+
+Duplicates Merged
+
+Supersessions Created
+
+Confidence
+
+Validation Failures
+
+---
+
+# 28. Monitoring
+
+New Parts
+
+Duplicate Rate
+
+Supersession Rate
+
+Classification Accuracy
+
+Validation Failures
+
+Average Confidence
+
+---
+
+# 29. Unit Tests
+
+Part Detection
+
+Description Normalization
+
+Duplicate Resolution
+
+Supersession Detection
+
+Category Classification
+
+Knowledge Graph Update
+
+---
+
+# 30. Continuous Learning
+
+Store
+
+Manual Category Corrections
+
+↓
+
+Duplicate Corrections
+
+↓
+
+Description Corrections
+
+↓
+
+Lifecycle Updates
+
+↓
+
+Retraining Dataset
+
+↓
+
+Improved Intelligence
+
+---
+
+# 31. Deliverables
+
+Enterprise SKU Master
+
+Normalized Part Registry
+
+Supersession Graph
+
+Lifecycle Database
+
+Shared Component Graph
+
+Knowledge Graph Updates
+
+Ready for Compatibility Intelligence
+
+---
+
+# 02_07_Compatibility_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.07
+
+Compatibility Intelligence Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Compatibility Intelligence Engine determines the exact applicability of every
+enterprise spare part.
+
+Instead of simply extracting model names from catalogues,
+the engine builds a complete enterprise compatibility network linking
+
+• Parts
+
+• Motorcycle Models
+
+• Model Variants
+
+• Production Years
+
+• Frame Numbers
+
+• Engine Numbers
+
+• Colour Variants
+
+• Markets
+
+• Catalogue Versions
+
+The result becomes the Enterprise Compatibility Matrix.
+
+---
+
+# 2. Business Problem
+
+A single spare part may be
+
+Compatible with
+
+• one motorcycle
+
+• many motorcycles
+
+• only one production year
+
+• multiple years
+
+• specific frame ranges
+
+• specific engine ranges
+
+• only certain colour variants
+
+• only one market
+
+Simple text extraction cannot determine these relationships.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Extract compatible models
+
+✓ Normalize model names
+
+✓ Resolve aliases
+
+✓ Identify model variants
+
+✓ Detect frame applicability
+
+✓ Detect engine applicability
+
+✓ Detect production years
+
+✓ Detect market applicability
+
+✓ Build compatibility graph
+
+✓ Generate confidence
+
+---
+
+# 4. Inputs
+
+Enterprise SKU Master
+
+Normalized Tables
+
+Layout Graph
+
+OCR Objects
+
+Catalogue Metadata
+
+Knowledge Graph
+
+Vehicle Master
+
+Colour Intelligence
+
+Business Rules
+
+Planning Context
+
+---
+
+# 5. Outputs
+
+Enterprise Compatibility Matrix
+
+Model Relationships
+
+Frame Rules
+
+Engine Rules
+
+Colour Rules
+
+Compatibility Confidence
+
+Knowledge Graph Updates
+
+Validation Report
+
+---
+
+# 6. Workflow
+
+Enterprise Tables
+
+↓
+
+Locate Compatibility Information
+
+↓
+
+Extract Raw Models
+
+↓
+
+Normalize Names
+
+↓
+
+Resolve Aliases
+
+↓
+
+Detect Variants
+
+↓
+
+Apply Business Rules
+
+↓
+
+Create Compatibility Objects
+
+↓
+
+Validate
+
+↓
+
+Knowledge Graph
+
+↓
+
+Publish
+
+---
+
+# 7. Compatibility Dimensions
+
+Every compatibility record stores
+
+Vehicle
+
+Variant
+
+Engine
+
+Frame
+
+Production Year
+
+Market
+
+Colour
+
+Status
+
+Confidence
+
+Catalogue Version
+
+---
+
+# 8. Raw Compatibility Extraction
+
+Extract
+
+Model Column
+
+Remarks
+
+Footnotes
+
+Headers
+
+Titles
+
+Colour Tables
+
+Frame Notes
+
+Engine Notes
+
+Description
+
+---
+
+# 9. Enterprise Vehicle Mapping
+
+Example
+
+FZN150
+
+↓
+
+FZ FI V2
+
+↓
+
+Enterprise Vehicle ID
+
+All aliases map to one canonical model.
+
+---
+
+# 10. Model Alias Dictionary
+
+Examples
+
+FZN150
+
+↓
+
+FZ Version 2
+
+FZ V2
+
+FZ FI
+
+FZ FI V2
+
+All become
+
+Vehicle_001
+
+---
+
+# 11. Variant Detection
+
+Identify
+
+Standard
+
+ABS
+
+Disc
+
+Drum
+
+FI
+
+Carburetor
+
+Street Rally
+
+Deluxe
+
+Limited Edition
+
+Special Edition
+
+---
+
+# 12. Production Intelligence
+
+Determine
+
+Production Start
+
+Production End
+
+Generation
+
+Version
+
+Revision
+
+Lifecycle
+
+---
+
+# 13. Frame Applicability
+
+Extract
+
+F#
+
+Frame Numbers
+
+Ranges
+
+Exceptions
+
+Example
+
+F#123001~
+
+Frame_Start = 123001
+
+Frame_End = NULL
+
+---
+
+# 14. Engine Applicability
+
+Extract
+
+Engine Numbers
+
+Ranges
+
+Exceptions
+
+Store normalized values.
+
+---
+
+# 15. Market Applicability
+
+Identify
+
+Sri Lanka
+
+India
+
+Indonesia
+
+Global
+
+Unknown
+
+Market-specific compatibility stored separately.
+
+---
+
+# 16. Colour Applicability
+
+Link
+
+Compatibility
+
+↓
+
+Colour Intelligence
+
+↓
+
+Colour Variants
+
+↓
+
+Applicable Colours
+
+---
+
+# 17. Shared Part Detection
+
+Determine
+
+One Part
+
+↓
+
+Many Models
+
+↓
+
+Shared Component
+
+Store relationship.
+
+---
+
+# 18. Compatibility Types
+
+Full Compatibility
+
+Conditional Compatibility
+
+Frame-specific
+
+Engine-specific
+
+Colour-specific
+
+Market-specific
+
+Historical
+
+Unknown
+
+---
+
+# 19. Compatibility Object
+
+Enterprise Compatibility ID
+
+Enterprise SKU ID
+
+Enterprise Vehicle ID
+
+Generation
+
+Variant
+
+Frame Rule
+
+Engine Rule
+
+Colour Rule
+
+Market Rule
+
+Confidence
+
+---
+
+# 20. Knowledge Graph Relationships
+
+Part
+
+↓
+
+Compatible With
+
+↓
+
+Vehicle
+
+↓
+
+Generation
+
+↓
+
+Variant
+
+↓
+
+Colour
+
+↓
+
+Frame
+
+↓
+
+Engine
+
+↓
+
+Catalogue Version
+
+---
+
+# 21. Business Rules
+
+Verify
+
+Vehicle Exists
+
+Variant Exists
+
+Frame Range Valid
+
+Engine Range Valid
+
+Colour Exists
+
+No Duplicate Compatibility
+
+---
+
+# 22. Confidence Engine
+
+Confidence calculated for
+
+Vehicle
+
+Variant
+
+Frame
+
+Engine
+
+Colour
+
+Market
+
+Overall Compatibility
+
+---
+
+# 23. AI Agents
+
+Chief Compatibility Agent
+
+↓
+
+Vehicle Mapping Agent
+
+↓
+
+Alias Resolution Agent
+
+↓
+
+Variant Agent
+
+↓
+
+Frame Agent
+
+↓
+
+Engine Agent
+
+↓
+
+Colour Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Knowledge Agent
+
+---
+
+# 24. Database Tables
+
+compatibility_master
+
+compatibility_vehicle
+
+compatibility_variant
+
+compatibility_frame
+
+compatibility_engine
+
+compatibility_colour
+
+compatibility_market
+
+compatibility_history
+
+compatibility_confidence
+
+compatibility_validation
+
+---
+
+# 25. APIs
+
+GET /compatibility
+
+GET /compatibility/{id}
+
+GET /compatibility/vehicle/{vehicle}
+
+GET /compatibility/part/{part}
+
+GET /compatibility/history
+
+---
+
+# 26. Event Messages
+
+CompatibilityCreated
+
+CompatibilityUpdated
+
+CompatibilityMerged
+
+CompatibilityValidated
+
+CompatibilityPublished
+
+---
+
+# 27. Validation
+
+Verify
+
+Enterprise Vehicle Exists
+
+SKU Exists
+
+No Circular Relationships
+
+Frame Valid
+
+Engine Valid
+
+Colour Valid
+
+Knowledge Graph Connected
+
+---
+
+# 28. Error Handling
+
+Unknown Model
+
+Unknown Variant
+
+Unknown Frame
+
+Unknown Engine
+
+Unknown Colour
+
+Duplicate Compatibility
+
+Recovery strategy defined.
+
+---
+
+# 29. Logging
+
+Vehicle Mapping
+
+Alias Resolution
+
+Confidence
+
+Validation Failures
+
+Processing Time
+
+Knowledge Graph Updates
+
+---
+
+# 30. Monitoring
+
+Compatibility Count
+
+Shared Parts
+
+Unknown Models
+
+Unknown Variants
+
+Average Confidence
+
+Validation Failures
+
+---
+
+# 31. Unit Tests
+
+Vehicle Mapping
+
+Alias Resolution
+
+Frame Detection
+
+Engine Detection
+
+Variant Detection
+
+Colour Mapping
+
+Knowledge Graph Updates
+
+---
+
+# 32. Continuous Learning
+
+Store
+
+Manual Vehicle Corrections
+
+↓
+
+Alias Updates
+
+↓
+
+Frame Corrections
+
+↓
+
+Engine Corrections
+
+↓
+
+Colour Corrections
+
+↓
+
+Retraining Dataset
+
+↓
+
+Improved Compatibility Intelligence
+
+---
+
+# 33. Deliverables
+
+Enterprise Compatibility Matrix
+
+Vehicle Mapping
+
+Variant Registry
+
+Frame Rules
+
+Engine Rules
+
+Colour Rules
+
+Knowledge Graph Updates
+
+Ready for Colour Intelligence
+
+---
+
+# 02_08_Colour_Intelligence.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.08
+
+Colour Intelligence Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Colour Intelligence Engine determines the exact colour applicability of
+every spare part.
+
+Unlike conventional extraction systems,
+the engine reasons over multiple catalogue sections to identify colour
+variants and their applicability.
+
+The output becomes the Enterprise Colour Matrix.
+
+---
+
+# 2. Business Problem
+
+Colour information is rarely stored in a single place.
+
+Instead it is distributed across
+
+• Foreword
+
+• Colour Tables
+
+• Remarks
+
+• Description
+
+• Footnotes
+
+• Headers
+
+• Model Sections
+
+Therefore colour cannot be extracted using simple OCR.
+
+The system must understand catalogue semantics.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Detect colour tables
+
+✓ Build colour dictionary
+
+✓ Interpret abbreviations
+
+✓ Interpret numeric codes
+
+✓ Interpret remarks
+
+✓ Interpret descriptions
+
+✓ Generate colour applicability
+
+✓ Produce confidence
+
+✓ Learn from corrections
+
+---
+
+# 4. Inputs
+
+Enterprise Tables
+
+Compatibility Matrix
+
+Document Graph
+
+Knowledge Graph
+
+Foreword Pages
+
+OCR Objects
+
+Business Rules
+
+Planning Context
+
+---
+
+# 5. Outputs
+
+Colour Matrix
+
+Colour Dictionary
+
+Colour Variants
+
+SKU Colour Mapping
+
+Confidence Report
+
+Validation Report
+
+Knowledge Graph Updates
+
+---
+
+# 6. Workflow
+
+Locate Foreword
+
+↓
+
+Extract Colour Table
+
+↓
+
+Create Colour Dictionary
+
+↓
+
+Process Remarks
+
+↓
+
+Process Description
+
+↓
+
+Apply Business Rules
+
+↓
+
+Infer Colour Applicability
+
+↓
+
+Validate
+
+↓
+
+Knowledge Graph
+
+↓
+
+Publish
+
+---
+
+# 7. Colour Sources
+
+Priority
+
+1. Foreword Colour Table
+
+2. Remarks
+
+3. Description
+
+4. Section Notes
+
+5. Historical Knowledge
+
+6. AI Inference
+
+---
+
+# 8. Colour Dictionary
+
+Every catalogue creates
+
+Colour Code
+
+↓
+
+Abbreviation
+
+↓
+
+Colour Name
+
+↓
+
+Enterprise Colour ID
+
+↓
+
+Confidence
+
+---
+
+# 9. Colour Object
+
+Each colour stores
+
+Enterprise Colour ID
+
+Catalogue Code
+
+Abbreviation
+
+Name
+
+RGB (optional)
+
+Market
+
+Language
+
+Confidence
+
+---
+
+# 10. Detect Foreword
+
+Automatically detect
+
+Foreword
+
+↓
+
+Locate Colour Table
+
+↓
+
+Extract Table
+
+↓
+
+Validate
+
+↓
+
+Store
+
+---
+
+# 11. Rule 1
+
+Remark contains abbreviation.
+
+Example
+
+B
+
+Then
+
+Lookup
+
+Foreword
+
+↓
+
+B
+
+↓
+
+Black
+
+↓
+
+Applicable
+
+---
+
+# 12. Rule 2
+
+Remark
+
+UR B
+
+Meaning
+
+Use
+
+Black
+
+Only
+
+---
+
+# 13. Rule 3
+
+Remark
+
+FOR B
+
+Meaning
+
+Applicable
+
+Black
+
+---
+
+# 14. Rule 4
+
+Remark
+
+EXCEPT B
+
+Meaning
+
+All colours
+
+Except
+
+Black
+
+---
+
+# 15. Rule 5
+
+Numeric Suffix
+
+Example
+
+Description
+
+COVER-03
+
+Foreword
+
+03
+
+↓
+
+Red
+
+↓
+
+Applicable
+
+---
+
+# 16. Rule 6
+
+Description
+
+Example
+
+PANEL (BLUE)
+
+↓
+
+Blue
+
+↓
+
+Applicable
+
+---
+
+# 17. Rule 7
+
+Description
+
+Example
+
+COVER-RED
+
+↓
+
+Red
+
+Applicable
+
+---
+
+# 18. Rule 8
+
+Description
+
+Contains
+
+Colour abbreviation
+
+↓
+
+Lookup
+
+Dictionary
+
+↓
+
+Applicable
+
+---
+
+# 19. Rule Priority
+
+1
+
+Explicit Remark
+
+↓
+
+2
+
+Numeric Code
+
+↓
+
+3
+
+Description
+
+↓
+
+4
+
+AI Inference
+
+---
+
+# 20. Ambiguity Detection
+
+Example
+
+Remark
+
+B
+
+↓
+
+Dictionary
+
+Blue
+
+Black
+
+Both exist
+
+↓
+
+Ambiguous
+
+↓
+
+Human Review
+
+---
+
+# 21. AI Colour Reasoning
+
+Reason over
+
+Compatible Models
+
+↓
+
+Previous Pages
+
+↓
+
+Colour Table
+
+↓
+
+Description
+
+↓
+
+Historical Catalogues
+
+↓
+
+Knowledge Graph
+
+↓
+
+Determine colour
+
+---
+
+# 22. Colour Confidence
+
+Confidence calculated from
+
+Remark
+
+Description
+
+Dictionary
+
+Knowledge Graph
+
+Historical Match
+
+Overall Confidence
+
+---
+
+# 23. Enterprise Colour Matrix
+
+Enterprise SKU
+
+↓
+
+Applicable Colours
+
+↓
+
+Vehicle
+
+↓
+
+Generation
+
+↓
+
+Catalogue Version
+
+↓
+
+Confidence
+
+---
+
+# 24. AI Agents
+
+Chief Colour Agent
+
+↓
+
+Foreword Agent
+
+↓
+
+Dictionary Agent
+
+↓
+
+Remark Agent
+
+↓
+
+Description Agent
+
+↓
+
+Inference Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Knowledge Agent
+
+---
+
+# 25. Database Tables
+
+colour_master
+
+colour_dictionary
+
+colour_alias
+
+colour_mapping
+
+colour_confidence
+
+colour_validation
+
+colour_history
+
+colour_learning
+
+---
+
+# 26. APIs
+
+GET /colours
+
+GET /colours/{id}
+
+GET /colour-mapping/{sku}
+
+GET /colour-dictionary
+
+---
+
+# 27. Validation
+
+Verify
+
+Colour Exists
+
+Dictionary Exists
+
+No Duplicate Colour
+
+Valid Abbreviation
+
+Valid Numeric Code
+
+Confidence Available
+
+---
+
+# 28. Error Handling
+
+Unknown Colour
+
+Unknown Abbreviation
+
+Missing Dictionary
+
+Ambiguous Mapping
+
+Conflict
+
+Recovery strategy defined.
+
+---
+
+# 29. Logging
+
+Processing Time
+
+Dictionary Size
+
+Mappings
+
+Inference
+
+Confidence
+
+Corrections
+
+---
+
+# 30. Monitoring
+
+Colour Accuracy
+
+Inference Rate
+
+Human Review Rate
+
+Dictionary Growth
+
+Average Confidence
+
+---
+
+# 31. Unit Tests
+
+Dictionary
+
+Remark Parsing
+
+Description Parsing
+
+Numeric Codes
+
+Inference
+
+Knowledge Graph
+
+---
+
+# 32. Continuous Learning
+
+Manual corrections improve
+
+Dictionary
+
+Inference
+
+Confidence
+
+Abbreviation Detection
+
+Description Rules
+
+---
+
+# 33. Deliverables
+
+Enterprise Colour Dictionary
+
+Colour Matrix
+
+SKU Colour Mapping
+
+Knowledge Graph Updates
+
+Ready for SKU Master Generation
+
+---
+
+# 02_09_SKU_Master_Generation.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.09
+
+Enterprise SKU Master Generation Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Enterprise SKU Master Generation Engine consolidates information from all
+Catalogue Intelligence modules into a single enterprise master database.
+
+This module creates the Single Source of Truth (SSOT) for every spare part.
+
+It combines
+
+• Part Intelligence
+
+• Compatibility Intelligence
+
+• Colour Intelligence
+
+• Catalogue Metadata
+
+• Version History
+
+• Business Rules
+
+into one enterprise SKU record.
+
+---
+
+# 2. Business Problem
+
+Information about a spare part is scattered.
+
+Example
+
+Part Number
+
+↓
+
+Part Intelligence
+
+Compatible Models
+
+↓
+
+Compatibility Intelligence
+
+Colours
+
+↓
+
+Colour Intelligence
+
+Catalogue
+
+↓
+
+Metadata
+
+Lifecycle
+
+↓
+
+History
+
+Without consolidation,
+
+different systems maintain different SKU definitions.
+
+Forecasting becomes inconsistent.
+
+Inventory becomes duplicated.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Create Enterprise SKU
+
+✓ Merge Intelligence Outputs
+
+✓ Assign Enterprise IDs
+
+✓ Validate Master Data
+
+✓ Version Every SKU
+
+✓ Maintain History
+
+✓ Publish Master Data
+
+✓ Synchronize Knowledge Graph
+
+---
+
+# 4. Inputs
+
+Enterprise Part Registry
+
+Compatibility Matrix
+
+Colour Matrix
+
+Catalogue Metadata
+
+Vehicle Master
+
+Knowledge Graph
+
+Planning Context
+
+Business Rules
+
+---
+
+# 5. Outputs
+
+Enterprise SKU Master
+
+SKU Version History
+
+Master Data API
+
+Feature Store
+
+Knowledge Graph
+
+Validation Report
+
+Quality Report
+
+---
+
+# 6. Workflow
+
+Enterprise Parts
+
+↓
+
+Merge Compatibility
+
+↓
+
+Merge Colours
+
+↓
+
+Merge Metadata
+
+↓
+
+Validate
+
+↓
+
+Assign Enterprise ID
+
+↓
+
+Generate Version
+
+↓
+
+Publish
+
+↓
+
+Knowledge Graph
+
+↓
+
+Feature Store
+
+---
+
+# 7. Enterprise SKU Object
+
+Enterprise SKU ID
+
+Manufacturer Part Number
+
+Description
+
+Category
+
+Subcategory
+
+Compatible Vehicles
+
+Colour Variants
+
+Frame Rules
+
+Engine Rules
+
+Lifecycle
+
+Status
+
+Confidence
+
+Current Version
+
+---
+
+# 8. Enterprise ID Generation
+
+Generate immutable
+
+Enterprise SKU UUID
+
+Example
+
+SKU-000000001
+
+Never changes.
+
+Regardless of catalogue revisions.
+
+---
+
+# 9. SKU Versioning
+
+Every modification creates
+
+Version 1
+
+↓
+
+Version 2
+
+↓
+
+Version 3
+
+↓
+
+Current
+
+Nothing is overwritten.
+
+---
+
+# 10. Version Metadata
+
+Store
+
+Created Date
+
+Updated Date
+
+Source Catalogue
+
+Source Page
+
+Revision
+
+Reason
+
+Author
+
+Confidence
+
+---
+
+# 11. Master Data Validation
+
+Verify
+
+Unique Enterprise SKU
+
+Part Number Exists
+
+Description Exists
+
+Category Exists
+
+Compatibility Exists
+
+Knowledge Graph Connected
+
+---
+
+# 12. Data Quality Rules
+
+Completeness
+
+Consistency
+
+Uniqueness
+
+Accuracy
+
+Validity
+
+Timeliness
+
+Integrity
+
+Every SKU receives a Data Quality Score.
+
+---
+
+# 13. SKU Lifecycle
+
+Draft
+
+Validated
+
+Published
+
+Deprecated
+
+Superseded
+
+Archived
+
+Deleted (logical only)
+
+---
+
+# 14. Enterprise Relationships
+
+Enterprise SKU
+
+↓
+
+Vehicle
+
+↓
+
+Generation
+
+↓
+
+Variant
+
+↓
+
+Colour
+
+↓
+
+Frame
+
+↓
+
+Engine
+
+↓
+
+Supplier
+
+↓
+
+Catalogue
+
+↓
+
+Revision
+
+---
+
+# 15. Knowledge Graph Synchronization
+
+Update
+
+Part Node
+
+Compatibility Node
+
+Colour Node
+
+Vehicle Node
+
+Catalogue Node
+
+Relationship Graph
+
+---
+
+# 16. Feature Store Synchronization
+
+Generate machine-learning features
+
+Compatible Vehicle Count
+
+Vehicle Families
+
+Colour Count
+
+Lifecycle
+
+Shared Component Count
+
+Catalogue Frequency
+
+Historical Demand Links
+
+These become inputs for later forecasting models.
+
+---
+
+# 17. Business Rules
+
+Enterprise SKU immutable
+
+History immutable
+
+Version append-only
+
+No duplicate part numbers
+
+No duplicate Enterprise IDs
+
+Every relationship validated
+
+---
+
+# 18. Enterprise Data Model
+
+Enterprise SKU
+
+↓
+
+Compatibility
+
+↓
+
+Colour
+
+↓
+
+Vehicle
+
+↓
+
+Supplier
+
+↓
+
+Catalogue
+
+↓
+
+History
+
+↓
+
+Knowledge Graph
+
+---
+
+# 19. AI Agents
+
+Chief Master Data Agent
+
+↓
+
+Merge Agent
+
+↓
+
+Validation Agent
+
+↓
+
+Version Agent
+
+↓
+
+Knowledge Graph Agent
+
+↓
+
+Feature Store Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 20. Database Tables
+
+sku_master
+
+sku_version
+
+sku_relationship
+
+sku_quality
+
+sku_feature
+
+sku_history
+
+sku_status
+
+sku_audit
+
+---
+
+# 21. APIs
+
+GET /sku
+
+GET /sku/{id}
+
+GET /sku/version
+
+GET /sku/history
+
+POST /sku/publish
+
+---
+
+# 22. Event Messages
+
+SKUCreated
+
+SKUUpdated
+
+VersionCreated
+
+SKUPublished
+
+QualityUpdated
+
+FeatureUpdated
+
+---
+
+# 23. Validation
+
+Verify
+
+No orphan relationships
+
+No duplicate IDs
+
+Every SKU versioned
+
+Knowledge Graph synchronized
+
+Feature Store updated
+
+---
+
+# 24. Error Handling
+
+Duplicate Enterprise ID
+
+Version Conflict
+
+Relationship Conflict
+
+Quality Failure
+
+Publication Failure
+
+Recovery strategy defined.
+
+---
+
+# 25. Logging
+
+Processing Time
+
+Published SKUs
+
+Version Count
+
+Quality Score
+
+Validation Failures
+
+Knowledge Graph Updates
+
+---
+
+# 26. Monitoring
+
+Published SKUs
+
+Version Growth
+
+Data Quality
+
+Validation Errors
+
+Publication Success
+
+Feature Store Updates
+
+---
+
+# 27. Unit Tests
+
+Enterprise ID
+
+Versioning
+
+Merge Logic
+
+Quality Rules
+
+Knowledge Graph Sync
+
+Feature Generation
+
+---
+
+# 28. Continuous Learning
+
+Track
+
+Manual Corrections
+
+↓
+
+Merge Improvements
+
+↓
+
+Validation Improvements
+
+↓
+
+Quality Improvements
+
+↓
+
+Feature Improvements
+
+---
+
+# 29. Deliverables
+
+Enterprise SKU Master
+
+Enterprise Master Database
+
+Feature Store
+
+Knowledge Graph
+
+Master APIs
+
+Quality Dashboard
+
+Ready for Demand Intelligence
+
+---
+
+# 02_10_Validation_Engine.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.10
+
+Enterprise Validation Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Validation Engine verifies the accuracy, consistency, completeness and
+business correctness of all extracted catalogue information before publication
+to the Enterprise SKU Master.
+
+It serves as the Enterprise Quality Gate for Catalogue Intelligence.
+
+No record is published without validation.
+
+---
+
+# 2. Business Problem
+
+Catalogue extraction may produce
+
+• OCR mistakes
+
+• Wrong colours
+
+• Wrong compatible models
+
+• Wrong frame ranges
+
+• Missing descriptions
+
+• Duplicate parts
+
+• Invalid relationships
+
+Without validation these errors propagate into
+
+Demand Forecasting
+
+Inventory Optimization
+
+Procurement Planning
+
+Decision Support
+
+Therefore enterprise validation is mandatory.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Validate extracted entities
+
+✓ Validate relationships
+
+✓ Validate business rules
+
+✓ Validate historical consistency
+
+✓ Validate catalogue consistency
+
+✓ Assign quality scores
+
+✓ Generate explainable validation reports
+
+✓ Route uncertain records for review
+
+---
+
+# 4. Inputs
+
+Enterprise SKU Master (Candidate)
+
+Part Intelligence
+
+Compatibility Intelligence
+
+Colour Intelligence
+
+Knowledge Graph
+
+Business Rules
+
+Historical Catalogues
+
+Enterprise Vehicle Master
+
+Enterprise Colour Master
+
+Enterprise Category Master
+
+---
+
+# 5. Outputs
+
+Validated SKU
+
+Validation Report
+
+Quality Score
+
+Validation Errors
+
+Review Queue
+
+Knowledge Graph Updates
+
+Publication Decision
+
+---
+
+# 6. Workflow
+
+Candidate SKU
+
+↓
+
+Syntax Validation
+
+↓
+
+Business Rule Validation
+
+↓
+
+Relationship Validation
+
+↓
+
+Knowledge Validation
+
+↓
+
+Historical Validation
+
+↓
+
+Cross Catalogue Validation
+
+↓
+
+AI Validation
+
+↓
+
+Quality Scoring
+
+↓
+
+Publish / Review
+
+---
+
+# 7. Validation Levels
+
+Level 1
+
+Syntax
+
+↓
+
+Level 2
+
+Structure
+
+↓
+
+Level 3
+
+Business Rules
+
+↓
+
+Level 4
+
+Relationships
+
+↓
+
+Level 5
+
+Knowledge Graph
+
+↓
+
+Level 6
+
+Historical Consistency
+
+↓
+
+Level 7
+
+AI Reasoning
+
+---
+
+# 8. Syntax Validation
+
+Verify
+
+Part Number format
+
+Frame format
+
+Engine format
+
+Colour code format
+
+Abbreviation format
+
+Required fields
+
+Null values
+
+---
+
+# 9. Structure Validation
+
+Verify
+
+Unique Enterprise SKU
+
+Unique Version
+
+No duplicate rows
+
+No duplicate compatibility
+
+No duplicate colours
+
+No orphan records
+
+---
+
+# 10. Business Rule Validation
+
+Verify
+
+Part belongs to category
+
+Compatible model exists
+
+Colour exists
+
+Frame range valid
+
+Engine range valid
+
+Assembly quantity valid
+
+Status valid
+
+---
+
+# 11. Relationship Validation
+
+Verify
+
+SKU
+
+↓
+
+Vehicle
+
+↓
+
+Colour
+
+↓
+
+Catalogue
+
+↓
+
+Supplier
+
+↓
+
+Category
+
+↓
+
+Assembly
+
+All relationships must exist.
+
+---
+
+# 12. Knowledge Graph Validation
+
+Compare extracted relationships against
+
+Enterprise Knowledge Graph
+
+Detect
+
+Missing links
+
+Broken links
+
+Circular links
+
+Conflicting links
+
+---
+
+# 13. Historical Validation
+
+Compare with
+
+Previous Catalogue
+
+Previous Version
+
+Previous Colour Mapping
+
+Previous Compatibility
+
+Previous Part Description
+
+Determine whether changes are expected.
+
+---
+
+# 14. Cross Catalogue Validation
+
+Example
+
+Same Part
+
+↓
+
+Five catalogues
+
+↓
+
+Compatibility differs
+
+↓
+
+Detect conflict
+
+↓
+
+Review
+
+---
+
+# 15. AI Validation
+
+Reason over
+
+Description
+
+↓
+
+Compatibility
+
+↓
+
+Colour
+
+↓
+
+Vehicle
+
+↓
+
+Assembly
+
+↓
+
+Knowledge Graph
+
+↓
+
+Determine plausibility
+
+---
+
+# 16. Validation Categories
+
+Critical
+
+Major
+
+Minor
+
+Warning
+
+Information
+
+---
+
+# 17. Validation Decision
+
+Accept
+
+Reject
+
+Manual Review
+
+Reprocess
+
+Archive
+
+---
+
+# 18. Data Quality Dimensions
+
+Completeness
+
+Consistency
+
+Accuracy
+
+Validity
+
+Integrity
+
+Timeliness
+
+Uniqueness
+
+Traceability
+
+Explainability
+
+---
+
+# 19. Quality Score
+
+Every SKU receives
+
+Completeness Score
+
+Consistency Score
+
+Relationship Score
+
+Historical Score
+
+Knowledge Score
+
+Overall Quality Score
+
+Example
+
+97.8%
+
+---
+
+# 20. Explainability
+
+Every validation result stores
+
+Validation Rule
+
+Result
+
+Reason
+
+Evidence
+
+Confidence
+
+Reviewer
+
+Timestamp
+
+---
+
+# 21. AI Agents
+
+Chief Validation Agent
+
+↓
+
+Syntax Agent
+
+↓
+
+Business Rule Agent
+
+↓
+
+Relationship Agent
+
+↓
+
+Knowledge Graph Agent
+
+↓
+
+Historical Agent
+
+↓
+
+Reasoning Agent
+
+↓
+
+Publication Agent
+
+---
+
+# 22. Database Tables
+
+validation_master
+
+validation_rules
+
+validation_results
+
+validation_errors
+
+validation_history
+
+validation_confidence
+
+validation_review
+
+quality_scores
+
+---
+
+# 23. APIs
+
+GET /validation
+
+GET /validation/{id}
+
+GET /validation/errors
+
+GET /quality
+
+POST /validation/run
+
+---
+
+# 24. Event Messages
+
+ValidationStarted
+
+ValidationPassed
+
+ValidationFailed
+
+ManualReviewRequired
+
+ValidationPublished
+
+---
+
+# 25. Error Handling
+
+Critical Error
+
+↓
+
+Reject
+
+Major Error
+
+↓
+
+Review
+
+Minor Error
+
+↓
+
+Publish with Warning
+
+---
+
+# 26. Logging
+
+Validation Time
+
+Rules Executed
+
+Errors
+
+Warnings
+
+Confidence
+
+Reviewer
+
+---
+
+# 27. Monitoring
+
+Validation Success Rate
+
+Average Quality Score
+
+Critical Error Rate
+
+Manual Review Rate
+
+Rule Failure Frequency
+
+---
+
+# 28. Unit Tests
+
+Syntax Rules
+
+Business Rules
+
+Relationship Validation
+
+Historical Validation
+
+Knowledge Graph Validation
+
+AI Reasoning
+
+---
+
+# 29. Continuous Learning
+
+Store
+
+Reviewer Decisions
+
+↓
+
+Validation Corrections
+
+↓
+
+Rule Improvements
+
+↓
+
+AI Improvements
+
+↓
+
+Quality Improvements
+
+---
+
+# 30. Deliverables
+
+Enterprise Validation Report
+
+Enterprise Quality Score
+
+Validation Dashboard
+
+Review Queue
+
+Publication Decision
+
+Enterprise Approved SKU
+
+---
+
+# 02_11_Knowledge_Graph_Engine.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.11
+
+Enterprise Knowledge Graph Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Enterprise Knowledge Graph (EKG) provides a unified semantic
+representation of all enterprise entities and their relationships.
+
+Instead of storing disconnected datasets,
+the graph represents enterprise knowledge as interconnected nodes and edges.
+
+Every intelligence service reads and writes to the graph.
+
+The graph becomes the semantic backbone of the platform.
+
+---
+
+# 2. Business Problem
+
+Traditional databases answer questions using joins.
+
+However,
+
+enterprise spare parts planning requires reasoning across
+
+• Parts
+
+• Vehicles
+
+• UIO
+
+• Dealers
+
+• Inventory
+
+• Procurement
+
+• Forecasts
+
+• Colours
+
+• Assemblies
+
+• Suppliers
+
+These relationships are highly connected.
+
+Relational databases become increasingly complex.
+
+Knowledge graphs naturally model these relationships.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Build enterprise graph
+
+✓ Maintain graph consistency
+
+✓ Version graph
+
+✓ Support graph queries
+
+✓ Support graph reasoning
+
+✓ Track provenance
+
+✓ Enable AI reasoning
+
+✓ Synchronize enterprise systems
+
+---
+
+# 4. Inputs
+
+Enterprise SKU Master
+
+Vehicle Master
+
+Compatibility Matrix
+
+Colour Matrix
+
+UIO Intelligence
+
+Demand Intelligence
+
+Dealer Intelligence
+
+Inventory Intelligence
+
+Procurement Intelligence
+
+Validation Engine
+
+---
+
+# 5. Outputs
+
+Enterprise Knowledge Graph
+
+Graph APIs
+
+Relationship Repository
+
+Reasoning Engine
+
+Graph Embeddings
+
+Decision Context
+
+---
+
+# 6. Workflow
+
+Validated Master Data
+
+↓
+
+Node Creation
+
+↓
+
+Relationship Creation
+
+↓
+
+Ontology Validation
+
+↓
+
+Graph Versioning
+
+↓
+
+Graph Embedding
+
+↓
+
+Reasoning
+
+↓
+
+Publication
+
+---
+
+# 7. Core Node Types
+
+Enterprise SKU
+
+Vehicle
+
+Vehicle Family
+
+Vehicle Variant
+
+Dealer
+
+Province
+
+Customer
+
+Supplier
+
+Warehouse
+
+Inventory Location
+
+Purchase Order
+
+Import Shipment
+
+Forecast
+
+Demand Cluster
+
+Colour
+
+Assembly
+
+Catalogue
+
+Document
+
+Revision
+
+Business Rule
+
+Agent
+
+Alert
+
+Recommendation
+
+---
+
+# 8. Core Relationships
+
+SKU
+
+COMPATIBLE_WITH
+
+Vehicle
+
+SKU
+
+HAS_COLOUR
+
+Colour
+
+Vehicle
+
+BELONGS_TO
+
+Vehicle Family
+
+Dealer
+
+LOCATED_IN
+
+Province
+
+Dealer
+
+ORDERS
+
+SKU
+
+SKU
+
+PART_OF
+
+Assembly
+
+Assembly
+
+BELONGS_TO
+
+Vehicle
+
+Forecast
+
+PREDICTS
+
+Demand
+
+Inventory
+
+STORES
+
+SKU
+
+Supplier
+
+SUPPLIES
+
+SKU
+
+Shipment
+
+DELIVERS
+
+Purchase Order
+
+---
+
+# 9. Ontology
+
+Every node follows enterprise ontology.
+
+Example
+
+Enterprise SKU
+
+Properties
+
+Enterprise_ID
+
+Part_Number
+
+Description
+
+Category
+
+Lifecycle
+
+Status
+
+Confidence
+
+Created_Date
+
+Updated_Date
+
+---
+
+# 10. Relationship Properties
+
+Each edge stores
+
+Relationship Type
+
+Confidence
+
+Source
+
+Catalogue
+
+Version
+
+Created Date
+
+Effective Date
+
+Expiry Date
+
+Evidence
+
+---
+
+# 11. Provenance
+
+Every graph element records
+
+Source Catalogue
+
+Page
+
+Table
+
+Row
+
+Agent
+
+Confidence
+
+Reviewer
+
+Validation Status
+
+Timestamp
+
+---
+
+# 12. Graph Versioning
+
+Graph
+
+↓
+
+Snapshot
+
+↓
+
+Delta
+
+↓
+
+Current
+
+Historical snapshots never change.
+
+---
+
+# 13. Temporal Graph
+
+Relationships include
+
+Valid From
+
+Valid Until
+
+Historical Version
+
+Current Version
+
+Future Version
+
+---
+
+# 14. Reasoning Engine
+
+Infer
+
+Shared Components
+
+Potential Compatibility
+
+Supplier Dependency
+
+Critical Parts
+
+Demand Propagation
+
+Risk Propagation
+
+Obsolescence
+
+---
+
+# 15. Graph Embeddings
+
+Generate vector embeddings for
+
+SKU
+
+Vehicle
+
+Dealer
+
+Supplier
+
+Assembly
+
+Forecast
+
+Used for
+
+Similarity
+
+Recommendation
+
+AI Agents
+
+---
+
+# 16. Graph Queries
+
+Examples
+
+Which parts are used in FZ V3?
+
+Which colour-specific parts belong to MT-15?
+
+Which dealers buy this part?
+
+Which inactive vehicles still consume this SKU?
+
+Which suppliers provide substitute parts?
+
+---
+
+# 17. Business Rules
+
+Every node must
+
+Have unique ID
+
+Have ontology type
+
+Pass validation
+
+Be versioned
+
+Maintain provenance
+
+---
+
+# 18. AI Agents
+
+Chief Graph Agent
+
+↓
+
+Node Agent
+
+↓
+
+Relationship Agent
+
+↓
+
+Ontology Agent
+
+↓
+
+Reasoning Agent
+
+↓
+
+Embedding Agent
+
+↓
+
+Version Agent
+
+↓
+
+Validation Agent
+
+---
+
+# 19. Database
+
+graph_nodes
+
+graph_edges
+
+graph_versions
+
+graph_embeddings
+
+graph_provenance
+
+graph_validation
+
+graph_history
+
+graph_events
+
+---
+
+# 20. APIs
+
+GET /graph/node/{id}
+
+GET /graph/relationship/{id}
+
+GET /graph/query
+
+POST /graph/reason
+
+GET /graph/history
+
+---
+
+# 21. Event Messages
+
+NodeCreated
+
+RelationshipCreated
+
+GraphUpdated
+
+GraphValidated
+
+GraphPublished
+
+EmbeddingGenerated
+
+---
+
+# 22. Validation
+
+Verify
+
+No orphan nodes
+
+No broken relationships
+
+Ontology valid
+
+Version valid
+
+Provenance complete
+
+---
+
+# 23. Error Handling
+
+Duplicate Node
+
+Broken Relationship
+
+Ontology Conflict
+
+Version Conflict
+
+Missing Provenance
+
+Recovery strategy defined.
+
+---
+
+# 24. Logging
+
+Nodes
+
+Relationships
+
+Graph Size
+
+Embedding Time
+
+Reasoning Time
+
+Validation Results
+
+---
+
+# 25. Monitoring
+
+Total Nodes
+
+Total Relationships
+
+Graph Growth
+
+Average Degree
+
+Reasoning Time
+
+Embedding Coverage
+
+---
+
+# 26. Unit Tests
+
+Node Creation
+
+Relationship Creation
+
+Ontology Validation
+
+Graph Reasoning
+
+Graph Versioning
+
+Embedding Generation
+
+---
+
+# 27. Continuous Learning
+
+Reviewer corrections improve
+
+Ontology
+
+Relationship prediction
+
+Graph reasoning
+
+Embeddings
+
+Recommendation quality
+
+---
+
+# 28. Deliverables
+
+Enterprise Knowledge Graph
+
+Enterprise Ontology
+
+Graph APIs
+
+Graph Embeddings
+
+Reasoning Engine
+
+Decision Context
+
+---
+
+# 02_11_Knowledge_Graph_Engine.md
+
+Enterprise Spare Parts Intelligence Platform
+
+Module 02.11
+
+Enterprise Knowledge Graph Engine
+
+Version 1.0
+
+---
+
+# 1. Purpose
+
+The Enterprise Knowledge Graph (EKG) provides a unified semantic
+representation of all enterprise entities and their relationships.
+
+Instead of storing disconnected datasets,
+the graph represents enterprise knowledge as interconnected nodes and edges.
+
+Every intelligence service reads and writes to the graph.
+
+The graph becomes the semantic backbone of the platform.
+
+---
+
+# 2. Business Problem
+
+Traditional databases answer questions using joins.
+
+However,
+
+enterprise spare parts planning requires reasoning across
+
+• Parts
+
+• Vehicles
+
+• UIO
+
+• Dealers
+
+• Inventory
+
+• Procurement
+
+• Forecasts
+
+• Colours
+
+• Assemblies
+
+• Suppliers
+
+These relationships are highly connected.
+
+Relational databases become increasingly complex.
+
+Knowledge graphs naturally model these relationships.
+
+---
+
+# 3. Objectives
+
+The engine shall
+
+✓ Build enterprise graph
+
+✓ Maintain graph consistency
+
+✓ Version graph
+
+✓ Support graph queries
+
+✓ Support graph reasoning
+
+✓ Track provenance
+
+✓ Enable AI reasoning
+
+✓ Synchronize enterprise systems
+
+---
+
+# 4. Inputs
+
+Enterprise SKU Master
+
+Vehicle Master
+
+Compatibility Matrix
+
+Colour Matrix
+
+UIO Intelligence
+
+Demand Intelligence
+
+Dealer Intelligence
+
+Inventory Intelligence
+
+Procurement Intelligence
+
+Validation Engine
+
+---
+
+# 5. Outputs
+
+Enterprise Knowledge Graph
+
+Graph APIs
+
+Relationship Repository
+
+Reasoning Engine
+
+Graph Embeddings
+
+Decision Context
+
+---
+
+# 6. Workflow
+
+Validated Master Data
+
+↓
+
+Node Creation
+
+↓
+
+Relationship Creation
+
+↓
+
+Ontology Validation
+
+↓
+
+Graph Versioning
+
+↓
+
+Graph Embedding
+
+↓
+
+Reasoning
+
+↓
+
+Publication
+
+---
+
+# 7. Core Node Types
+
+Enterprise SKU
+
+Vehicle
+
+Vehicle Family
+
+Vehicle Variant
+
+Dealer
+
+Province
+
+Customer
+
+Supplier
+
+Warehouse
+
+Inventory Location
+
+Purchase Order
+
+Import Shipment
+
+Forecast
+
+Demand Cluster
+
+Colour
+
+Assembly
+
+Catalogue
+
+Document
+
+Revision
+
+Business Rule
+
+Agent
+
+Alert
+
+Recommendation
+
+---
+
+# 8. Core Relationships
+
+SKU
+
+COMPATIBLE_WITH
+
+Vehicle
+
+SKU
+
+HAS_COLOUR
+
+Colour
+
+Vehicle
+
+BELONGS_TO
+
+Vehicle Family
+
+Dealer
+
+LOCATED_IN
+
+Province
+
+Dealer
+
+ORDERS
+
+SKU
+
+SKU
+
+PART_OF
+
+Assembly
+
+Assembly
+
+BELONGS_TO
+
+Vehicle
+
+Forecast
+
+PREDICTS
+
+Demand
+
+Inventory
+
+STORES
+
+SKU
+
+Supplier
+
+SUPPLIES
+
+SKU
+
+Shipment
+
+DELIVERS
+
+Purchase Order
+
+---
+
+# 9. Ontology
+
+Every node follows enterprise ontology.
+
+Example
+
+Enterprise SKU
+
+Properties
+
+Enterprise_ID
+
+Part_Number
+
+Description
+
+Category
+
+Lifecycle
+
+Status
+
+Confidence
+
+Created_Date
+
+Updated_Date
+
+---
+
+# 10. Relationship Properties
+
+Each edge stores
+
+Relationship Type
+
+Confidence
+
+Source
+
+Catalogue
+
+Version
+
+Created Date
+
+Effective Date
+
+Expiry Date
+
+Evidence
+
+---
+
+# 11. Provenance
+
+Every graph element records
+
+Source Catalogue
+
+Page
+
+Table
+
+Row
+
+Agent
+
+Confidence
+
+Reviewer
+
+Validation Status
+
+Timestamp
+
+---
+
+# 12. Graph Versioning
+
+Graph
+
+↓
+
+Snapshot
+
+↓
+
+Delta
+
+↓
+
+Current
+
+Historical snapshots never change.
+
+---
+
+# 13. Temporal Graph
+
+Relationships include
+
+Valid From
+
+Valid Until
+
+Historical Version
+
+Current Version
+
+Future Version
+
+---
+
+# 14. Reasoning Engine
+
+Infer
+
+Shared Components
+
+Potential Compatibility
+
+Supplier Dependency
+
+Critical Parts
+
+Demand Propagation
+
+Risk Propagation
+
+Obsolescence
+
+---
+
+# 15. Graph Embeddings
+
+Generate vector embeddings for
+
+SKU
+
+Vehicle
+
+Dealer
+
+Supplier
+
+Assembly
+
+Forecast
+
+Used for
+
+Similarity
+
+Recommendation
+
+AI Agents
+
+---
+
+# 16. Graph Queries
+
+Examples
+
+Which parts are used in FZ V3?
+
+Which colour-specific parts belong to MT-15?
+
+Which dealers buy this part?
+
+Which inactive vehicles still consume this SKU?
+
+Which suppliers provide substitute parts?
+
+---
+
+# 17. Business Rules
+
+Every node must
+
+Have unique ID
+
+Have ontology type
+
+Pass validation
+
+Be versioned
+
+Maintain provenance
+
+---
+
+# 18. AI Agents
+
+Chief Graph Agent
+
+↓
+
+Node Agent
+
+↓
+
+Relationship Agent
+
+↓
+
+Ontology Agent
+
+↓
+
+Reasoning Agent
+
+↓
+
+Embedding Agent
+
+↓
+
+Version Agent
+
+↓
+
+Validation Agent
+
+---
+
+# 19. Database
+
+graph_nodes
+
+graph_edges
+
+graph_versions
+
+graph_embeddings
+
+graph_provenance
+
+graph_validation
+
+graph_history
+
+graph_events
+
+---
+
+# 20. APIs
+
+GET /graph/node/{id}
+
+GET /graph/relationship/{id}
+
+GET /graph/query
+
+POST /graph/reason
+
+GET /graph/history
+
+---
+
+# 21. Event Messages
+
+NodeCreated
+
+RelationshipCreated
+
+GraphUpdated
+
+GraphValidated
+
+GraphPublished
+
+EmbeddingGenerated
+
+---
+
+# 22. Validation
+
+Verify
+
+No orphan nodes
+
+No broken relationships
+
+Ontology valid
+
+Version valid
+
+Provenance complete
+
+---
+
+# 23. Error Handling
+
+Duplicate Node
+
+Broken Relationship
+
+Ontology Conflict
+
+Version Conflict
+
+Missing Provenance
+
+Recovery strategy defined.
+
+---
+
+# 24. Logging
+
+Nodes
+
+Relationships
+
+Graph Size
+
+Embedding Time
+
+Reasoning Time
+
+Validation Results
+
+---
+
+# 25. Monitoring
+
+Total Nodes
+
+Total Relationships
+
+Graph Growth
+
+Average Degree
+
+Reasoning Time
+
+Embedding Coverage
+
+---
+
+# 26. Unit Tests
+
+Node Creation
+
+Relationship Creation
+
+Ontology Validation
+
+Graph Reasoning
+
+Graph Versioning
+
+Embedding Generation
+
+---
+
+# 27. Continuous Learning
+
+Reviewer corrections improve
+
+Ontology
+
+Relationship prediction
+
+Graph reasoning
+
+Embeddings
+
+Recommendation quality
+
+---
+
+# 28. Deliverables
+
+Enterprise Knowledge Graph
+
+Enterprise Ontology
+
+Graph APIs
+
+Graph Embeddings
+
+Reasoning Engine
+
+Decision Context
+
+---
